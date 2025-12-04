@@ -1,0 +1,104 @@
+{
+  "name": "Create Module",
+  "description": "Generate a new module following windsurf rules structure",
+  "version": "1.0.0",
+  "documentation": "../workflows/create-module.md",
+  "trigger": {
+    "command": "create-module",
+    "description": "Create a new module with windsurf rules structure"
+  },
+  "inputs": [
+    {
+      "name": "module_name",
+      "type": "string",
+      "description": "Module name in kebab-case format",
+      "required": true,
+      "pattern": "^[a-z]+(-[a-z]+)*$",
+      "examples": ["user-management", "product-catalog", "auth"]
+    }
+  ],
+  "steps": [
+    {
+      "name": "validate_input",
+      "description": "Validate module name format",
+      "action": {
+        "type": "validate",
+        "rules": [
+          {
+            "field": "module_name",
+            "pattern": "^[a-z]+(-[a-z]+)*$",
+            "message": "Module name must be in kebab-case format (lowercase letters with hyphens)"
+          }
+        ]
+      }
+    },
+    {
+      "name": "execute_script",
+      "description": "Run the module creation script",
+      "action": {
+        "type": "command",
+        "command": "node scripts/create-module.js {{inputs.module_name}}",
+        "workingDirectory": ".",
+        "showOutput": true,
+        "timeout": 30000
+      }
+    },
+    {
+      "name": "verify_creation",
+      "description": "Verify module was created successfully",
+      "action": {
+        "type": "check",
+        "conditions": [
+          {
+            "type": "file_exists",
+            "path": "src/modules/{{inputs.module_name}}/controller.js"
+          },
+          {
+            "type": "file_exists", 
+            "path": "src/modules/{{inputs.module_name}}/routes.js"
+          },
+          {
+            "type": "file_exists",
+            "path": "src/modules/{{inputs.module_name}}/services/index.js"
+          },
+          {
+            "type": "file_exists",
+            "path": "src/modules/{{inputs.module_name}}/validators/index.js"
+          },
+          {
+            "type": "file_exists",
+            "path": "src/modules/{{inputs.module_name}}/constants/index.js"
+          }
+        ]
+      }
+    },
+    {
+      "name": "open_files",
+      "description": "Open generated files for editing",
+      "action": {
+        "type": "open_files",
+        "files": [
+          "src/modules/{{inputs.module_name}}/controller.js",
+          "src/modules/{{inputs.module_name}}/services/create.service.js",
+          "src/modules/{{inputs.module_name}}/validators/create.validator.js"
+        ]
+      }
+    }
+  ],
+  "output": {
+    "success": {
+      "message": "Module '{{inputs.module_name}}' created successfully!",
+      "next_steps": [
+        "Add route to src/index.js: app.use('/api/{{inputs.module_name}}', modules.{{inputs.module_name | camelCase}});",
+        "Implement business logic in services/",
+        "Add validation rules in validators/",
+        "Update constants with specific error codes",
+        "Write tests for the new module"
+      ]
+    },
+    "error": {
+      "message": "Failed to create module '{{inputs.module_name}}'",
+      "help": "Try running manually: npm run create-module {{inputs.module_name}}"
+    }
+  }
+}

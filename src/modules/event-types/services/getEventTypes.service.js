@@ -1,0 +1,51 @@
+/**
+ * GetEventTypes Service
+ * Handles getEventTypes business logic
+ */
+const constants = require('../constants');
+const sharedConstants = require('../../../shared/constants');
+
+/**
+const { EventType, sequelize } = require('../../../shared/models');
+const { Op } = sequelize.Sequelize;
+
+/**
+ * Get list of event types
+ * @param {Object} data - Request data
+ * @param {string} data.requestId - Request ID for tracking
+ * @param {number} data.page - Page number (0-indexed)
+ * @param {number} data.per_page - Items per page
+ * @returns {Promise<Object>} - Result data
+ * @throws {Error} - If operation fails
+ */
+const getEventTypes = async ({ requestId, page = 0, per_page = 20 }) => {
+  console.log(`[${requestId}] GetEventTypes attempt`);
+  
+  try {
+    const limit = Math.min(per_page, 100);
+    const offset = page * limit;
+    
+    const { count, rows } = await EventType.findAndCountAll({
+      limit,
+      offset,
+      order: [['name', 'ASC']]
+    });
+    
+    console.log(`[${requestId}] GetEventTypes successful: Found ${count} types`);
+    
+    return {
+      eventTypes: rows,
+      pagination: {
+        page,
+        per_page: limit,
+        total: count,
+        total_pages: Math.ceil(count / limit)
+      }
+    };
+  } catch (error) {
+    console.error(`[${requestId}] GetEventTypes failed:`, error.message);
+    throw new Error(JSON.stringify(constants.getEventTypes.errorMessages.GETE0003));
+  }
+};
+
+module.exports = getEventTypes;

@@ -1,0 +1,86 @@
+{
+  "workflows": {
+    "modules": {
+      "description": "Module management workflows",
+      "workflows": [
+        {
+          "name": "create-module",
+          "description": "Create a new module following windsurf rules",
+          "path": "./create-module.json",
+          "documentation": "../workflows/create-module.md",
+          "category": "generation",
+          "tags": ["module", "create", "windsurf-rules"]
+        }
+      ]
+    },
+    "database": {
+      "description": "Database management workflows",
+      "workflows": [
+        {
+          "name": "create-migration",
+          "description": "Create a new database migration",
+          "path": "./database/create-migration.json",
+          "category": "generation",
+          "tags": ["database", "migration"],
+          "status": "planned"
+        }
+      ]
+    },
+    "testing": {
+      "description": "Testing workflows",
+      "workflows": [
+        {
+          "name": "generate-tests",
+          "description": "Generate test files for a module",
+          "path": "./testing/generate-tests.json",
+          "category": "generation",
+          "tags": ["testing", "unit-tests", "integration-tests"],
+          "status": "planned"
+        }
+      ]
+    },
+    "deployment": {
+      "description": "Deployment workflows",
+      "workflows": [
+        {
+          "name": "deploy-staging",
+          "description": "Deploy to staging environment",
+          "path": "./deployment/deploy-staging.json",
+          "category": "deployment",
+          "tags": ["deploy", "staging"],
+          "status": "planned"
+        }
+      ]
+    }
+  },
+  "categories": {
+    "generation": {
+      "description": "Code generation workflows",
+      "icon": "🏗️"
+    },
+    "deployment": {
+      "description": "Deployment and CI/CD workflows", 
+      "icon": "🚀"
+    },
+    "testing": {
+      "description": "Testing and quality assurance workflows",
+      "icon": "🧪"
+    },
+    "maintenance": {
+      "description": "Code maintenance and refactoring workflows",
+      "icon": "🔧"
+    }
+  },
+  "tags": {
+    "module": "Module-related operations",
+    "create": "Creation workflows",
+    "windsurf-rules": "Follows windsurf coding rules",
+    "database": "Database operations",
+    "migration": "Database migrations",
+    "testing": "Testing operations",
+    "unit-tests": "Unit testing",
+    "integration-tests": "Integration testing",
+    "deploy": "Deployment operations",
+    "staging": "Staging environment"
+  }
+}
