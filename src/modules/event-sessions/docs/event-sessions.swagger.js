@@ -1,5 +1,5 @@
 /**
- * EventSessions Module Swagger Documentation
+ * Event-sessions Module Swagger Documentation
  * Auto-generated API documentation
  */
 
@@ -9,7 +9,7 @@ module.exports = {
       "summary": "CreateEventSession operation",
       "description": "Performs createEventSession operation in event-sessions module",
       "tags": [
-        "EventSessions"
+        "Event-sessions"
       ],
       "security": [
         {
@@ -75,7 +75,7 @@ module.exports = {
       "summary": "GetEventSessions operation",
       "description": "Performs getEventSessions operation in event-sessions module",
       "tags": [
-        "EventSessions"
+        "Event-sessions"
       ],
       "security": [
         {
@@ -131,7 +131,7 @@ module.exports = {
       "summary": "GetEventSessionById operation",
       "description": "Performs getEventSessionById operation in event-sessions module",
       "tags": [
-        "EventSessions"
+        "Event-sessions"
       ],
       "security": [
         {
@@ -182,12 +182,12 @@ module.exports = {
       }
     }
   },
-  "/api/event-sessions/updateEventSession": {
+  "/api/event-sessions/updateEventSession/:id": {
     "put": {
       "summary": "UpdateEventSession operation",
       "description": "Performs updateEventSession operation in event-sessions module",
       "tags": [
-        "EventSessions"
+        "Event-sessions"
       ],
       "security": [
         {
@@ -248,12 +248,12 @@ module.exports = {
       }
     }
   },
-  "/api/event-sessions/deleteEventSession": {
+  "/api/event-sessions/deleteEventSession/:id": {
     "delete": {
       "summary": "DeleteEventSession operation",
       "description": "Performs deleteEventSession operation in event-sessions module",
       "tags": [
-        "EventSessions"
+        "Event-sessions"
       ],
       "security": [
         {

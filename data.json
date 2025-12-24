@@ -1,0 +1,9 @@
+{
+    "name": "Test Venue API",
+    "address": "123 API St",
+    "city": "API City",
+    "chapter_id": 2,
+    "capacity": 100,
+    "contact_name": "API User",
+    "contact_email": "api@test.com"
+}

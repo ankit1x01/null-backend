@@ -1,5 +1,5 @@
 /**
- * PagePermissions Module Swagger Documentation
+ * Page-permissions Module Swagger Documentation
  * Auto-generated API documentation
  */
 
@@ -9,7 +9,7 @@ module.exports = {
       "summary": "CreatePagePermission operation",
       "description": "Performs createPagePermission operation in page-permissions module",
       "tags": [
-        "PagePermissions"
+        "Page-permissions"
       ],
       "security": [
         {
@@ -70,12 +70,12 @@ module.exports = {
       }
     }
   },
-  "/api/page-permissions/updatePagePermission": {
+  "/api/page-permissions/updatePagePermission/:id": {
     "put": {
       "summary": "UpdatePagePermission operation",
       "description": "Performs updatePagePermission operation in page-permissions module",
       "tags": [
-        "PagePermissions"
+        "Page-permissions"
       ],
       "security": [
         {
@@ -136,12 +136,12 @@ module.exports = {
       }
     }
   },
-  "/api/page-permissions/deletePagePermission": {
+  "/api/page-permissions/deletePagePermission/:id": {
     "delete": {
       "summary": "DeletePagePermission operation",
       "description": "Performs deletePagePermission operation in page-permissions module",
       "tags": [
-        "PagePermissions"
+        "Page-permissions"
       ],
       "security": [
         {

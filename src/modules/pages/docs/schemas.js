@@ -95,7 +95,7 @@ module.exports = {
       },
       "message": {
         "type": "string",
-        "example": "GetPageById successful"
+        "example": "GetPages successful"
       },
       "result": {
         "type": "object",

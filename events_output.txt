@@ -1,0 +1,351 @@
+  console.log
+    ≡ƒÜÇ Setting up Swagger documentation at /api-docs
+
+      at Object.log (src/index.js:36:9)
+
+FAIL tests/integration/events.test.js
+  Events API Integration Tests
+    GET /api/events/getEvents
+      ΓêÜ should return all events (143 ms)
+    GET /api/events/getEventById
+      ├ù should return an event by ID (26 ms)
+    POST /api/events/createEvent
+      ΓêÜ should create an event (45 ms)
+    PUT /api/events/updateEvent/:id
+      ΓêÜ should update an event (20 ms)
+    DELETE /api/events/deleteEvent/:id
+      ΓêÜ should delete an event (16 ms)
+
+  ΓùÅ Events API Integration Tests ΓÇ║ GET /api/events/getEventById ΓÇ║ should return an event by ID
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 400
+
+      39 |         .expect('Content-Type', /json/);
+      40 |
+    > 41 |       expect(res.status).toBe(200);
+         |                          ^
+      42 |       expect(res.body.result).toEqual(mockEvent);
+      43 |       expect(eventServices.getEventById).toHaveBeenCalledWith(expect.objectContaining({ id: '1' }));
+      44 |     });
+
+      at Object.toBe (tests/integration/events.test.js:41:26)
+
+-----------------------------------------------|---------|----------|---------|---------|------------------------------------
+File                                           | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                  
+-----------------------------------------------|---------|----------|---------|---------|------------------------------------
+All files                                      |   49.57 |    13.04 |   18.35 |    50.2 |                                    
+ src                                           |   74.54 |       20 |      20 |   74.54 |                                    
+  index.js                                     |   74.54 |       20 |      20 |   74.54 | 41-43,74-77,88-99,105              
+ src/config                                    |     100 |    63.63 |     100 |     100 |                                    
+  database.js                                  |     100 |    63.63 |     100 |     100 | 10,12-31,34-56                     
+ src/modules                                   |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+ src/modules/auth                              |   41.93 |        0 |       0 |   41.93 |                                    
+  controller.js                                |      28 |        0 |       0 |      28 | 17-46,58-84                        
+  routes.js                                    |     100 |      100 |     100 |     100 |                                    
+ src/modules/auth/constants                    |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  login.constants.js                           |     100 |      100 |     100 |     100 |                                    
+  register.constants.js                        |     100 |      100 |     100 |     100 |                                    
+ src/modules/auth/docs                         |     100 |      100 |     100 |     100 |                                    
+  auth.swagger.js                              |     100 |      100 |     100 |     100 |                                    
+  schemas.js                                   |     100 |      100 |     100 |     100 |                                    
+ src/modules/auth/services                     |   36.36 |        0 |       0 |   36.36 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  login.service.js                             |      25 |        0 |       0 |      25 | 22-86                              
+  register.service.js                          |   41.17 |        0 |       0 |   41.17 | 22-59                              
+ src/modules/auth/validators                   |   37.93 |        0 |       0 |   37.93 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  login.validator.js                           |   33.33 |        0 |       0 |   33.33 | 15-29                              
+  register.validator.js                        |   28.57 |        0 |       0 |   28.57 | 15-33                              
+ src/modules/chapter-leads                     |    32.2 |        0 |       0 |    32.2 |                                    
+  controller.js                                |      20 |        0 |       0 |      20 | 17-41,53-77,89-113,125-149,161-185 
+  routes.js                                    |     100 |      100 |     100 |     100 |                                    
+ src/modules/chapter-leads/constants           |     100 |      100 |     100 |     100 |                                    
+  createChapterLead.constants.js               |     100 |      100 |     100 |     100 |                                    
+  deleteChapterLead.constants.js               |     100 |      100 |     100 |     100 |                                    
+  getChapterLeadById.constants.js              |     100 |      100 |     100 |     100 |                                    
+  getChapterLeads.constants.js                 |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateChapterLead.constants.js               |     100 |      100 |     100 |     100 |                                    
+ src/modules/chapter-leads/docs                |     100 |      100 |     100 |     100 |                                    
+  chapter-leads.swagger.js                     |     100 |      100 |     100 |     100 |                                    
+  schemas.js                                   |     100 |      100 |     100 |     100 |                                    
+ src/modules/chapter-leads/services            |   39.02 |        0 |       0 |      40 |                                    
+  createChapterLead.service.js                 |   41.66 |      100 |       0 |   41.66 | 25-34                              
+  deleteChapterLead.service.js                 |   33.33 |        0 |       0 |   33.33 | 26-41                              
+  getChapterLeadById.service.js                |   35.71 |        0 |       0 |   35.71 | 26-52                              
+  getChapterLeads.service.js                   |      30 |        0 |       0 |   33.33 | 34-76                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateChapterLead.service.js                 |   33.33 |        0 |       0 |   33.33 | 26-41                              
+ src/modules/chapter-leads/validators          |   76.47 |      100 |       0 |   76.47 |                                    
+  createChapterLead.validator.js               |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  deleteChapterLead.validator.js               |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  getChapterLeadById.validator.js              |      80 |      100 |       0 |      80 | 15                                 
+  getChapterLeads.validator.js                 |      80 |      100 |       0 |      80 | 15                                 
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateChapterLead.validator.js               |   66.66 |      100 |       0 |   66.66 | 15-28                              
+ src/modules/chapters                          |   35.08 |        0 |       0 |   35.08 |                                    
+  constants.js                                 |     100 |      100 |     100 |     100 |                                    
+  controller.js                                |   18.42 |        0 |       0 |   18.42 | 17-41,53-77,86-134                 
+  routes.js                                    |     100 |      100 |     100 |     100 |                                    
+  validators.js                                |   33.33 |        0 |       0 |   33.33 | 12-14,26-36                        
+ src/modules/chapters/docs                     |     100 |      100 |     100 |     100 |                                    
+  chapters.swagger.js                          |     100 |      100 |     100 |     100 |                                    
+  schemas.js                                   |     100 |      100 |     100 |     100 |                                    
+ src/modules/chapters/services                 |   38.88 |        0 |       0 |   38.88 |                                    
+  createChapter.service.js                     |   41.66 |      100 |       0 |   41.66 | 17-26                              
+  deleteChapter.service.js                     |   33.33 |        0 |       0 |   33.33 | 18-37                              
+  getChapterById.service.js                    |   36.36 |      100 |       0 |   36.36 | 16-32                              
+  getChapters.service.js                       |   23.07 |        0 |       0 |   23.07 | 16-52                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateChapter.service.js                     |   33.33 |        0 |       0 |   33.33 | 18-37                              
+ src/modules/event-registrations               |    32.2 |        0 |       0 |    32.2 |                                    
+  controller.js                                |      20 |        0 |       0 |      20 | 17-41,53-77,89-113,125-149,161-185 
+  routes.js                                    |     100 |      100 |     100 |     100 |                                    
+ src/modules/event-registrations/constants     |     100 |      100 |     100 |     100 |                                    
+  createEventRegistration.constants.js         |     100 |      100 |     100 |     100 |                                    
+  deleteEventRegistration.constants.js         |     100 |      100 |     100 |     100 |                                    
+  getEventRegistrationById.constants.js        |     100 |      100 |     100 |     100 |                                    
+  getEventRegistrations.constants.js           |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateEventRegistration.constants.js         |     100 |      100 |     100 |     100 |                                    
+ src/modules/event-registrations/docs          |     100 |      100 |     100 |     100 |                                    
+  event-registrations.swagger.js               |     100 |      100 |     100 |     100 |                                    
+  schemas.js                                   |     100 |      100 |     100 |     100 |                                    
+ src/modules/event-registrations/services      |    36.7 |        0 |       0 |   37.66 |                                    
+  createEventRegistration.service.js           |   41.66 |      100 |       0 |   41.66 | 25-34                              
+  deleteEventRegistration.service.js           |   28.57 |        0 |       0 |   28.57 | 17-32                              
+  getEventRegistrationById.service.js          |   30.76 |        0 |       0 |   30.76 | 17-43                              
+  getEventRegistrations.service.js             |      30 |        0 |       0 |   33.33 | 30-72                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateEventRegistration.service.js           |   28.57 |        0 |       0 |   28.57 | 17-32                              
+ src/modules/event-registrations/validators    |   76.47 |      100 |       0 |   76.47 |                                    
+  createEventRegistration.validator.js         |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  deleteEventRegistration.validator.js         |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  getEventRegistrationById.validator.js        |      80 |      100 |       0 |      80 | 15                                 
+  getEventRegistrations.validator.js           |      80 |      100 |       0 |      80 | 15                                 
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateEventRegistration.validator.js         |   66.66 |      100 |       0 |   66.66 | 15-28                              
+ src/modules/event-session-comments            |   33.33 |        0 |       0 |   33.33 |                                    
+  controller.js                                |   19.04 |        0 |       0 |   19.04 | 17-41,53-77,89-113,123-153         
+  routes.js                                    |     100 |      100 |     100 |     100 |                                    
+ src/modules/event-session-comments/constants  |     100 |      100 |     100 |     100 |                                    
+  createEventSessionComment.constants.js       |     100 |      100 |     100 |     100 |                                    
+  deleteEventSessionComment.constants.js       |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateEventSessionComment.constants.js       |     100 |      100 |     100 |     100 |                                    
+ src/modules/event-session-comments/docs       |     100 |      100 |     100 |     100 |                                    
+  event-session-comments.swagger.js            |     100 |      100 |     100 |     100 |                                    
+  schemas.js                                   |     100 |      100 |     100 |     100 |                                    
+ src/modules/event-session-comments/services   |   39.02 |        0 |       0 |      40 |                                    
+  createEventSessionComment.service.js         |   41.66 |      100 |       0 |   41.66 | 25-34                              
+  deleteEventSessionComment.service.js         |   33.33 |        0 |       0 |   33.33 | 26-41                              
+  getEventSessionCommentById.service.js        |   35.71 |        0 |       0 |   35.71 | 18-48                              
+  getEventSessionComments.service.js           |      30 |        0 |       0 |   33.33 | 22-64                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateEventSessionComment.service.js         |   33.33 |        0 |       0 |   33.33 | 26-41                              
+ src/modules/event-session-comments/validators |   72.72 |      100 |       0 |   72.72 |                                    
+  createEventSessionComment.validator.js       |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  deleteEventSessionComment.validator.js       |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateEventSessionComment.validator.js       |   66.66 |      100 |       0 |   66.66 | 15-28                              
+ src/modules/event-sessions                    |    32.2 |        0 |       0 |    32.2 |                                    
+  controller.js                                |      20 |        0 |       0 |      20 | 17-41,53-77,89-113,125-149,161-185 
+  routes.js                                    |     100 |      100 |     100 |     100 |                                    
+ src/modules/event-sessions/constants          |     100 |      100 |     100 |     100 |                                    
+  createEventSession.constants.js              |     100 |      100 |     100 |     100 |                                    
+  deleteEventSession.constants.js              |     100 |      100 |     100 |     100 |                                    
+  getEventSessionById.constants.js             |     100 |      100 |     100 |     100 |                                    
+  getEventSessions.constants.js                |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateEventSession.constants.js              |     100 |      100 |     100 |     100 |                                    
+ src/modules/event-sessions/docs               |     100 |      100 |     100 |     100 |                                    
+  event-sessions.swagger.js                    |     100 |      100 |     100 |     100 |                                    
+  schemas.js                                   |     100 |      100 |     100 |     100 |                                    
+ src/modules/event-sessions/services           |      40 |        0 |       0 |      40 |                                    
+  createEventSession.service.js                |   41.66 |      100 |       0 |   41.66 | 18-27                              
+  deleteEventSession.service.js                |   33.33 |        0 |       0 |   33.33 | 19-33                              
+  getEventSessionById.service.js               |   35.71 |        0 |       0 |   35.71 | 19-56                              
+  getEventSessions.service.js                  |   33.33 |        0 |       0 |   33.33 | 22-65                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateEventSession.service.js                |   33.33 |        0 |       0 |   33.33 | 20-34                              
+ src/modules/event-sessions/validators         |   76.47 |      100 |       0 |   76.47 |                                    
+  createEventSession.validator.js              |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  deleteEventSession.validator.js              |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  getEventSessionById.validator.js             |      80 |      100 |       0 |      80 | 15                                 
+  getEventSessions.validator.js                |      80 |      100 |       0 |      80 | 15                                 
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateEventSession.validator.js              |   66.66 |      100 |       0 |   66.66 | 15-28                              
+ src/modules/event-types                       |    32.2 |        0 |       0 |    32.2 |                                    
+  controller.js                                |      20 |        0 |       0 |      20 | 17-41,53-77,89-113,125-149,161-185 
+  routes.js                                    |     100 |      100 |     100 |     100 |                                    
+ src/modules/event-types/constants             |     100 |      100 |     100 |     100 |                                    
+  createEventType.constants.js                 |     100 |      100 |     100 |     100 |                                    
+  deleteEventType.constants.js                 |     100 |      100 |     100 |     100 |                                    
+  getEventTypeById.constants.js                |     100 |      100 |     100 |     100 |                                    
+  getEventTypes.constants.js                   |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateEventType.constants.js                 |     100 |      100 |     100 |     100 |                                    
+ src/modules/event-types/docs                  |     100 |      100 |     100 |     100 |                                    
+  event-types.swagger.js                       |     100 |      100 |     100 |     100 |                                    
+  schemas.js                                   |     100 |      100 |     100 |     100 |                                    
+ src/modules/event-types/services              |      40 |        0 |       0 |      40 |                                    
+  createEventType.service.js                   |   41.66 |      100 |       0 |   41.66 | 25-34                              
+  deleteEventType.service.js                   |   33.33 |        0 |       0 |   33.33 | 26-41                              
+  getEventTypeById.service.js                  |   35.71 |        0 |       0 |   35.71 | 26-39                              
+  getEventTypes.service.js                     |   30.76 |        0 |       0 |   30.76 | 22-47                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateEventType.service.js                   |   33.33 |        0 |       0 |   33.33 | 26-41                              
+ src/modules/event-types/validators            |   76.47 |      100 |       0 |   76.47 |                                    
+  createEventType.validator.js                 |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  deleteEventType.validator.js                 |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  getEventTypeById.validator.js                |      80 |      100 |       0 |      80 | 15                                 
+  getEventTypes.validator.js                   |      80 |      100 |       0 |      80 | 15                                 
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateEventType.validator.js                 |   66.66 |      100 |       0 |   66.66 | 15-28                              
+ src/modules/events                            |   79.36 |    67.64 |     100 |   79.36 |                                    
+  constants.js                                 |     100 |      100 |     100 |     100 |                                    
+  controller.js                                |   73.68 |    61.11 |     100 |   73.68 | 36-41,58-67,77,99,117,134          
+  routes.js                                    |     100 |      100 |     100 |     100 |                                    
+  validators.js                                |      80 |       75 |     100 |      80 | 18,26,57                           
+ src/modules/events/docs                       |     100 |      100 |     100 |     100 |                                    
+  events.swagger.js                            |     100 |      100 |     100 |     100 |                                    
+  schemas.js                                   |     100 |      100 |     100 |     100 |                                    
+ src/modules/events/services                   |   40.54 |        0 |       0 |   40.54 |                                    
+  createEvent.service.js                       |      40 |        0 |       0 |      40 | 18-31                              
+  deleteEvent.service.js                       |   33.33 |        0 |       0 |   33.33 | 18-37                              
+  getEventById.service.js                      |    37.5 |        0 |       0 |    37.5 | 14-73                              
+  getEvents.service.js                         |   33.33 |        0 |       0 |   33.33 | 17-51                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateEvent.service.js                       |   33.33 |        0 |       0 |   33.33 | 19-42                              
+ src/modules/page-permissions                  |   38.46 |        0 |       0 |   38.46 |                                    
+  controller.js                                |      25 |        0 |       0 |      25 | 17-41,53-77,89-113                 
+  routes.js                                    |     100 |      100 |     100 |     100 |                                    
+ src/modules/page-permissions/constants        |     100 |      100 |     100 |     100 |                                    
+  createPagePermission.constants.js            |     100 |      100 |     100 |     100 |                                    
+  deletePagePermission.constants.js            |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updatePagePermission.constants.js            |     100 |      100 |     100 |     100 |                                    
+ src/modules/page-permissions/docs             |     100 |      100 |     100 |     100 |                                    
+  page-permissions.swagger.js                  |     100 |      100 |     100 |     100 |                                    
+  schemas.js                                   |     100 |      100 |     100 |     100 |                                    
+ src/modules/page-permissions/services         |   43.24 |      100 |       0 |   43.24 |                                    
+  createPagePermission.service.js              |   36.36 |      100 |       0 |   36.36 | 16-32                              
+  deletePagePermission.service.js              |   36.36 |      100 |       0 |   36.36 | 16-32                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updatePagePermission.service.js              |   36.36 |      100 |       0 |   36.36 | 16-32                              
+ src/modules/page-permissions/validators       |   72.72 |      100 |       0 |   72.72 |                                    
+  createPagePermission.validator.js            |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  deletePagePermission.validator.js            |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updatePagePermission.validator.js            |   66.66 |      100 |       0 |   66.66 | 15-28                              
+ src/modules/pages                             |    32.2 |        0 |       0 |    32.2 |                                    
+  controller.js                                |      20 |        0 |       0 |      20 | 17-41,53-77,89-113,125-149,161-185 
+  routes.js                                    |     100 |      100 |     100 |     100 |                                    
+ src/modules/pages/constants                   |     100 |      100 |     100 |     100 |                                    
+  createPage.constants.js                      |     100 |      100 |     100 |     100 |                                    
+  deletePage.constants.js                      |     100 |      100 |     100 |     100 |                                    
+  getPageById.constants.js                     |     100 |      100 |     100 |     100 |                                    
+  getPages.constants.js                        |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updatePage.constants.js                      |     100 |      100 |     100 |     100 |                                    
+ src/modules/pages/docs                        |     100 |      100 |     100 |     100 |                                    
+  pages.swagger.js                             |     100 |      100 |     100 |     100 |                                    
+  schemas.js                                   |     100 |      100 |     100 |     100 |                                    
+ src/modules/pages/services                    |   38.09 |        0 |       0 |   38.09 |                                    
+  createPage.service.js                        |      40 |        0 |       0 |      40 | 26-39                              
+  deletePage.service.js                        |   33.33 |        0 |       0 |   33.33 | 26-41                              
+  getPageById.service.js                       |   35.71 |        0 |       0 |   35.71 | 26-39                              
+  getPages.service.js                          |      25 |        0 |       0 |      25 | 23-54                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updatePage.service.js                        |   33.33 |        0 |       0 |   33.33 | 27-46                              
+ src/modules/pages/validators                  |   76.47 |      100 |       0 |   76.47 |                                    
+  createPage.validator.js                      |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  deletePage.validator.js                      |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  getPageById.validator.js                     |      80 |      100 |       0 |      80 | 15                                 
+  getPages.validator.js                        |      80 |      100 |       0 |      80 | 15                                 
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updatePage.validator.js                      |   66.66 |      100 |       0 |   66.66 | 15-28                              
+ src/modules/stats                             |   61.53 |        0 |       0 |   61.53 |                                    
+  controller.js                                |    37.5 |        0 |       0 |    37.5 | 9-21                               
+  routes.js                                    |     100 |      100 |     100 |     100 |                                    
+ src/modules/stats/services                    |   35.71 |      100 |       0 |   35.71 |                                    
+  getDashboardStats.service.js                 |      25 |      100 |       0 |      25 | 15-51                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+ src/modules/users                             |    32.3 |        0 |       0 |    32.3 |                                    
+  controller.js                                |   15.38 |        0 |       0 |   15.38 | 17-43,55-80,92-117,127-191         
+  routes.js                                    |     100 |      100 |     100 |     100 |                                    
+ src/modules/users/constants                   |     100 |      100 |     100 |     100 |                                    
+  getMe.constants.js                           |     100 |      100 |     100 |     100 |                                    
+  getUserEvents.constants.js                   |     100 |      100 |     100 |     100 |                                    
+  getUserSessions.constants.js                 |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+ src/modules/users/docs                        |     100 |      100 |     100 |     100 |                                    
+  schemas.js                                   |     100 |      100 |     100 |     100 |                                    
+  users.swagger.js                             |     100 |      100 |     100 |     100 |                                    
+ src/modules/users/services                    |   38.66 |        0 |       0 |   39.72 |                                    
+  deleteUser.service.js                        |   23.07 |        0 |       0 |   23.07 | 16-31                              
+  getMe.service.js                             |   42.85 |        0 |       0 |   42.85 | 14-31                              
+  getUserById.service.js                       |      25 |        0 |       0 |      25 | 16-31                              
+  getUserEvents.service.js                     |      50 |      100 |       0 |      60 | 14-30                              
+  getUserSessions.service.js                   |      50 |      100 |       0 |      60 | 14-32                              
+  getUsers.service.js                          |      30 |      100 |       0 |      30 | 15-30                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  updateUser.service.js                        |   23.07 |        0 |       0 |   23.07 | 17-32                              
+ src/modules/users/validators                  |   72.72 |      100 |       0 |   72.72 |                                    
+  getMe.validator.js                           |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  getUserEvents.validator.js                   |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  getUserSessions.validator.js                 |   66.66 |      100 |       0 |   66.66 | 15-28                              
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+ src/shared                                    |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+ src/shared/constants                          |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+ src/shared/database                           |   44.44 |       50 |       0 |   44.44 |                                    
+  index.js                                     |   44.44 |       50 |       0 |   44.44 | 32-38,47-51                        
+ src/shared/messages                           |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+ src/shared/middlewares                        |   28.84 |    27.27 |   33.33 |   29.12 |                                    
+  auth.middleware.js                           |   17.39 |        0 |       0 |   17.39 | 14-59,74-79                        
+  decrypt.middleware.js                        |      50 |    77.77 |     100 |      50 | 23-34,43-44                        
+  encrypt.middleware.js                        |    9.09 |     5.12 |      20 |    9.21 | 22-169                             
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  jwt.middleware.js                            |    12.5 |        0 |       0 |   12.76 | 16-82,97-118,129-147               
+  rateLimiter.middleware.js                    |   82.35 |    71.42 |      75 |   82.35 | 33,43,51                           
+  response.middleware.js                       |      70 |       56 |     100 |      70 | 16,39-41,53,66                     
+ src/shared/models                             |   72.28 |     7.14 |      70 |   72.72 |                                    
+  Chapter.js                                   |   69.23 |      100 |   66.66 |   69.23 | 87-90                              
+  ChapterLead.js                               |     100 |      100 |     100 |     100 |                                    
+  Event.js                                     |   37.14 |        0 |   33.33 |   38.23 | 132-152,183-187,191-197            
+  EventRegistration.js                         |     100 |      100 |     100 |     100 |                                    
+  EventSession.js                              |     100 |      100 |     100 |     100 |                                    
+  EventSessionComment.js                       |     100 |      100 |     100 |     100 |                                    
+  EventType.js                                 |     100 |      100 |     100 |     100 |                                    
+  Page.js                                      |     100 |      100 |     100 |     100 |                                    
+  SessionProposal.js                           |     100 |      100 |     100 |     100 |                                    
+  SessionRequest.js                            |     100 |      100 |     100 |     100 |                                    
+  Stat.js                                      |     100 |      100 |     100 |     100 |                                    
+  User.js                                      |   53.57 |        0 |   28.57 |   53.57 | 109-115,123,127-129,133-137        
+  UserApiToken.js                              |   53.33 |        0 |      50 |   53.33 | 60-66,74                           
+  Venue.js                                     |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+ src/shared/services                           |     100 |      100 |     100 |     100 |                                    
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+ src/shared/utils                              |   24.59 |     4.34 |       0 |   24.59 |                                    
+  crypto.js                                    |   18.36 |     5.88 |       0 |   18.36 | 17-26,35-61,71-103,113-122         
+  index.js                                     |     100 |      100 |     100 |     100 |                                    
+  skipEncryptionRoutes.js                      |      40 |        0 |       0 |      40 | 27-38                              
+ src/shared/validators                         |   52.38 |        0 |       0 |   76.74 |                                    
+  index.js                                     |   52.38 |        0 |       0 |   76.74 | 11,22,33,36,39,54,57,63,74-75      
+ src/swagger                                   |   71.64 |    43.33 |   71.42 |   71.64 |                                    
+  index.js                                     |   71.64 |    43.33 |   71.42 |   71.64 | 30-31,55-61,100,175-198            
+-----------------------------------------------|---------|----------|---------|---------|------------------------------------
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 4 passed, 5 total
+Snapshots:   0 total
+Time:        6.198 s
+Ran all test suites matching tests/integration/events.test.js.

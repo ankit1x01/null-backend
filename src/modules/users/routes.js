@@ -14,7 +14,7 @@ router.use(jwt.verifyToken);
 router.get('/me', controller.getMe);
 router.get('/events', controller.getUserEvents);
 router.get('/sessions', controller.getUserSessions);
-router.get('/getUsers', controller.getUsers);
+router.get('/getUsers', jwt.isAdmin, controller.getUsers);
 router.get('/getUserById', controller.getUserById);
 router.put('/updateUser/:id', controller.updateUser);
 router.delete('/deleteUser/:id', controller.deleteUser);

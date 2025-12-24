@@ -1,5 +1,5 @@
 /**
- * EventTypes Module Schemas
+ * Event-types Module Schemas
  * Auto-generated request/response schemas
  */
 
@@ -95,7 +95,7 @@ module.exports = {
       },
       "message": {
         "type": "string",
-        "example": "GetEventTypeById successful"
+        "example": "GetEventTypes successful"
       },
       "result": {
         "type": "object",

@@ -182,7 +182,7 @@ module.exports = {
       }
     }
   },
-  "/api/pages/updatePage": {
+  "/api/pages/updatePage/:id": {
     "put": {
       "summary": "UpdatePage operation",
       "description": "Performs updatePage operation in pages module",
@@ -248,7 +248,7 @@ module.exports = {
       }
     }
   },
-  "/api/pages/deletePage": {
+  "/api/pages/deletePage/:id": {
     "delete": {
       "summary": "DeletePage operation",
       "description": "Performs deletePage operation in pages module",

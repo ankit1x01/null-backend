@@ -1,0 +1,35 @@
+
+=== Starting Database Seeding ===
+[SEED] Syncing database (force: true)...
+Executing (default): DROP TABLE IF EXISTS `user_achievements`;
+SERVER ERROR DURING SEEDING: Error
+    at Query.run (C:\Users\Ankit\Desktop\null\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at C:\Users\Ankit\Desktop\null\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async MySQLQueryInterface.dropTable (C:\Users\Ankit\Desktop\null\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:111:5)
+    at async UserAchievement.drop (C:\Users\Ankit\Desktop\null\backend\node_modules\sequelize\lib\model.js:1007:12)
+    at async Sequelize.drop (C:\Users\Ankit\Desktop\null\backend\node_modules\sequelize\lib\sequelize.js:429:9)
+    at async Sequelize.sync (C:\Users\Ankit\Desktop\null\backend\node_modules\sequelize\lib\sequelize.js:366:7)
+    at async seedDatabase (C:\Users\Ankit\Desktop\null\backend\scripts\seed-dummy-data.js:27:9) {
+  name: 'SequelizeDatabaseError',
+  parent: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read',
+    fatal: true,
+    sql: 'DROP TABLE IF EXISTS `user_achievements`;',
+    parameters: undefined
+  },
+  original: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read',
+    fatal: true,
+    sql: 'DROP TABLE IF EXISTS `user_achievements`;',
+    parameters: undefined
+  },
+  sql: 'DROP TABLE IF EXISTS `user_achievements`;',
+  parameters: {}
+}

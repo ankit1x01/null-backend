@@ -1,5 +1,5 @@
 /**
- * EventRegistrations Module Swagger Documentation
+ * Event-registrations Module Swagger Documentation
  * Auto-generated API documentation
  */
 
@@ -9,7 +9,7 @@ module.exports = {
       "summary": "CreateEventRegistration operation",
       "description": "Performs createEventRegistration operation in event-registrations module",
       "tags": [
-        "EventRegistrations"
+        "Event-registrations"
       ],
       "security": [
         {
@@ -75,7 +75,7 @@ module.exports = {
       "summary": "GetEventRegistrations operation",
       "description": "Performs getEventRegistrations operation in event-registrations module",
       "tags": [
-        "EventRegistrations"
+        "Event-registrations"
       ],
       "security": [
         {
@@ -131,7 +131,7 @@ module.exports = {
       "summary": "GetEventRegistrationById operation",
       "description": "Performs getEventRegistrationById operation in event-registrations module",
       "tags": [
-        "EventRegistrations"
+        "Event-registrations"
       ],
       "security": [
         {
@@ -182,12 +182,12 @@ module.exports = {
       }
     }
   },
-  "/api/event-registrations/updateEventRegistration": {
+  "/api/event-registrations/updateEventRegistration/:id": {
     "put": {
       "summary": "UpdateEventRegistration operation",
       "description": "Performs updateEventRegistration operation in event-registrations module",
       "tags": [
-        "EventRegistrations"
+        "Event-registrations"
       ],
       "security": [
         {
@@ -248,12 +248,12 @@ module.exports = {
       }
     }
   },
-  "/api/event-registrations/deleteEventRegistration": {
+  "/api/event-registrations/deleteEventRegistration/:id": {
     "delete": {
       "summary": "DeleteEventRegistration operation",
       "description": "Performs deleteEventRegistration operation in event-registrations module",
       "tags": [
-        "EventRegistrations"
+        "Event-registrations"
       ],
       "security": [
         {

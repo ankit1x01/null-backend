@@ -14,7 +14,7 @@ const verifyToken = (req, res, next) => {
   try {
     // Get token from Authorization header
     const authHeader = req.headers.authorization;
-    
+
     // Check if Authorization header exists
     if (!authHeader) {
       return res.status(401).json({
@@ -36,10 +36,10 @@ const verifyToken = (req, res, next) => {
 
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
+
     // Add user data to request object
     req.user = decoded;
-    
+
     // Continue to next middleware/route handler
     next();
   } catch (error) {

@@ -62,7 +62,7 @@ module.exports = {
       },
       "message": {
         "type": "string",
-        "example": "GetUserEvents successful"
+        "example": "GetUserSessions successful"
       },
       "result": {
         "type": "object",
@@ -100,6 +100,138 @@ module.exports = {
       "result": {
         "type": "object",
         "description": "Result data for getUserSessions operation"
+      }
+    }
+  },
+  "GetUsersRequest": {
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "object",
+        "description": "Request data for getUsers operation"
+      }
+    },
+    "example": {
+      "data": "Sample request data for getUsers"
+    }
+  },
+  "GetUsersResponse": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "example": "GETUS0001"
+      },
+      "statusCode": {
+        "type": "integer",
+        "example": 200
+      },
+      "message": {
+        "type": "string",
+        "example": "GetUserSessions successful"
+      },
+      "result": {
+        "type": "object",
+        "description": "Result data for getUsers operation"
+      }
+    }
+  },
+  "GetUserByIdRequest": {
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "object",
+        "description": "Request data for getUserById operation"
+      }
+    },
+    "example": {
+      "data": "Sample request data for getUserById"
+    }
+  },
+  "GetUserByIdResponse": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "example": "GETUS0001"
+      },
+      "statusCode": {
+        "type": "integer",
+        "example": 200
+      },
+      "message": {
+        "type": "string",
+        "example": "GetUserSessions successful"
+      },
+      "result": {
+        "type": "object",
+        "description": "Result data for getUserById operation"
+      }
+    }
+  },
+  "UpdateUserRequest": {
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "object",
+        "description": "Request data for updateUser operation"
+      }
+    },
+    "example": {
+      "data": "Sample request data for updateUser"
+    }
+  },
+  "UpdateUserResponse": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "example": "SUCCESS0001"
+      },
+      "statusCode": {
+        "type": "integer",
+        "example": 200
+      },
+      "message": {
+        "type": "string",
+        "example": "UpdateUser successful"
+      },
+      "result": {
+        "type": "object",
+        "description": "Result data for updateUser operation"
+      }
+    }
+  },
+  "DeleteUserRequest": {
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "object",
+        "description": "Request data for deleteUser operation"
+      }
+    },
+    "example": {
+      "data": "Sample request data for deleteUser"
+    }
+  },
+  "DeleteUserResponse": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "example": "SUCCESS0001"
+      },
+      "statusCode": {
+        "type": "integer",
+        "example": 200
+      },
+      "message": {
+        "type": "string",
+        "example": "DeleteUser successful"
+      },
+      "result": {
+        "type": "object",
+        "description": "Result data for deleteUser operation"
       }
     }
   },

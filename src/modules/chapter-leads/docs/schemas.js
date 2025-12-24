@@ -1,5 +1,5 @@
 /**
- * ChapterLeads Module Schemas
+ * Chapter-leads Module Schemas
  * Auto-generated request/response schemas
  */
 
@@ -95,7 +95,7 @@ module.exports = {
       },
       "message": {
         "type": "string",
-        "example": "GetChapterLeadById successful"
+        "example": "GetChapterLeads successful"
       },
       "result": {
         "type": "object",

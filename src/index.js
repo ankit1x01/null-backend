@@ -58,9 +58,12 @@ app.use('/api/event-registrations', modules.eventRegistrations);
 app.use('/api/event-sessions', modules.eventSessions);
 app.use('/api/chapters', modules.chapters);
 app.use('/api/events', modules.events);
+app.use('/api/users', modules.publicUsers);
 app.use('/api/users', modules.users);
 app.use('/api/auth', modules.auth);
 app.use('/api/stats', modules.stats);
+app.use('/api/venues', modules.venues);
+app.use('/api/user-achievements', modules.userAchievements);
 
 // Global response middleware - must be after all routes
 app.use(response);
@@ -100,4 +103,9 @@ const startServer = async () => {
   }
 };
 
-startServer();
+
+if (require.main === module) {
+  startServer();
+}
+
+module.exports = app;

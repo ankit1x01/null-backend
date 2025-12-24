@@ -99,6 +99,10 @@ module.exports = (sequelize) => {
     updated_at: {
       type: DataTypes.DATE,
       allowNull: false
+    },
+    admin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   }, {
     tableName: 'users',
@@ -119,17 +123,17 @@ module.exports = (sequelize) => {
   });
 
   // Instance methods
-  User.prototype.validatePassword = async function(password) {
+  User.prototype.validatePassword = async function (password) {
     return await bcrypt.compare(password, this.encrypted_password);
   };
 
-  User.prototype.getGravatarUrl = function() {
+  User.prototype.getGravatarUrl = function () {
     const crypto = require('crypto');
     const hash = crypto.createHash('md5').update(this.email.trim().toLowerCase()).digest('hex');
     return `https://secure.gravatar.com/avatar/${hash}`;
   };
 
-  User.prototype.toJSON = function() {
+  User.prototype.toJSON = function () {
     const values = Object.assign({}, this.get());
     delete values.encrypted_password;
     delete values.reset_password_token;
@@ -162,6 +166,10 @@ module.exports = (sequelize) => {
     User.hasMany(models.SessionProposal, {
       foreignKey: 'user_id',
       as: 'sessionProposals'
+    });
+    User.hasMany(models.UserAchievement, {
+      foreignKey: 'user_id',
+      as: 'achievements'
     });
   };
 

@@ -23,4 +23,7 @@ module.exports = {
   eventSessionComments,
   pagePermissions,
   stats: require('./stats/routes'),
+  venues: require('./venues/routes'),
+  userAchievements: require('./user-achievements/routes'),
+  publicUsers: require('./users/public_routes'),
 };

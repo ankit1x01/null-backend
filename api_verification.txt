@@ -1,0 +1,109 @@
+
+≡ƒº¬ Starting API Tests...
+
+
+============================================================
+1∩╕ÅΓâú  Testing LOGIN
+============================================================
+Γ£à Login successful
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZ...
+User: Test User (test@example.com)
+
+============================================================
+2∩╕ÅΓâú  Testing GET /api/users/me (authenticated)
+============================================================
+Γ£à User info retrieved
+Name: Test User
+Email: test@example.com
+Handle: testuser
+
+============================================================
+3∩╕ÅΓâú  Testing GET /api/users/events (authenticated)
+============================================================
+Γ£à User events retrieved
+Registered events: 1
+  - Introduction to Web Security (Confirmed)
+
+============================================================
+4∩╕ÅΓâú  Testing GET /api/users/sessions (authenticated)
+============================================================
+Γ£à User sessions retrieved
+Delivered sessions: 1
+  - SQL Injection 101 at Introduction to Web Security
+
+============================================================
+5∩╕ÅΓâú  Testing GET /api/events/getEvents (public)
+============================================================
+Γ£à Events list retrieved
+Total events: 3
+Events on this page: 3
+  1. Introduction to Web Security
+     Chapter: Bangalore
+     Date: 20/12/2025, 9:43:07 pm
+  2. OWASP Top 10 Deep Dive
+     Chapter: Bangalore
+     Date: 27/12/2025, 9:43:07 pm
+  3. API Security Workshop
+     Chapter: Mumbai
+     Date: 3/1/2026, 9:43:07 pm
+
+============================================================
+6∩╕ÅΓâú  Testing GET /api/events/getEventById?eventId=1 (public)
+============================================================
+Γ£à Event details retrieved
+Event: Introduction to Web Security
+Description: Learn the basics of web application security
+Venue: 91springboard
+Sessions: 2
+  1. XSS Attacks and Prevention by Admin User
+  2. SQL Injection 101 by Test User
+
+============================================================
+7∩╕ÅΓâú  Testing GET /api/chapters/getChapters (public)
+============================================================
+Γ£à Chapters list retrieved
+Total chapters: 5
+
+============================================================
+8∩╕ÅΓâú  Testing POST /api/auth/register (public)
+============================================================
+Γ£à New user registered
+User: New Test User
+Email: newuser1765642434182@test.com
+ΓÜá∩╕Å  Note: User needs email confirmation before login
+
+============================================================
+9∩╕ÅΓâú  Testing protected route WITHOUT token (should fail)
+============================================================
+Γ£à Correctly rejected unauthorized request
+Status: 401
+Message: No authentication token provided
+
+============================================================
+≡ƒöƒ Testing LOGIN with invalid credentials (should fail)
+============================================================
+Γ£à Correctly rejected invalid credentials
+Status: 400
+Message: Invalid password
+
+============================================================
+Γ£à ALL TESTS COMPLETED!
+============================================================
+
+≡ƒôè Test Summary:
+Γ£à Authentication: Working (login, register)
+Γ£à Users API: Working (me, events, sessions)
+Γ£à Events API: Working (list, details)
+Γ£à Chapters API: Working (list chapters)
+Γ£à JWT Protection: Working (401 on missing token)
+
+≡ƒÄ» Next Steps:
+1. Add event sessions CRUD
+2. Add event registrations
+3. Add chapter leadership management
+4. Add remaining features (file uploads, emails, etc)
+
+≡ƒîÉ API Documentation: http://localhost:3001/api-docs
+
+
+Γ£à Test suite completed successfully!

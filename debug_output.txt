@@ -1,0 +1,5 @@
+Executing (default): SELECT 1+1 AS result
+Γ£à Database connection established successfully.
+TypeError: Cannot destructure property 'User' of 'shared.database.models' as it is undefined.
+    at run (C:\Users\Ankit\Desktop\null\backend\scripts\debug-user.js:9:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)

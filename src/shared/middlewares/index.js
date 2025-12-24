@@ -2,18 +2,18 @@
  * Shared Middlewares
  * Export all shared middlewares for use throughout the application
  */
-const authMiddleware = require('./auth.middleware');
-const responseMiddleware = require('./response.middleware');
-const decryptMiddleware = require('./decrypt.middleware');
-const encryptMiddleware = require('./encrypt.middleware');
-const rateLimiterMiddleware = require('./rateLimiter.middleware');
-const jwtMiddleware = require('./jwt.middleware');
+const auth = require('./auth.middleware');
+const jwt = require('./jwt.middleware');
+const response = require('./response.middleware');
+const encrypt = require('./encrypt.middleware');
+const decrypt = require('./decrypt.middleware');
+const rateLimiter = require('./rateLimiter.middleware');
 
 module.exports = {
-  auth: authMiddleware,
-  response: responseMiddleware,
-  decrypt: decryptMiddleware,
-  encrypt: encryptMiddleware,
-  rateLimiter: rateLimiterMiddleware,
-  jwt: jwtMiddleware
+  auth,
+  jwt: auth, // Remap jwt to auth middleware since verifyToken and isAdmin are there
+  response,
+  encrypt,
+  decrypt,
+  rateLimiter
 };

@@ -1,0 +1,5 @@
+
+[36m=== Authenticating Users ===[0m
+[32mΓ£à Logged in as admin (admin@null.community)[0m
+[32mΓ£à Logged in as lead (lead.blr@null.community)[0m
+[31mΓ¥î Login failed for member [400 Bad Request - {"code":"USRE0003","message":"Invalid password"}][0m

@@ -1,0 +1,10 @@
+Executing (default): SELECT 1+1 AS result
+Γ£à Database connection established successfully.
+Executing (default): SELECT `id`, `email`, `encrypted_password`, `reset_password_token`, `reset_password_sent_at`, `remember_created_at`, `sign_in_count`, `current_sign_in_at`, `last_sign_in_at`, `current_sign_in_ip`, `last_sign_in_ip`, `confirmation_token`, `confirmed_at`, `confirmation_sent_at`, `unconfirmed_email`, `name`, `homepage`, `about_me`, `twitter_handle`, `facebook_profile`, `github_profile`, `linkedin_profile`, `handle`, `avatar`, `created_at`, `updated_at` FROM `users` AS `User` WHERE `User`.`email` = 'user1@example.com';
+User found: user1@example.com
+Encrypted Password: password123
+Match 'password123': false
+Executing (default): SELECT `id`, `email`, `encrypted_password`, `reset_password_token`, `reset_password_sent_at`, `remember_created_at`, `sign_in_count`, `current_sign_in_at`, `last_sign_in_at`, `current_sign_in_ip`, `last_sign_in_ip`, `confirmation_token`, `confirmed_at`, `confirmation_sent_at`, `unconfirmed_email`, `name`, `homepage`, `about_me`, `twitter_handle`, `facebook_profile`, `github_profile`, `linkedin_profile`, `handle`, `avatar`, `created_at`, `updated_at` FROM `users` AS `User` WHERE `User`.`email` = 'admin@null.community';
+Admin found: admin@null.community
+Admin Encrypted Password: $2b$10$Hcm3p/meR/tbeeeubcY03eXwA3vdWBaNwFgduHxfadfTS1nZANIR2
+Admin Match 'password123': true

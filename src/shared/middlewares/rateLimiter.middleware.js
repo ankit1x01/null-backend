@@ -17,10 +17,10 @@ const ipKeyGenerator = (req, res) => {
   // Get the real IP address, considering proxies
   const forwarded = req.headers['x-forwarded-for'];
   const ip = forwarded ? forwarded.split(',')[0].trim() : req.connection.remoteAddress || req.ip;
-  
+
   // Handle IPv6 mapped IPv4 addresses
   const cleanIp = ip.replace(/^::ffff:/, '');
-  
+
   return cleanIp;
 };
 
@@ -32,8 +32,12 @@ const customRateLimiter = rateLimit({
     if (req.originalUrl && req.originalUrl.startsWith('/api-docs')) {
       return 1000; // Very high limit for documentation
     }
-    
+
     const ip = req.ip;
+    if (ip === '127.0.0.1' || ip === '::1' || ip === '::ffff:127.0.0.1') {
+      return 1000; // Allow high limit for localhost
+    }
+
     if (
       sharedConstants.appConfig &&
       sharedConstants.appConfig.app &&

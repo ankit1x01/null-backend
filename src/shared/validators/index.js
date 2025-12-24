@@ -33,7 +33,7 @@ sharedValidators.isValidPan = (value) =>
   /[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(value);
 
 sharedValidators.isValidEmail = (value) =>
-  /^\w+([\.\+-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/.test(value);
+  /^\w+([\.\+-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(value);
 
 sharedValidators.isvalidMobileNumber = (value) =>
   (phoneNo = /^[6-9]\d{9}$/.test(value));

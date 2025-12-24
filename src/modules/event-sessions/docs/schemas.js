@@ -1,5 +1,5 @@
 /**
- * EventSessions Module Schemas
+ * Event-sessions Module Schemas
  * Auto-generated request/response schemas
  */
 
@@ -95,7 +95,7 @@ module.exports = {
       },
       "message": {
         "type": "string",
-        "example": "GetEventSessionById successful"
+        "example": "GetEventSessions successful"
       },
       "result": {
         "type": "object",

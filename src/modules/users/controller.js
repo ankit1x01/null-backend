@@ -119,6 +119,36 @@ const getUserSessions = async (req, res, next) => {
   }
 };
 
+const getPublicProfile = async (req, res, next) => {
+  try {
+    const user = await usersServices.getUserById({
+      requestId: req.requestId,
+      userId: req.params.id
+    });
+    // Filter sensitive info
+    const publicProfile = {
+      id: user.id || user.result?.id, // Handle if service returns wrapper
+      name: user.name || user.result?.name,
+      avatar: user.avatar || user.result?.avatar,
+      about_me: user.about_me || user.result?.about_me,
+      handle: user.handle || user.result?.handle,
+      github_profile: user.github_profile || user.result?.github_profile,
+      twitter_handle: user.twitter_handle || user.result?.twitter_handle,
+      linkedin_profile: user.linkedin_profile || user.result?.linkedin_profile,
+      homepage: user.homepage || user.result?.homepage,
+      created_at: user.created_at || user.result?.created_at
+    };
+    next({
+      code: 'USERS0008',
+      statusCode: 200,
+      message: 'Public profile fetched successfully',
+      result: publicProfile
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getMe,
   getUserEvents,
@@ -190,5 +220,6 @@ module.exports = {
     } catch (error) {
       next(error);
     }
-  }
+  },
+  getPublicProfile
 };

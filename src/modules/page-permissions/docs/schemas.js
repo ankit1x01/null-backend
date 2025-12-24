@@ -1,5 +1,5 @@
 /**
- * PagePermissions Module Schemas
+ * Page-permissions Module Schemas
  * Auto-generated request/response schemas
  */
 

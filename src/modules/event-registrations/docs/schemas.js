@@ -1,5 +1,5 @@
 /**
- * EventRegistrations Module Schemas
+ * Event-registrations Module Schemas
  * Auto-generated request/response schemas
  */
 
@@ -95,7 +95,7 @@ module.exports = {
       },
       "message": {
         "type": "string",
-        "example": "GetEventRegistrationById successful"
+        "example": "GetEventRegistrations successful"
       },
       "result": {
         "type": "object",

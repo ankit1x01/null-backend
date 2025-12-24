@@ -1,5 +1,5 @@
 /**
- * ChapterLeads Module Swagger Documentation
+ * Chapter-leads Module Swagger Documentation
  * Auto-generated API documentation
  */
 
@@ -9,7 +9,7 @@ module.exports = {
       "summary": "CreateChapterLead operation",
       "description": "Performs createChapterLead operation in chapter-leads module",
       "tags": [
-        "ChapterLeads"
+        "Chapter-leads"
       ],
       "security": [
         {
@@ -75,7 +75,7 @@ module.exports = {
       "summary": "GetChapterLeads operation",
       "description": "Performs getChapterLeads operation in chapter-leads module",
       "tags": [
-        "ChapterLeads"
+        "Chapter-leads"
       ],
       "security": [
         {
@@ -131,7 +131,7 @@ module.exports = {
       "summary": "GetChapterLeadById operation",
       "description": "Performs getChapterLeadById operation in chapter-leads module",
       "tags": [
-        "ChapterLeads"
+        "Chapter-leads"
       ],
       "security": [
         {
@@ -182,12 +182,12 @@ module.exports = {
       }
     }
   },
-  "/api/chapter-leads/updateChapterLead": {
+  "/api/chapter-leads/updateChapterLead/:id": {
     "put": {
       "summary": "UpdateChapterLead operation",
       "description": "Performs updateChapterLead operation in chapter-leads module",
       "tags": [
-        "ChapterLeads"
+        "Chapter-leads"
       ],
       "security": [
         {
@@ -248,12 +248,12 @@ module.exports = {
       }
     }
   },
-  "/api/chapter-leads/deleteChapterLead": {
+  "/api/chapter-leads/deleteChapterLead/:id": {
     "delete": {
       "summary": "DeleteChapterLead operation",
       "description": "Performs deleteChapterLead operation in chapter-leads module",
       "tags": [
-        "ChapterLeads"
+        "Chapter-leads"
       ],
       "security": [
         {

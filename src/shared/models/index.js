@@ -23,7 +23,8 @@ const modelFiles = [
   'SessionProposal',
   'SessionRequest',
   'Page',
-  'Stat'
+  'Stat',
+  'UserAchievement'
 ];
 
 // Initialize models

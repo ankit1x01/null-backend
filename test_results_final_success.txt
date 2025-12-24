@@ -1,0 +1,23 @@
+
+[36m=== Authenticating Users ===[0m
+[32mΓ£à Logged in as admin (admin@null.community)[0m
+[32mΓ£à Logged in as lead (lead.blr@null.community)[0m
+[32mΓ£à Logged in as member (user1@example.com)[0m
+
+[36m=== Testing Public Routes ===[0m
+[31mΓ¥î [MEMBER] Get Chapters [404 Not Found - "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/chapters</pre>\n</body>\n</html>\n"][0m
+[32mΓ£à [MEMBER] Get Events[0m
+
+[36m=== Testing User Access ===[0m
+[31mΓ¥î [MEMBER] Get My Profile [401 Unauthorized - {"code":"AUTH0004","statusCode":401,"message":"Invalid token"}][0m
+[31mΓ¥î [ADMIN] Get All Users (Admin) [401 Unauthorized - {"code":"AUTH0004","statusCode":401,"message":"Invalid token"}][0m
+[31mΓ¥î [MEMBER] Get All Users (Member - Should Fail) [401 Unauthorized - {"code":"AUTH0004","statusCode":401,"message":"Invalid token"}][0m
+
+[36m=== Testing Event Management ===[0m
+[31mΓ¥î [ADMIN] Create Event (Admin) - Expected 201 but got 200 [Unexpected Status][0m
+[31mΓ¥î [MEMBER] Create Event (Member - Should Fail) - Expected 403 but got 200 [Unexpected Status][0m
+
+[36m=== Testing Sessions ===[0m
+[31mΓ¥î [MEMBER] Get Sessions [429 Too Many Requests - {"error":"Too many requests","message":"Too many requests from this host, please try again later."}][0m
+
+[36m=== Tests Completed ===[0m

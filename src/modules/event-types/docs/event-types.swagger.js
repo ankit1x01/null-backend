@@ -1,5 +1,5 @@
 /**
- * EventTypes Module Swagger Documentation
+ * Event-types Module Swagger Documentation
  * Auto-generated API documentation
  */
 
@@ -9,7 +9,7 @@ module.exports = {
       "summary": "CreateEventType operation",
       "description": "Performs createEventType operation in event-types module",
       "tags": [
-        "EventTypes"
+        "Event-types"
       ],
       "security": [
         {
@@ -75,7 +75,7 @@ module.exports = {
       "summary": "GetEventTypes operation",
       "description": "Performs getEventTypes operation in event-types module",
       "tags": [
-        "EventTypes"
+        "Event-types"
       ],
       "security": [
         {
@@ -131,7 +131,7 @@ module.exports = {
       "summary": "GetEventTypeById operation",
       "description": "Performs getEventTypeById operation in event-types module",
       "tags": [
-        "EventTypes"
+        "Event-types"
       ],
       "security": [
         {
@@ -182,12 +182,12 @@ module.exports = {
       }
     }
   },
-  "/api/event-types/updateEventType": {
+  "/api/event-types/updateEventType/:id": {
     "put": {
       "summary": "UpdateEventType operation",
       "description": "Performs updateEventType operation in event-types module",
       "tags": [
-        "EventTypes"
+        "Event-types"
       ],
       "security": [
         {
@@ -248,12 +248,12 @@ module.exports = {
       }
     }
   },
-  "/api/event-types/deleteEventType": {
+  "/api/event-types/deleteEventType/:id": {
     "delete": {
       "summary": "DeleteEventType operation",
       "description": "Performs deleteEventType operation in event-types module",
       "tags": [
-        "EventTypes"
+        "Event-types"
       ],
       "security": [
         {

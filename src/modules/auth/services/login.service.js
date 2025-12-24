@@ -63,7 +63,8 @@ const login = async ({ email, password, requestId, ipAddress, userAgent }) => {
     {
       id: user.id,
       email: user.email,
-      name: user.name
+      name: user.name,
+      role: user.admin ? 'admin' : 'member'
     },
     process.env.JWT_SECRET || sharedConstants.auth.jwt.DEFAULT_SECRET,
     { expiresIn: process.env.JWT_EXPIRY || sharedConstants.auth.jwt.EXPIRY, algorithm: 'HS256' }

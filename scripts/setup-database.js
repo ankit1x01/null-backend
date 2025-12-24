@@ -56,10 +56,26 @@ const setupDatabase = async () => {
     console.log('✅ All tables created successfully');
 
     // Scrape data
-    const scrapedData = await scrapeNullCommunity();
+    const scrapedResult = await scrapeNullCommunity();
+    let scrapedData = scrapedResult;
 
     if (!scrapedData) {
       console.log('⚠️  Using default data instead of scraped data');
+      scrapedData = {
+        chapters: [
+          { name: 'Bangalore', description: 'null Bangalore Chapter', active: true, city: 'Bangalore', country: 'IN', code: 'BLR' },
+          { name: 'Mumbai', description: 'null Mumbai Chapter', active: true, city: 'Mumbai', country: 'IN', code: 'MUM' },
+          { name: 'Delhi', description: 'null Delhi Chapter', active: true, city: 'Delhi', country: 'IN', code: 'DEL' },
+          { name: 'Pune', description: 'null Pune Chapter', active: true, city: 'Pune', country: 'IN', code: 'PUN' },
+          { name: 'Hyderabad', description: 'null Hyderabad Chapter', active: true, city: 'Hyderabad', country: 'IN', code: 'HYD' }
+        ],
+        eventTypes: [
+          { name: 'Monthly Meetup', description: 'Regular monthly meetups', registration_required: true, invitation_required: false },
+          { name: 'Workshop', description: 'Hands-on workshops', registration_required: true, invitation_required: false },
+          { name: 'Conference', description: 'Annual conferences', registration_required: true, invitation_required: false },
+          { name: 'Humla', description: 'Humla sessions', registration_required: true, invitation_required: true }
+        ]
+      };
     }
 
     // Insert chapters

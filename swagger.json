@@ -1,0 +1,5791 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Node.js Boilerplate API",
+    "version": "1.0.0",
+    "description": "Auto-generated API documentation for Node.js boilerplate with modular architecture",
+    "contact": {
+      "name": "API Support",
+      "email": "support@example.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001",
+      "description": "Development server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/api/auth/login": {
+      "post": {
+        "summary": "Login operation",
+        "description": "Performs login operation in auth module",
+        "tags": [
+          "Auth"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "summary": "Register operation",
+        "description": "Performs register operation in auth module",
+        "tags": [
+          "Auth"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Register successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/chapter-leads/createChapterLead": {
+      "post": {
+        "summary": "CreateChapterLead operation",
+        "description": "Performs createChapterLead operation in chapter-leads module",
+        "tags": [
+          "Chapter-leads"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateChapterLeadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "CreateChapterLead successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateChapterLeadResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/chapter-leads/getChapterLeads": {
+      "get": {
+        "summary": "GetChapterLeads operation",
+        "description": "Performs getChapterLeads operation in chapter-leads module",
+        "tags": [
+          "Chapter-leads"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetChapterLeads successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetChapterLeadsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/chapter-leads/getChapterLeadById": {
+      "get": {
+        "summary": "GetChapterLeadById operation",
+        "description": "Performs getChapterLeadById operation in chapter-leads module",
+        "tags": [
+          "Chapter-leads"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetChapterLeadById successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetChapterLeadByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/chapter-leads/updateChapterLead/:id": {
+      "put": {
+        "summary": "UpdateChapterLead operation",
+        "description": "Performs updateChapterLead operation in chapter-leads module",
+        "tags": [
+          "Chapter-leads"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateChapterLeadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "UpdateChapterLead successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateChapterLeadResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/chapter-leads/deleteChapterLead/:id": {
+      "delete": {
+        "summary": "DeleteChapterLead operation",
+        "description": "Performs deleteChapterLead operation in chapter-leads module",
+        "tags": [
+          "Chapter-leads"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteChapterLeadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "DeleteChapterLead successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteChapterLeadResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/chapters/getChapters": {
+      "get": {
+        "summary": "GetChapters operation",
+        "description": "Performs getChapters operation in chapters module",
+        "tags": [
+          "Chapters"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetChapters successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetChaptersResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/chapters/getChapterById": {
+      "get": {
+        "summary": "GetChapterById operation",
+        "description": "Performs getChapterById operation in chapters module",
+        "tags": [
+          "Chapters"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetChapterById successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetChapterByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/chapters/createChapter": {
+      "post": {
+        "summary": "CreateChapter operation",
+        "description": "Performs createChapter operation in chapters module",
+        "tags": [
+          "Chapters"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateChapterRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "CreateChapter successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateChapterResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/chapters/updateChapter/:id": {
+      "put": {
+        "summary": "UpdateChapter operation",
+        "description": "Performs updateChapter operation in chapters module",
+        "tags": [
+          "Chapters"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateChapterRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "UpdateChapter successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateChapterResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/chapters/deleteChapter/:id": {
+      "delete": {
+        "summary": "DeleteChapter operation",
+        "description": "Performs deleteChapter operation in chapters module",
+        "tags": [
+          "Chapters"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteChapterRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "DeleteChapter successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteChapterResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-registrations/createEventRegistration": {
+      "post": {
+        "summary": "CreateEventRegistration operation",
+        "description": "Performs createEventRegistration operation in event-registrations module",
+        "tags": [
+          "Event-registrations"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEventRegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "CreateEventRegistration successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateEventRegistrationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-registrations/getEventRegistrations": {
+      "get": {
+        "summary": "GetEventRegistrations operation",
+        "description": "Performs getEventRegistrations operation in event-registrations module",
+        "tags": [
+          "Event-registrations"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetEventRegistrations successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetEventRegistrationsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-registrations/getEventRegistrationById": {
+      "get": {
+        "summary": "GetEventRegistrationById operation",
+        "description": "Performs getEventRegistrationById operation in event-registrations module",
+        "tags": [
+          "Event-registrations"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetEventRegistrationById successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetEventRegistrationByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-registrations/updateEventRegistration/:id": {
+      "put": {
+        "summary": "UpdateEventRegistration operation",
+        "description": "Performs updateEventRegistration operation in event-registrations module",
+        "tags": [
+          "Event-registrations"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEventRegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "UpdateEventRegistration successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateEventRegistrationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-registrations/deleteEventRegistration/:id": {
+      "delete": {
+        "summary": "DeleteEventRegistration operation",
+        "description": "Performs deleteEventRegistration operation in event-registrations module",
+        "tags": [
+          "Event-registrations"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteEventRegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "DeleteEventRegistration successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteEventRegistrationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-session-comments/getEventSessionComments": {
+      "get": {
+        "summary": "GetEventSessionComments operation",
+        "description": "Performs getEventSessionComments operation in event-session-comments module",
+        "tags": [
+          "Event-session-comments"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetEventSessionComments successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetEventSessionCommentsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-session-comments/getEventSessionCommentById/:id": {
+      "get": {
+        "summary": "GetEventSessionCommentById operation",
+        "description": "Performs getEventSessionCommentById operation in event-session-comments module",
+        "tags": [
+          "Event-session-comments"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetEventSessionCommentById successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetEventSessionCommentByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-session-comments/createEventSessionComment": {
+      "post": {
+        "summary": "CreateEventSessionComment operation",
+        "description": "Performs createEventSessionComment operation in event-session-comments module",
+        "tags": [
+          "Event-session-comments"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEventSessionCommentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "CreateEventSessionComment successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateEventSessionCommentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-session-comments/updateEventSessionComment/:id": {
+      "put": {
+        "summary": "UpdateEventSessionComment operation",
+        "description": "Performs updateEventSessionComment operation in event-session-comments module",
+        "tags": [
+          "Event-session-comments"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEventSessionCommentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "UpdateEventSessionComment successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateEventSessionCommentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-session-comments/deleteEventSessionComment/:id": {
+      "delete": {
+        "summary": "DeleteEventSessionComment operation",
+        "description": "Performs deleteEventSessionComment operation in event-session-comments module",
+        "tags": [
+          "Event-session-comments"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteEventSessionCommentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "DeleteEventSessionComment successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteEventSessionCommentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-sessions/createEventSession": {
+      "post": {
+        "summary": "CreateEventSession operation",
+        "description": "Performs createEventSession operation in event-sessions module",
+        "tags": [
+          "Event-sessions"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEventSessionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "CreateEventSession successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateEventSessionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-sessions/getEventSessions": {
+      "get": {
+        "summary": "GetEventSessions operation",
+        "description": "Performs getEventSessions operation in event-sessions module",
+        "tags": [
+          "Event-sessions"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetEventSessions successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetEventSessionsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-sessions/getEventSessionById": {
+      "get": {
+        "summary": "GetEventSessionById operation",
+        "description": "Performs getEventSessionById operation in event-sessions module",
+        "tags": [
+          "Event-sessions"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetEventSessionById successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetEventSessionByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-sessions/updateEventSession/:id": {
+      "put": {
+        "summary": "UpdateEventSession operation",
+        "description": "Performs updateEventSession operation in event-sessions module",
+        "tags": [
+          "Event-sessions"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEventSessionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "UpdateEventSession successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateEventSessionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-sessions/deleteEventSession/:id": {
+      "delete": {
+        "summary": "DeleteEventSession operation",
+        "description": "Performs deleteEventSession operation in event-sessions module",
+        "tags": [
+          "Event-sessions"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteEventSessionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "DeleteEventSession successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteEventSessionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-types/createEventType": {
+      "post": {
+        "summary": "CreateEventType operation",
+        "description": "Performs createEventType operation in event-types module",
+        "tags": [
+          "Event-types"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEventTypeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "CreateEventType successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateEventTypeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-types/getEventTypes": {
+      "get": {
+        "summary": "GetEventTypes operation",
+        "description": "Performs getEventTypes operation in event-types module",
+        "tags": [
+          "Event-types"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetEventTypes successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetEventTypesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-types/getEventTypeById": {
+      "get": {
+        "summary": "GetEventTypeById operation",
+        "description": "Performs getEventTypeById operation in event-types module",
+        "tags": [
+          "Event-types"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetEventTypeById successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetEventTypeByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-types/updateEventType/:id": {
+      "put": {
+        "summary": "UpdateEventType operation",
+        "description": "Performs updateEventType operation in event-types module",
+        "tags": [
+          "Event-types"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEventTypeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "UpdateEventType successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateEventTypeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/event-types/deleteEventType/:id": {
+      "delete": {
+        "summary": "DeleteEventType operation",
+        "description": "Performs deleteEventType operation in event-types module",
+        "tags": [
+          "Event-types"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteEventTypeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "DeleteEventType successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteEventTypeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/events/getEvents": {
+      "get": {
+        "summary": "GetEvents operation",
+        "description": "Performs getEvents operation in events module",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetEvents successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetEventsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/events/getEventById": {
+      "get": {
+        "summary": "GetEventById operation",
+        "description": "Performs getEventById operation in events module",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetEventById successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetEventByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/events/createEvent": {
+      "post": {
+        "summary": "CreateEvent operation",
+        "description": "Performs createEvent operation in events module",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEventRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "CreateEvent successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateEventResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/events/updateEvent/:id": {
+      "put": {
+        "summary": "UpdateEvent operation",
+        "description": "Performs updateEvent operation in events module",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEventRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "UpdateEvent successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateEventResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/events/deleteEvent/:id": {
+      "delete": {
+        "summary": "DeleteEvent operation",
+        "description": "Performs deleteEvent operation in events module",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteEventRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "DeleteEvent successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteEventResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/events/:id/calendar.ics": {
+      "get": {
+        "summary": "GenerateICS operation",
+        "description": "Performs generateICS operation in events module",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GenerateICS successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenerateICSResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/page-permissions/createPagePermission": {
+      "post": {
+        "summary": "CreatePagePermission operation",
+        "description": "Performs createPagePermission operation in page-permissions module",
+        "tags": [
+          "Page-permissions"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePagePermissionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "CreatePagePermission successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatePagePermissionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/page-permissions/updatePagePermission/:id": {
+      "put": {
+        "summary": "UpdatePagePermission operation",
+        "description": "Performs updatePagePermission operation in page-permissions module",
+        "tags": [
+          "Page-permissions"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePagePermissionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "UpdatePagePermission successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdatePagePermissionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/page-permissions/deletePagePermission/:id": {
+      "delete": {
+        "summary": "DeletePagePermission operation",
+        "description": "Performs deletePagePermission operation in page-permissions module",
+        "tags": [
+          "Page-permissions"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeletePagePermissionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "DeletePagePermission successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeletePagePermissionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pages/createPage": {
+      "post": {
+        "summary": "CreatePage operation",
+        "description": "Performs createPage operation in pages module",
+        "tags": [
+          "Pages"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "CreatePage successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatePageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pages/getPages": {
+      "get": {
+        "summary": "GetPages operation",
+        "description": "Performs getPages operation in pages module",
+        "tags": [
+          "Pages"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetPages successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPagesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pages/getPageById": {
+      "get": {
+        "summary": "GetPageById operation",
+        "description": "Performs getPageById operation in pages module",
+        "tags": [
+          "Pages"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetPageById successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPageByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pages/updatePage/:id": {
+      "put": {
+        "summary": "UpdatePage operation",
+        "description": "Performs updatePage operation in pages module",
+        "tags": [
+          "Pages"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "UpdatePage successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdatePageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pages/deletePage/:id": {
+      "delete": {
+        "summary": "DeletePage operation",
+        "description": "Performs deletePage operation in pages module",
+        "tags": [
+          "Pages"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeletePageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "DeletePage successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeletePageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/stats/dashboard": {
+      "get": {
+        "summary": "GetDashboardStats operation",
+        "description": "Performs getDashboardStats operation in stats module",
+        "tags": [
+          "Stats"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetDashboardStats successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDashboardStatsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user-achievements/:userId": {
+      "get": {
+        "summary": "GetUserAchievements operation",
+        "description": "Performs getUserAchievements operation in user-achievements module",
+        "tags": [
+          "User-achievements"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetUserAchievements successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserAchievementsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/me": {
+      "get": {
+        "summary": "GetMe operation",
+        "description": "Performs getMe operation in users module",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetMe successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/events": {
+      "get": {
+        "summary": "GetUserEvents operation",
+        "description": "Performs getUserEvents operation in users module",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetUserEvents successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserEventsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/sessions": {
+      "get": {
+        "summary": "GetUserSessions operation",
+        "description": "Performs getUserSessions operation in users module",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetUserSessions successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserSessionsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/getUsers": {
+      "get": {
+        "summary": "GetUsers operation",
+        "description": "Performs getUsers operation in users module",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetUsers successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUsersResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/getUserById": {
+      "get": {
+        "summary": "GetUserById operation",
+        "description": "Performs getUserById operation in users module",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetUserById successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/updateUser/:id": {
+      "put": {
+        "summary": "UpdateUser operation",
+        "description": "Performs updateUser operation in users module",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "UpdateUser successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateUserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/deleteUser/:id": {
+      "delete": {
+        "summary": "DeleteUser operation",
+        "description": "Performs deleteUser operation in users module",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "DeleteUser successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteUserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/venues/create": {
+      "post": {
+        "summary": "CreateVenue operation",
+        "description": "Performs createVenue operation in venues module",
+        "tags": [
+          "Venues"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVenueRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "CreateVenue successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateVenueResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/venues/": {
+      "get": {
+        "summary": "GetVenues operation",
+        "description": "Performs getVenues operation in venues module",
+        "tags": [
+          "Venues"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetVenues successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetVenuesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/venues/:id": {
+      "get": {
+        "summary": "GetVenueById operation",
+        "description": "Performs getVenueById operation in venues module",
+        "tags": [
+          "Venues"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetVenueById successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetVenueByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/venues/update/:id": {
+      "put": {
+        "summary": "UpdateVenue operation",
+        "description": "Performs updateVenue operation in venues module",
+        "tags": [
+          "Venues"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateVenueRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "UpdateVenue successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateVenueResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/venues/delete/:id": {
+      "delete": {
+        "summary": "DeleteVenue operation",
+        "description": "Performs deleteVenue operation in venues module",
+        "tags": [
+          "Venues"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteVenueRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "DeleteVenue successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteVenueResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for login operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for login"
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "Login successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for login operation"
+          }
+        }
+      },
+      "RegisterRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for register operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for register"
+        }
+      },
+      "RegisterResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "Register successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for register operation"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "ERROR0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 400
+          },
+          "message": {
+            "type": "string",
+            "example": "Error message"
+          }
+        }
+      },
+      "CreateChapterLeadRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for createChapterLead operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for createChapterLead"
+        }
+      },
+      "CreateChapterLeadResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "CREAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "CreateChapterLead successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for createChapterLead operation"
+          }
+        }
+      },
+      "GetChapterLeadsRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getChapterLeads operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getChapterLeads"
+        }
+      },
+      "GetChapterLeadsResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETCS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetChapterLeads successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getChapterLeads operation"
+          }
+        }
+      },
+      "GetChapterLeadByIdRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getChapterLeadById operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getChapterLeadById"
+        }
+      },
+      "GetChapterLeadByIdResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETCS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetChapterLeads successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getChapterLeadById operation"
+          }
+        }
+      },
+      "UpdateChapterLeadRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for updateChapterLead operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for updateChapterLead"
+        }
+      },
+      "UpdateChapterLeadResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "UPDAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "UpdateChapterLead successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for updateChapterLead operation"
+          }
+        }
+      },
+      "DeleteChapterLeadRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for deleteChapterLead operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for deleteChapterLead"
+        }
+      },
+      "DeleteChapterLeadResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "DELES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "DeleteChapterLead successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for deleteChapterLead operation"
+          }
+        }
+      },
+      "GetChaptersRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getChapters operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getChapters"
+        }
+      },
+      "GetChaptersResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETCS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetChapters successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getChapters operation"
+          }
+        }
+      },
+      "GetChapterByIdRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getChapterById operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getChapterById"
+        }
+      },
+      "GetChapterByIdResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETCS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetChapters successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getChapterById operation"
+          }
+        }
+      },
+      "CreateChapterRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for createChapter operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for createChapter"
+        }
+      },
+      "CreateChapterResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "CreateChapter successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for createChapter operation"
+          }
+        }
+      },
+      "UpdateChapterRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for updateChapter operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for updateChapter"
+        }
+      },
+      "UpdateChapterResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "UpdateChapter successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for updateChapter operation"
+          }
+        }
+      },
+      "DeleteChapterRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for deleteChapter operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for deleteChapter"
+        }
+      },
+      "DeleteChapterResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "DeleteChapter successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for deleteChapter operation"
+          }
+        }
+      },
+      "CreateEventRegistrationRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for createEventRegistration operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for createEventRegistration"
+        }
+      },
+      "CreateEventRegistrationResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "CREAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "CreateEventRegistration successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for createEventRegistration operation"
+          }
+        }
+      },
+      "GetEventRegistrationsRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getEventRegistrations operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getEventRegistrations"
+        }
+      },
+      "GetEventRegistrationsResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetEventRegistrations successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getEventRegistrations operation"
+          }
+        }
+      },
+      "GetEventRegistrationByIdRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getEventRegistrationById operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getEventRegistrationById"
+        }
+      },
+      "GetEventRegistrationByIdResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetEventRegistrations successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getEventRegistrationById operation"
+          }
+        }
+      },
+      "UpdateEventRegistrationRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for updateEventRegistration operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for updateEventRegistration"
+        }
+      },
+      "UpdateEventRegistrationResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "UPDAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "UpdateEventRegistration successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for updateEventRegistration operation"
+          }
+        }
+      },
+      "DeleteEventRegistrationRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for deleteEventRegistration operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for deleteEventRegistration"
+        }
+      },
+      "DeleteEventRegistrationResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "DELES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "DeleteEventRegistration successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for deleteEventRegistration operation"
+          }
+        }
+      },
+      "GetEventSessionCommentsRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getEventSessionComments operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getEventSessionComments"
+        }
+      },
+      "GetEventSessionCommentsResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetEventSessionComments successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getEventSessionComments operation"
+          }
+        }
+      },
+      "GetEventSessionCommentByIdRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getEventSessionCommentById operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getEventSessionCommentById"
+        }
+      },
+      "GetEventSessionCommentByIdResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetEventSessionCommentById successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getEventSessionCommentById operation"
+          }
+        }
+      },
+      "CreateEventSessionCommentRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for createEventSessionComment operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for createEventSessionComment"
+        }
+      },
+      "CreateEventSessionCommentResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "CREAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "CreateEventSessionComment successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for createEventSessionComment operation"
+          }
+        }
+      },
+      "UpdateEventSessionCommentRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for updateEventSessionComment operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for updateEventSessionComment"
+        }
+      },
+      "UpdateEventSessionCommentResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "UPDAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "UpdateEventSessionComment successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for updateEventSessionComment operation"
+          }
+        }
+      },
+      "DeleteEventSessionCommentRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for deleteEventSessionComment operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for deleteEventSessionComment"
+        }
+      },
+      "DeleteEventSessionCommentResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "DELES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "DeleteEventSessionComment successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for deleteEventSessionComment operation"
+          }
+        }
+      },
+      "CreateEventSessionRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for createEventSession operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for createEventSession"
+        }
+      },
+      "CreateEventSessionResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "CREAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "CreateEventSession successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for createEventSession operation"
+          }
+        }
+      },
+      "GetEventSessionsRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getEventSessions operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getEventSessions"
+        }
+      },
+      "GetEventSessionsResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetEventSessions successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getEventSessions operation"
+          }
+        }
+      },
+      "GetEventSessionByIdRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getEventSessionById operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getEventSessionById"
+        }
+      },
+      "GetEventSessionByIdResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetEventSessions successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getEventSessionById operation"
+          }
+        }
+      },
+      "UpdateEventSessionRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for updateEventSession operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for updateEventSession"
+        }
+      },
+      "UpdateEventSessionResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "UPDAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "UpdateEventSession successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for updateEventSession operation"
+          }
+        }
+      },
+      "DeleteEventSessionRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for deleteEventSession operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for deleteEventSession"
+        }
+      },
+      "DeleteEventSessionResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "DELES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "DeleteEventSession successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for deleteEventSession operation"
+          }
+        }
+      },
+      "CreateEventTypeRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for createEventType operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for createEventType"
+        }
+      },
+      "CreateEventTypeResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "CREAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "CreateEventType successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for createEventType operation"
+          }
+        }
+      },
+      "GetEventTypesRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getEventTypes operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getEventTypes"
+        }
+      },
+      "GetEventTypesResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetEventTypes successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getEventTypes operation"
+          }
+        }
+      },
+      "GetEventTypeByIdRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getEventTypeById operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getEventTypeById"
+        }
+      },
+      "GetEventTypeByIdResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetEventTypes successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getEventTypeById operation"
+          }
+        }
+      },
+      "UpdateEventTypeRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for updateEventType operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for updateEventType"
+        }
+      },
+      "UpdateEventTypeResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "UPDAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "UpdateEventType successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for updateEventType operation"
+          }
+        }
+      },
+      "DeleteEventTypeRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for deleteEventType operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for deleteEventType"
+        }
+      },
+      "DeleteEventTypeResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "DELES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "DeleteEventType successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for deleteEventType operation"
+          }
+        }
+      },
+      "GetEventsRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getEvents operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getEvents"
+        }
+      },
+      "GetEventsResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetEvents successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getEvents operation"
+          }
+        }
+      },
+      "GetEventByIdRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getEventById operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getEventById"
+        }
+      },
+      "GetEventByIdResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetEvents successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getEventById operation"
+          }
+        }
+      },
+      "CreateEventRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for createEvent operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for createEvent"
+        }
+      },
+      "CreateEventResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "CreateEvent successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for createEvent operation"
+          }
+        }
+      },
+      "UpdateEventRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for updateEvent operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for updateEvent"
+        }
+      },
+      "UpdateEventResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "UpdateEvent successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for updateEvent operation"
+          }
+        }
+      },
+      "DeleteEventRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for deleteEvent operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for deleteEvent"
+        }
+      },
+      "DeleteEventResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "DeleteEvent successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for deleteEvent operation"
+          }
+        }
+      },
+      "GenerateICSRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for generateICS operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for generateICS"
+        }
+      },
+      "GenerateICSResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GenerateICS successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for generateICS operation"
+          }
+        }
+      },
+      "CreatePagePermissionRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for createPagePermission operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for createPagePermission"
+        }
+      },
+      "CreatePagePermissionResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "CREAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "CreatePagePermission successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for createPagePermission operation"
+          }
+        }
+      },
+      "UpdatePagePermissionRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for updatePagePermission operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for updatePagePermission"
+        }
+      },
+      "UpdatePagePermissionResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "UPDAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "UpdatePagePermission successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for updatePagePermission operation"
+          }
+        }
+      },
+      "DeletePagePermissionRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for deletePagePermission operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for deletePagePermission"
+        }
+      },
+      "DeletePagePermissionResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "DELES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "DeletePagePermission successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for deletePagePermission operation"
+          }
+        }
+      },
+      "CreatePageRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for createPage operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for createPage"
+        }
+      },
+      "CreatePageResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "CREAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "CreatePage successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for createPage operation"
+          }
+        }
+      },
+      "GetPagesRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getPages operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getPages"
+        }
+      },
+      "GetPagesResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETPS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetPages successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getPages operation"
+          }
+        }
+      },
+      "GetPageByIdRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getPageById operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getPageById"
+        }
+      },
+      "GetPageByIdResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETPS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetPages successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getPageById operation"
+          }
+        }
+      },
+      "UpdatePageRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for updatePage operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for updatePage"
+        }
+      },
+      "UpdatePageResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "UPDAS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "UpdatePage successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for updatePage operation"
+          }
+        }
+      },
+      "DeletePageRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for deletePage operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for deletePage"
+        }
+      },
+      "DeletePageResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "DELES0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "DeletePage successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for deletePage operation"
+          }
+        }
+      },
+      "GetDashboardStatsRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getDashboardStats operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getDashboardStats"
+        }
+      },
+      "GetDashboardStatsResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetDashboardStats successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getDashboardStats operation"
+          }
+        }
+      },
+      "GetUserAchievementsRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getUserAchievements operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getUserAchievements"
+        }
+      },
+      "GetUserAchievementsResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetUserAchievements successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getUserAchievements operation"
+          }
+        }
+      },
+      "GetMeRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getMe operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getMe"
+        }
+      },
+      "GetMeResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETMS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetMe successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getMe operation"
+          }
+        }
+      },
+      "GetUserEventsRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getUserEvents operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getUserEvents"
+        }
+      },
+      "GetUserEventsResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETUS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetUserSessions successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getUserEvents operation"
+          }
+        }
+      },
+      "GetUserSessionsRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getUserSessions operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getUserSessions"
+        }
+      },
+      "GetUserSessionsResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETUS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetUserSessions successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getUserSessions operation"
+          }
+        }
+      },
+      "GetUsersRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getUsers operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getUsers"
+        }
+      },
+      "GetUsersResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETUS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetUserSessions successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getUsers operation"
+          }
+        }
+      },
+      "GetUserByIdRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getUserById operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getUserById"
+        }
+      },
+      "GetUserByIdResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "GETUS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetUserSessions successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getUserById operation"
+          }
+        }
+      },
+      "UpdateUserRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for updateUser operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for updateUser"
+        }
+      },
+      "UpdateUserResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "UpdateUser successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for updateUser operation"
+          }
+        }
+      },
+      "DeleteUserRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for deleteUser operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for deleteUser"
+        }
+      },
+      "DeleteUserResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "DeleteUser successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for deleteUser operation"
+          }
+        }
+      },
+      "CreateVenueRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for createVenue operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for createVenue"
+        }
+      },
+      "CreateVenueResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "CreateVenue successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for createVenue operation"
+          }
+        }
+      },
+      "GetVenuesRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getVenues operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getVenues"
+        }
+      },
+      "GetVenuesResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetVenues successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getVenues operation"
+          }
+        }
+      },
+      "GetVenueByIdRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for getVenueById operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for getVenueById"
+        }
+      },
+      "GetVenueByIdResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "GetVenueById successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for getVenueById operation"
+          }
+        }
+      },
+      "UpdateVenueRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for updateVenue operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for updateVenue"
+        }
+      },
+      "UpdateVenueResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "UpdateVenue successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for updateVenue operation"
+          }
+        }
+      },
+      "DeleteVenueRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Request data for deleteVenue operation"
+          }
+        },
+        "example": {
+          "data": "Sample request data for deleteVenue"
+        }
+      },
+      "DeleteVenueResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SUCCESS0001"
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "DeleteVenue successful"
+          },
+          "result": {
+            "type": "object",
+            "description": "Result data for deleteVenue operation"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "User authentication and authorization operations including login, registration, and session management"
+    },
+    {
+      "name": "Chapter-leads",
+      "description": "Chapter-leads module operations"
+    },
+    {
+      "name": "Chapters",
+      "description": "Chapters module operations"
+    },
+    {
+      "name": "Event-registrations",
+      "description": "Event-registrations module operations"
+    },
+    {
+      "name": "Event-session-comments",
+      "description": "Event-session-comments module operations"
+    },
+    {
+      "name": "Event-sessions",
+      "description": "Event-sessions module operations"
+    },
+    {
+      "name": "Event-types",
+      "description": "Event-types module operations"
+    },
+    {
+      "name": "Events",
+      "description": "Events module operations"
+    },
+    {
+      "name": "Page-permissions",
+      "description": "Page-permissions module operations"
+    },
+    {
+      "name": "Pages",
+      "description": "Pages module operations"
+    },
+    {
+      "name": "Stats",
+      "description": "Stats module operations"
+    },
+    {
+      "name": "User-achievements",
+      "description": "User-achievements module operations"
+    },
+    {
+      "name": "Users",
+      "description": "Users module operations"
+    },
+    {
+      "name": "Venues",
+      "description": "Venues module operations"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+
+[36m=== Authenticating Users ===[0m
+[32mΓ£à Logged in as admin (admin@null.community)[0m
+[32mΓ£à Logged in as lead (lead.blr@null.community)[0m
+[32mΓ£à Logged in as member (user1@example.com)[0m
+
+[36m=== Testing Public Routes ===[0m
+[32mΓ£à [MEMBER] Get Chapters[0m
+[32mΓ£à [MEMBER] Get Events[0m
+[32mΓ£à [MEMBER] Get Venues[0m
+
+[36m=== Testing User Access ===[0m
+[32mΓ£à [MEMBER] Get My Profile[0m
+[32mΓ£à [ADMIN] Get All Users (Admin)[0m
+[32mΓ£à [MEMBER] Get All Users (Member - Should Fail) (Expected Failure)[0m
+
+[36m=== Testing Event Management ===[0m
+[31mΓ¥î [ADMIN] Create Event (Admin) - Expected 201 but got 200 [Unexpected Status][0m
+[32mΓ£à [MEMBER] Create Event (Member - Should Fail) (Expected Failure)[0m
+
+[36m=== Testing Sessions ===[0m
+[32mΓ£à [MEMBER] Get Sessions[0m
+
+[36m=== Tests Completed ===[0m
