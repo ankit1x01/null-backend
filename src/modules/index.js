@@ -5,6 +5,7 @@ const chapters = require('./chapters/routes');
 const eventSessions = require('./event-sessions/routes');
 const eventRegistrations = require('./event-registrations/routes');
 const eventTypes = require('./event-types/routes');
+const integrations = require('./integrations/routes');
 const pages = require('./pages/routes');
 const chapterLeads = require('./chapter-leads/routes');
 const eventSessionComments = require('./event-session-comments/routes');
@@ -18,6 +19,7 @@ module.exports = {
   eventSessions,
   eventRegistrations,
   eventTypes,
+  integrations,
   pages,
   chapterLeads,
   eventSessionComments,

@@ -13,18 +13,20 @@ const sharedConstants = require('../../../shared/constants');
  * @returns {Promise<Object>} - Result data
  * @throws {Error} - If operation fails
  */
+const { EventRegistration } = require('../../../shared/models');
+
 const deleteEventRegistration = async ({ requestId, id }) => {
   console.log(`[${requestId}] DeleteEventRegistration attempt: ${id}`);
-  
+
   try {
     const registration = await EventRegistration.findByPk(id);
-    
+
     if (!registration) {
       throw new Error(JSON.stringify(constants.deleteEventRegistration.errorMessages.DELE0003));
     }
 
     await registration.destroy();
-    
+
     console.log(`[${requestId}] DeleteEventRegistration successful`);
     return { success: true, id };
   } catch (error) {

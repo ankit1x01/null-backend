@@ -6,11 +6,13 @@ const express = require('express');
 const router = express.Router();
 const controller = require('./controller');
 
+const { jwt } = require('../../shared/middlewares');
+
 // EventSessions routes
-router.post('/createEventSession', controller.createEventSession);
+router.post('/createEventSession', jwt.verifyToken, jwt.isAdmin, controller.createEventSession);
 router.get('/getEventSessions', controller.getEventSessions);
 router.get('/getEventSessionById', controller.getEventSessionById);
-router.put('/updateEventSession/:id', controller.updateEventSession);
-router.delete('/deleteEventSession/:id', controller.deleteEventSession);
+router.put('/updateEventSession/:id', jwt.verifyToken, jwt.isAdmin, controller.updateEventSession);
+router.delete('/deleteEventSession/:id', jwt.verifyToken, jwt.isAdmin, controller.deleteEventSession);
 
 module.exports = router;

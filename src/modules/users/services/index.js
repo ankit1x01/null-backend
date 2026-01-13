@@ -17,5 +17,6 @@ module.exports = {
   getUsers,
   getUserById,
   updateUser,
-  deleteUser
+  deleteUser,
+  autocomplete: require('./autocomplete.service')
 };

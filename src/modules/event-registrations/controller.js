@@ -17,17 +17,18 @@ const createEventRegistration = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.createEventRegistration(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventRegistrationsServices.createEventRegistration({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
+    res.status(201);
     next({
       ...constants.createEventRegistration.messages.CREAS0001,
       result
@@ -53,16 +54,16 @@ const getEventRegistrations = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.getEventRegistrations(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventRegistrationsServices.getEventRegistrations({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.getEventRegistrations.messages.GETES0001,
@@ -89,16 +90,16 @@ const getEventRegistrationById = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.getEventRegistrationById(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventRegistrationsServices.getEventRegistrationById({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.getEventRegistrationById.messages.GETES0001,
@@ -125,16 +126,16 @@ const updateEventRegistration = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.updateEventRegistration(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventRegistrationsServices.updateEventRegistration({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.updateEventRegistration.messages.UPDAS0001,
@@ -161,16 +162,16 @@ const deleteEventRegistration = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.deleteEventRegistration(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventRegistrationsServices.deleteEventRegistration({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.deleteEventRegistration.messages.DELES0001,

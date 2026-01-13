@@ -17,17 +17,18 @@ const createEventType = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.createEventType(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventTypesServices.createEventType({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
+    res.status(201);
     next({
       ...constants.createEventType.messages.CREAS0001,
       result
@@ -53,16 +54,16 @@ const getEventTypes = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.getEventTypes(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventTypesServices.getEventTypes({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.getEventTypes.messages.GETES0001,
@@ -89,16 +90,16 @@ const getEventTypeById = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.getEventTypeById(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventTypesServices.getEventTypeById({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.getEventTypeById.messages.GETES0001,
@@ -125,16 +126,16 @@ const updateEventType = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.updateEventType(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventTypesServices.updateEventType({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.updateEventType.messages.UPDAS0001,
@@ -161,16 +162,16 @@ const deleteEventType = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.deleteEventType(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventTypesServices.deleteEventType({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.deleteEventType.messages.DELES0001,

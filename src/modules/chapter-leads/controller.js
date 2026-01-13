@@ -17,17 +17,18 @@ const createChapterLead = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.createChapterLead(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await chapterLeadsServices.createChapterLead({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
+    res.status(201);
     next({
       ...constants.createChapterLead.messages.CREAS0001,
       result
@@ -53,16 +54,16 @@ const getChapterLeads = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.getChapterLeads(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await chapterLeadsServices.getChapterLeads({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.getChapterLeads.messages.GETCS0001,
@@ -89,16 +90,16 @@ const getChapterLeadById = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.getChapterLeadById(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await chapterLeadsServices.getChapterLeadById({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.getChapterLeadById.messages.GETCS0001,
@@ -125,16 +126,16 @@ const updateChapterLead = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.updateChapterLead(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await chapterLeadsServices.updateChapterLead({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.updateChapterLead.messages.UPDAS0001,
@@ -161,16 +162,16 @@ const deleteChapterLead = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.deleteChapterLead(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await chapterLeadsServices.deleteChapterLead({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.deleteChapterLead.messages.DELES0001,

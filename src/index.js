@@ -23,7 +23,7 @@ app.use(helmet.xssFilter());
 app.use(rateLimiter);
 
 // Basic body parsing middleware
-app.use(express.json({ 
+app.use(express.json({
   verify: (req, res, buf) => {
     // Store raw body for potential crypto operations
     req.rawBody = buf;
@@ -64,6 +64,7 @@ app.use('/api/auth', modules.auth);
 app.use('/api/stats', modules.stats);
 app.use('/api/venues', modules.venues);
 app.use('/api/user-achievements', modules.userAchievements);
+app.use('/api/integrations', modules.integrations);
 
 // Global response middleware - must be after all routes
 app.use(response);

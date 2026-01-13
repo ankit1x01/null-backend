@@ -17,17 +17,18 @@ const createEventSession = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.createEventSession(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventSessionsServices.createEventSession({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
+    res.status(201);
     next({
       ...constants.createEventSession.messages.CREAS0001,
       result
@@ -53,16 +54,16 @@ const getEventSessions = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.getEventSessions(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventSessionsServices.getEventSessions({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.getEventSessions.messages.GETES0001,
@@ -89,16 +90,16 @@ const getEventSessionById = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.getEventSessionById(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventSessionsServices.getEventSessionById({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.getEventSessionById.messages.GETES0001,
@@ -125,16 +126,16 @@ const updateEventSession = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.updateEventSession(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventSessionsServices.updateEventSession({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.updateEventSession.messages.UPDAS0001,
@@ -161,16 +162,16 @@ const deleteEventSession = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.deleteEventSession(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventSessionsServices.deleteEventSession({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.deleteEventSession.messages.DELES0001,

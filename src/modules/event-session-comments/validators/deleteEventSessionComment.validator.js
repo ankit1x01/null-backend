@@ -12,20 +12,22 @@ const constants = require('../constants');
  * @throws {Error} - If validation fails
  */
 const deleteEventSessionComment = (req) => {
-  const { /* TODO: Add expected fields */ } = req.body;
-  
+  // const { } = req.body;
+
   // TODO: Add validation logic based on your requirements
   // Example validations:
-  
+
   // if (sharedValidators.isRequired(requiredField)) {
   //   throw new Error(JSON.stringify(constants.deleteEventSessionComment.errorMessages.DELEE0001));
   // }
-  
+
   // if (!sharedValidators.isValidEmail(email)) {
   //   throw new Error(JSON.stringify(constants.deleteEventSessionComment.errorMessages.DELEE0002));
   // }
-  
-  return req.body;
+
+  return {
+    id: req.params.id
+  };
 };
 
 module.exports = deleteEventSessionComment;

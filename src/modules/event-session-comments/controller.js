@@ -17,17 +17,18 @@ const createEventSessionComment = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.createEventSessionComment(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventSessionCommentsServices.createEventSessionComment({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
+    res.status(201);
     next({
       ...constants.createEventSessionComment.messages.CREAS0001,
       result
@@ -53,16 +54,16 @@ const updateEventSessionComment = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.updateEventSessionComment(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventSessionCommentsServices.updateEventSessionComment({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.updateEventSessionComment.messages.UPDAS0001,
@@ -89,16 +90,16 @@ const deleteEventSessionComment = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.deleteEventSessionComment(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await eventSessionCommentsServices.deleteEventSessionComment({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.deleteEventSessionComment.messages.DELES0001,

@@ -17,17 +17,18 @@ const createPage = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.createPage(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await pagesServices.createPage({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
+    res.status(201);
     next({
       ...constants.createPage.messages.CREAS0001,
       result
@@ -53,16 +54,16 @@ const getPages = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.getPages(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await pagesServices.getPages({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.getPages.messages.GETPS0001,
@@ -89,16 +90,16 @@ const getPageById = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.getPageById(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await pagesServices.getPageById({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.getPageById.messages.GETPS0001,
@@ -125,16 +126,16 @@ const updatePage = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.updatePage(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await pagesServices.updatePage({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.updatePage.messages.UPDAS0001,
@@ -159,18 +160,20 @@ const updatePage = async (req, res, next) => {
  */
 const deletePage = async (req, res, next) => {
   try {
+    console.log('DeletePage: Controller started');
     // Validate request
     const validatedRequest = validators.deletePage(req);
-    
+    console.log('DeletePage: Validator passed', validatedRequest);
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await pagesServices.deletePage({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.deletePage.messages.DELES0001,

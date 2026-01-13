@@ -221,5 +221,39 @@ module.exports = {
       next(error);
     }
   },
-  getPublicProfile
+  getPublicProfile,
+  autocomplete: async (req, res, next) => {
+    try {
+      if (!req.user) {
+        throw new Error(JSON.stringify({
+          code: 'USER0002',
+          statusCode: 401,
+          message: 'Authentication required'
+        }));
+      }
+
+      // Restrict to Admin or Lead
+      const role = (req.user.role || '').toLowerCase();
+      if (role !== 'admin' && role !== 'lead' && !req.user.admin) {
+        throw new Error(JSON.stringify({
+          code: 'USER0003',
+          statusCode: 403,
+          message: 'Restricted API'
+        }));
+      }
+
+      const result = await usersServices.autocomplete({
+        q: req.query.q
+      });
+
+      // Return Select2 format directly as per legacy API
+      res.status(200).json(result);
+    } catch (error) {
+      if (error instanceof Error && error.message.startsWith('{')) {
+        next(error);
+      } else {
+        next(error);
+      }
+    }
+  }
 };

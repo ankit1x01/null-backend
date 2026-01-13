@@ -58,10 +58,10 @@ const register = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.register(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await authServices.register({
       email: validatedRequest.email,
@@ -69,7 +69,7 @@ const register = async (req, res, next) => {
       name: validatedRequest.name,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.register.messages.USRS0002,
@@ -88,5 +88,14 @@ const register = async (req, res, next) => {
 
 module.exports = {
   login,
-  register
+  register,
+  providerToken: async (req, res, next) => {
+    // Stub implementation for social auth
+    next(new Error(JSON.stringify({
+      code: 'AUTH0001',
+      statusCode: 501,
+      message: 'Not Implemented',
+      result: null
+    })));
+  }
 };

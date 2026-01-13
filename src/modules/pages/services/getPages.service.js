@@ -5,7 +5,6 @@
 const constants = require('../constants');
 const sharedConstants = require('../../../shared/constants');
 
-/**
 const { Page, sequelize } = require('../../../shared/models');
 const { Op } = sequelize.Sequelize;
 
@@ -21,11 +20,11 @@ const { Op } = sequelize.Sequelize;
  */
 const getPages = async ({ requestId, page = 0, per_page = 20, published_only = false }) => {
   console.log(`[${requestId}] GetPages attempt`);
-  
+
   try {
     const limit = Math.min(per_page, 100);
     const offset = page * limit;
-    
+
     const where = {};
     if (published_only) {
       where.published = true;
@@ -37,9 +36,9 @@ const getPages = async ({ requestId, page = 0, per_page = 20, published_only = f
       offset,
       order: [['title', 'ASC']]
     });
-    
+
     console.log(`[${requestId}] GetPages successful: Found ${count} pages`);
-    
+
     return {
       pages: rows,
       pagination: {

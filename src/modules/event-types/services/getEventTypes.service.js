@@ -5,7 +5,6 @@
 const constants = require('../constants');
 const sharedConstants = require('../../../shared/constants');
 
-/**
 const { EventType, sequelize } = require('../../../shared/models');
 const { Op } = sequelize.Sequelize;
 
@@ -20,19 +19,19 @@ const { Op } = sequelize.Sequelize;
  */
 const getEventTypes = async ({ requestId, page = 0, per_page = 20 }) => {
   console.log(`[${requestId}] GetEventTypes attempt`);
-  
+
   try {
     const limit = Math.min(per_page, 100);
     const offset = page * limit;
-    
+
     const { count, rows } = await EventType.findAndCountAll({
       limit,
       offset,
       order: [['name', 'ASC']]
     });
-    
+
     console.log(`[${requestId}] GetEventTypes successful: Found ${count} types`);
-    
+
     return {
       eventTypes: rows,
       pagination: {

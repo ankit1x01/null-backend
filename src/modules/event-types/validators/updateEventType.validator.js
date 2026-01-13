@@ -13,19 +13,22 @@ const constants = require('../constants');
  */
 const updateEventType = (req) => {
   const { /* TODO: Add expected fields */ } = req.body;
-  
+
   // TODO: Add validation logic based on your requirements
   // Example validations:
-  
+
   // if (sharedValidators.isRequired(requiredField)) {
   //   throw new Error(JSON.stringify(constants.updateEventType.errorMessages.UPDAE0001));
   // }
-  
+
   // if (!sharedValidators.isValidEmail(email)) {
   //   throw new Error(JSON.stringify(constants.updateEventType.errorMessages.UPDAE0002));
   // }
-  
-  return req.body;
+
+  return {
+    ...req.body,
+    id: req.params.id
+  };
 };
 
 module.exports = updateEventType;

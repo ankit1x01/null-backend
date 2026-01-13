@@ -6,11 +6,13 @@ const express = require('express');
 const router = express.Router();
 const controller = require('./controller');
 
+const { jwt } = require('../../shared/middlewares');
+
 // EventTypes routes
-router.post('/createEventType', controller.createEventType);
+router.post('/createEventType', jwt.verifyToken, jwt.isAdmin, controller.createEventType);
 router.get('/getEventTypes', controller.getEventTypes);
 router.get('/getEventTypeById', controller.getEventTypeById);
-router.put('/updateEventType/:id', controller.updateEventType);
-router.delete('/deleteEventType/:id', controller.deleteEventType);
+router.put('/updateEventType/:id', jwt.verifyToken, jwt.isAdmin, controller.updateEventType);
+router.delete('/deleteEventType/:id', jwt.verifyToken, jwt.isAdmin, controller.deleteEventType);
 
 module.exports = router;

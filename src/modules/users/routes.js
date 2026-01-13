@@ -18,5 +18,6 @@ router.get('/getUsers', jwt.isAdmin, controller.getUsers);
 router.get('/getUserById', controller.getUserById);
 router.put('/updateUser/:id', controller.updateUser);
 router.delete('/deleteUser/:id', controller.deleteUser);
+router.get('/autocomplete', jwt.verifyToken, controller.autocomplete);
 
 module.exports = router;

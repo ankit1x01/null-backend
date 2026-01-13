@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('./controller');
+const { jwt } = require('../../shared/middlewares');
 
-router.post('/create', controller.createVenue);
+router.post('/create', jwt.verifyToken, jwt.isAdmin, controller.createVenue);
 router.get('/', controller.getVenues);
 router.get('/:id', controller.getVenueById);
-router.put('/update/:id', controller.updateVenue);
-router.delete('/delete/:id', controller.deleteVenue);
+router.put('/update/:id', jwt.verifyToken, jwt.isAdmin, controller.updateVenue);
+router.delete('/delete/:id', jwt.verifyToken, jwt.isAdmin, controller.deleteVenue);
 
 module.exports = router;
