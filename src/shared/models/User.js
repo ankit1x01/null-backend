@@ -104,6 +104,12 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     }
+    // Note: The following fields are defined in Devise but not in the database:
+    // - failed_attempts
+    // - unlock_token  
+    // - locked_at
+    // - slideshare_profile
+    // Add them via migration if needed
   }, {
     tableName: 'users',
     timestamps: true,
@@ -117,6 +123,16 @@ module.exports = (sequelize) => {
       beforeUpdate: async (user) => {
         if (user.changed('encrypted_password')) {
           user.encrypted_password = await bcrypt.hash(user.encrypted_password, 10);
+        }
+      },
+      // Rails: before_save :delete_api_tokens_if_password_changed?
+      afterUpdate: async (user) => {
+        if (user.changed('encrypted_password')) {
+          // Delete all API tokens when password changes
+          const { UserApiToken } = require('./index');
+          if (UserApiToken) {
+            await UserApiToken.destroy({ where: { user_id: user.id } });
+          }
         }
       }
     }
@@ -170,6 +186,14 @@ module.exports = (sequelize) => {
     User.hasMany(models.UserAchievement, {
       foreignKey: 'user_id',
       as: 'achievements'
+    });
+    User.hasMany(models.UserAuthProfile, {
+      foreignKey: 'user_id',
+      as: 'authProfiles'
+    });
+    User.hasMany(models.SessionRequest, {
+      foreignKey: 'user_id',
+      as: 'sessionRequests'
     });
   };
 

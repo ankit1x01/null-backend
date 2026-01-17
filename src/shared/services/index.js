@@ -3,6 +3,8 @@
  * Export all shared services for use throughout the application
  */
 
+const emailService = require('./email.service');
+
 module.exports = {
-  // Add your shared services here as needed
+  emailService
 };

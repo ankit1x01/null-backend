@@ -119,6 +119,45 @@ const getUserSessions = async (req, res, next) => {
   }
 };
 
+/**
+ * GetUserRegistrations - Get user's event registrations
+ * Matches Rails API: GET /api/user/registrations
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next function
+ */
+const getUserRegistrations = async (req, res, next) => {
+  try {
+    if (!req.user) {
+      throw new Error(JSON.stringify({
+        code: 'USER0002',
+        statusCode: 401,
+        message: 'Authentication required'
+      }));
+    }
+
+    // Handle logic within service function
+    const result = await usersServices.getUserRegistrations({
+      userId: req.user.id,
+      eventId: req.query.event_id // Optional filter by event
+    });
+
+    // Return standardized response using the response middleware
+    next({
+      code: 'USERS0009',
+      statusCode: 200,
+      message: 'User registrations retrieved successfully',
+      result
+    });
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith('{')) {
+      next(error);
+    } else {
+      next(new Error(JSON.stringify(sharedConstants.serverError)));
+    }
+  }
+};
+
 const getPublicProfile = async (req, res, next) => {
   try {
     const user = await usersServices.getUserById({
@@ -153,6 +192,7 @@ module.exports = {
   getMe,
   getUserEvents,
   getUserSessions,
+  getUserRegistrations,
   getUsers: async (req, res, next) => {
     try {
       req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;

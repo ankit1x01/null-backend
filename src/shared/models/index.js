@@ -23,8 +23,24 @@ const modelFiles = [
   'SessionProposal',
   'SessionRequest',
   'Page',
+  'PagePermission',
   'Stat',
-  'UserAchievement'
+  'UserAchievement',
+  'EventMailerTask',
+  'EventNotification',
+  'Job',
+  'EventLike',
+  'AdminUser',
+  'UserAuthProfile',
+  'TwitterIntegration',
+  'TweetLog',
+  'MassEmailCampaign',
+  'MassEmailRecipient',
+  'SlackIntegration',
+  'SlackNotificationLog',
+  // New models added to match Rails
+  'EventAnnouncementMailerTask',
+  'EventAutomaticNotificationTask'
 ];
 
 // Initialize models

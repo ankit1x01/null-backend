@@ -15,4 +15,8 @@ router.get('/getEventSessionById', controller.getEventSessionById);
 router.put('/updateEventSession/:id', jwt.verifyToken, jwt.isAdmin, controller.updateEventSession);
 router.delete('/deleteEventSession/:id', jwt.verifyToken, jwt.isAdmin, controller.deleteEventSession);
 
+// Additional routes to match Rails API
+router.get('/my-sessions', jwt.verifyToken, controller.getMySessions);
+router.post('/:id/dislike', jwt.verifyToken, controller.dislikeSession);
+
 module.exports = router;

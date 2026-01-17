@@ -39,6 +39,10 @@ module.exports = (sequelize) => {
     session_type: {
       type: DataTypes.STRING
     },
+    // Rails: tags field for acts_as_taggable (stored as comma-separated string)
+    tags: {
+      type: DataTypes.STRING
+    },
     need_projector: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
@@ -111,7 +115,14 @@ module.exports = (sequelize) => {
       foreignKey: 'event_session_id',
       as: 'comments'
     });
+    EventSession.hasMany(models.EventLike, {
+      foreignKey: 'event_session_id',
+      as: 'likes'
+    });
   };
+
+  // Rails constant: EDIT_WINDOW = 30.days
+  EventSession.EDIT_WINDOW_DAYS = 30;
 
   return EventSession;
 };

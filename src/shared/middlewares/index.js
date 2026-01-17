@@ -8,6 +8,7 @@ const response = require('./response.middleware');
 const encrypt = require('./encrypt.middleware');
 const decrypt = require('./decrypt.middleware');
 const rateLimiter = require('./rateLimiter.middleware');
+const upload = require('./upload.middleware');
 
 module.exports = {
   auth,
@@ -15,5 +16,6 @@ module.exports = {
   response,
   encrypt,
   decrypt,
-  rateLimiter
+  rateLimiter,
+  upload
 };

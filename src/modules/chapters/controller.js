@@ -79,9 +79,69 @@ const getChapterById = async (req, res, next) => {
   }
 };
 
+/**
+ * GetChapterLeaders - Get leaders of a chapter
+ * Matches Rails: GET /chapters/:id/leaders
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next function
+ */
+const getChapterLeaders = async (req, res, next) => {
+  try {
+    req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
+    const result = await chaptersServices.getChapterLeaders({
+      chapterId: req.params.id,
+      requestId: req.requestId
+    });
+    next({
+      code: 'CHPT0005',
+      statusCode: 200,
+      message: 'Chapter leaders retrieved successfully',
+      result
+    });
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith('{')) {
+      next(error);
+    } else {
+      next(new Error(JSON.stringify(sharedConstants.serverError)));
+    }
+  }
+};
+
+/**
+ * GetUpcomingEvents - Get upcoming events for a chapter
+ * Matches Rails: GET /chapters/:id/upcoming_events
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next function
+ */
+const getUpcomingEvents = async (req, res, next) => {
+  try {
+    req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
+    const result = await chaptersServices.getUpcomingEvents({
+      chapterId: req.params.id,
+      requestId: req.requestId
+    });
+    next({
+      code: 'CHPT0006',
+      statusCode: 200,
+      message: 'Upcoming events retrieved successfully',
+      result
+    });
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith('{')) {
+      next(error);
+    } else {
+      next(new Error(JSON.stringify(sharedConstants.serverError)));
+    }
+  }
+};
+
 module.exports = {
   getChapters,
   getChapterById,
+  getChapterLeaders,
+  getUpcomingEvents,
   createChapter: async (req, res, next) => {
     try {
       req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;

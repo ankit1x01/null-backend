@@ -104,6 +104,14 @@ module.exports = (sequelize) => {
       foreignKey: 'chapter_id',
       as: 'venues'
     });
+    Chapter.hasMany(models.SessionProposal, {
+      foreignKey: 'chapter_id',
+      as: 'sessionProposals'
+    });
+    Chapter.hasMany(models.SessionRequest, {
+      foreignKey: 'chapter_id',
+      as: 'sessionRequests'
+    });
   };
 
   return Chapter;

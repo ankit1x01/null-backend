@@ -55,6 +55,16 @@ module.exports = (sequelize) => {
     tableName: 'user_api_tokens',
     timestamps: true,
     underscored: true,
+    scopes: {
+      // Rails: scope :active (not expired)
+      active: {
+        where: {
+          expire_at: {
+            [sequelize.Sequelize.Op.gt]: new Date()
+          }
+        }
+      }
+    },
     hooks: {
       beforeCreate: (apiToken) => {
         if (!apiToken.token) {

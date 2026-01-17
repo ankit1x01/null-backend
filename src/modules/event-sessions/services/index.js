@@ -7,6 +7,8 @@ const getEventSessions = require('./getEventSessions.service');
 const getEventSessionById = require('./getEventSessionById.service');
 const updateEventSession = require('./updateEventSession.service');
 const deleteEventSession = require('./deleteEventSession.service');
+const getMySessions = require('./getMySessions.service');
+const dislikeSession = require('./dislikeSession.service');
 
 module.exports = {
   createEventSession,
@@ -14,4 +16,6 @@ module.exports = {
   getEventSessionById,
   updateEventSession,
   deleteEventSession,
+  getMySessions,
+  dislikeSession
 };

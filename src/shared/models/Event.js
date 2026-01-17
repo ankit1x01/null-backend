@@ -26,6 +26,9 @@ module.exports = (sequelize) => {
       references: {
         model: 'event_types',
         key: 'id'
+      },
+      validate: {
+        notNull: { msg: 'Event type is required' }
       }
     },
     chapter_id: {
@@ -34,6 +37,9 @@ module.exports = (sequelize) => {
       references: {
         model: 'chapters',
         key: 'id'
+      },
+      validate: {
+        notNull: { msg: 'Chapter is required' }
       }
     },
     venue_id: {
@@ -42,6 +48,9 @@ module.exports = (sequelize) => {
       references: {
         model: 'venues',
         key: 'id'
+      },
+      validate: {
+        notNull: { msg: 'Venue is required' }
       }
     },
     public: {
@@ -127,6 +136,33 @@ module.exports = (sequelize) => {
     timestamps: true,
     underscored: true,
     hooks: {
+      // Rails: validate :time_validator
+      beforeValidate: async (event) => {
+        // Time validator
+        if (!event.start_time) {
+          throw new Error('Start time cannot be nil');
+        }
+        if (!event.end_time) {
+          throw new Error('End time cannot be nil');
+        }
+        if (event.isNewRecord && event.start_time < new Date()) {
+          throw new Error('Start time cannot be in the past');
+        }
+        if (event.start_time && event.end_time && event.end_time < event.start_time) {
+          throw new Error('End time cannot be before start time');
+        }
+
+        // Rails: validate :chapter_validator - Chapter must be active
+        if (event.chapter_id) {
+          const { Chapter } = require('./index');
+          if (Chapter) {
+            const chapter = await Chapter.findByPk(event.chapter_id);
+            if (chapter && !chapter.active) {
+              throw new Error('Chapter must be active');
+            }
+          }
+        }
+      },
       beforeCreate: (event) => {
         // Set default values
         if (!event.registration_start_time) {
@@ -139,7 +175,7 @@ module.exports = (sequelize) => {
         if (event.max_registration === undefined) {
           event.max_registration = 0;
         }
-        event.notification_state = 'init';
+        event.notification_state = 'Init';
       },
       afterCreate: async (event) => {
         // Generate slug
@@ -218,6 +254,22 @@ module.exports = (sequelize) => {
     Event.hasMany(models.EventRegistration, {
       foreignKey: 'event_id',
       as: 'eventRegistrations'
+    });
+    Event.hasMany(models.EventMailerTask, {
+      foreignKey: 'event_id',
+      as: 'mailerTasks'
+    });
+    Event.hasMany(models.EventNotification, {
+      foreignKey: 'event_id',
+      as: 'notifications'
+    });
+    Event.hasMany(models.EventAnnouncementMailerTask, {
+      foreignKey: 'event_id',
+      as: 'announcementMailerTasks'
+    });
+    Event.hasMany(models.EventAutomaticNotificationTask, {
+      foreignKey: 'event_id',
+      as: 'automaticNotificationTasks'
     });
   };
 

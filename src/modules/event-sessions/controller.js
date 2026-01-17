@@ -188,10 +188,91 @@ const deleteEventSession = async (req, res, next) => {
   }
 };
 
+/**
+ * GetMySessions - Get sessions where user is speaker
+ * Matches Rails: GET /event_sessions/my_sessions
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next function
+ */
+const getMySessions = async (req, res, next) => {
+  try {
+    if (!req.user) {
+      throw new Error(JSON.stringify({
+        code: 'SESS0002',
+        statusCode: 401,
+        message: 'Authentication required'
+      }));
+    }
+
+    req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
+
+    const result = await eventSessionsServices.getMySessions({
+      userId: req.user.id,
+      requestId: req.requestId
+    });
+
+    next({
+      code: 'GETES0002',
+      statusCode: 200,
+      message: 'Your sessions retrieved successfully',
+      result
+    });
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith('{')) {
+      next(error);
+    } else {
+      next(new Error(JSON.stringify(sharedConstants.serverError)));
+    }
+  }
+};
+
+/**
+ * DislikeSession - Dislike/downvote a session
+ * Matches Rails: POST /event_sessions/:id/dislike
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next function
+ */
+const dislikeSession = async (req, res, next) => {
+  try {
+    if (!req.user) {
+      throw new Error(JSON.stringify({
+        code: 'SESS0002',
+        statusCode: 401,
+        message: 'Authentication required'
+      }));
+    }
+
+    req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
+
+    const result = await eventSessionsServices.dislikeSession({
+      sessionId: req.params.id,
+      userId: req.user.id,
+      requestId: req.requestId
+    });
+
+    next({
+      code: 'SESS0003',
+      statusCode: 200,
+      message: 'Session disliked successfully',
+      result
+    });
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith('{')) {
+      next(error);
+    } else {
+      next(new Error(JSON.stringify(sharedConstants.serverError)));
+    }
+  }
+};
+
 module.exports = {
   createEventSession,
   getEventSessions,
   getEventSessionById,
   updateEventSession,
-  deleteEventSession
+  deleteEventSession,
+  getMySessions,
+  dislikeSession
 };

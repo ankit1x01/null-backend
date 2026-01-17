@@ -44,14 +44,44 @@ module.exports = (sequelize) => {
     tableName: 'chapter_leads',
     timestamps: true,
     underscored: true,
+    indexes: [
+      {
+        unique: true,
+        fields: ['user_id', 'chapter_id'],
+        name: 'chapter_leads_user_chapter_unique'
+      }
+    ],
     scopes: {
       active: {
         where: {
           active: true
         }
       }
+    },
+    // Rails: validates :user_id, :uniqueness => { :scope => [:chapter_id] }
+    validate: {
+      async uniqueUserChapter() {
+        if (this.isNewRecord) {
+          const existing = await ChapterLead.findOne({
+            where: {
+              user_id: this.user_id,
+              chapter_id: this.chapter_id
+            }
+          });
+          if (existing) {
+            throw new Error('User is already a leader of this chapter.');
+          }
+        }
+      }
     }
   });
+
+  // Rails: def self.leadership_for_user(user)
+  ChapterLead.leadershipForUser = async function(userId) {
+    return await ChapterLead.findAll({
+      where: { user_id: userId }
+    });
+  };
 
   // Model associations
   ChapterLead.associate = (models) => {

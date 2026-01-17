@@ -5,6 +5,7 @@
 const getMe = require('./getMe.service');
 const getUserEvents = require('./getUserEvents.service');
 const getUserSessions = require('./getUserSessions.service');
+const getUserRegistrations = require('./getUserRegistrations.service');
 const getUsers = require('./getUsers.service');
 const getUserById = require('./getUserById.service');
 const updateUser = require('./updateUser.service');
@@ -14,6 +15,7 @@ module.exports = {
   getMe,
   getUserEvents,
   getUserSessions,
+  getUserRegistrations,
   getUsers,
   getUserById,
   updateUser,

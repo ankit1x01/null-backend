@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 const app = express();
 const modules = require('./modules');
@@ -31,6 +32,11 @@ app.use(express.json({
 }));
 
 app.use(express.urlencoded({ extended: true }));
+
+// Serve static files from uploads directory
+// This allows accessing uploaded files via /uploads/...
+const UPLOAD_DIR = process.env.UPLOAD_DIR || './uploads';
+app.use('/uploads', express.static(path.resolve(UPLOAD_DIR)));
 
 // Setup Swagger documentation (before decrypt middleware to avoid issues)
 console.log('🚀 Setting up Swagger documentation at /api-docs');
@@ -65,6 +71,25 @@ app.use('/api/stats', modules.stats);
 app.use('/api/venues', modules.venues);
 app.use('/api/user-achievements', modules.userAchievements);
 app.use('/api/integrations', modules.integrations);
+app.use('/api/session-proposals', modules.sessionProposals);
+app.use('/api/session-requests', modules.sessionRequests);
+app.use('/api/event-mailer-tasks', modules.eventMailerTasks);
+app.use('/api/event-notifications', modules.eventNotifications);
+app.use('/api/jobs', modules.jobs);
+app.use('/api/event-likes', modules.eventLikes);
+app.use('/api/admin-users', modules.adminUsers);
+app.use('/api/oauth', modules.oauth);
+app.use('/api/leads-portal', modules.leadsPortal);
+app.use('/api/twitter', modules.twitter);
+app.use('/api/auth-profiles', modules.userAuthProfiles);
+app.use('/api/api-tokens', modules.userApiTokens);
+app.use('/api/calendar', modules.calendar);
+app.use('/api/mass-email', modules.massEmail);
+app.use('/api/slack', modules.slack);
+app.use('/api/uploads', modules.uploads);
+
+// Legacy Slackbot API route for backwards compatibility
+app.use('/api/slackbot', modules.slack);
 
 // Global response middleware - must be after all routes
 app.use(response);

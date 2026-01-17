@@ -7,6 +7,7 @@ const crypto = require('crypto');
 const moduleConstants = require('../constants');
 const sharedConstants = require('../../../shared/constants');
 const { User } = require('../../../shared/models');
+const emailService = require('../../../shared/services/email.service');
 
 /**
  * Register a new user
@@ -45,8 +46,17 @@ const register = async ({ email, password, name, requestId }) => {
 
   console.log(`[${requestId}] Registration successful for user: ${email}`);
 
-  // TODO: Send confirmation email
-  // await sendConfirmationEmail(user.email, confirmationToken);
+  // Send confirmation email
+  try {
+    await emailService.sendConfirmationEmail({
+      user: { email: user.email, name: user.name },
+      confirmationToken
+    });
+    console.log(`[${requestId}] Confirmation email sent to: ${email}`);
+  } catch (error) {
+    console.error(`[${requestId}] Failed to send confirmation email:`, error);
+    // Don't throw - registration was successful, email can be resent
+  }
 
   // Create a user object without sensitive data
   const userWithoutPassword = {

@@ -1,0 +1,2770 @@
+{
+  "timestamp": "2026-01-16T07:28:20.763Z",
+  "baseUrl": "http://localhost:3001",
+  "results": {
+    "auth": {
+      "register": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "USRS0002",
+          "message": "User registered successfully",
+          "result": {
+            "user": {
+              "id": 15,
+              "email": "testuser_1768548500780@example.com",
+              "name": "Test User API"
+            },
+            "message": "Registration successful! Please check your email to confirm your account."
+          }
+        },
+        "url": "http://localhost:3001/api/auth/register",
+        "method": "POST",
+        "timestamp": "2026-01-16T07:28:21.113Z"
+      },
+      "login": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "USRS0001",
+          "message": "Login successful",
+          "result": {
+            "user": {
+              "id": 1,
+              "email": "admin@null.community",
+              "name": "Super Admin",
+              "handle": "admin",
+              "avatar": "https://secure.gravatar.com/avatar/4f43c6329598cb74883bcec4a82b2cf6"
+            },
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBudWxsLmNvbW11bml0eSIsIm5hbWUiOiJTdXBlciBBZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODU0ODUwMSwiZXhwIjoxNzY4NjM0OTAxfQ.ZOae9gbMYrR-05yEzOmtrRzb9A1PQ5rxJaKMk5p1e6o",
+            "expire_at": "2026-02-15T07:28:21.290Z"
+          }
+        },
+        "url": "http://localhost:3001/api/auth/login",
+        "method": "POST",
+        "timestamp": "2026-01-16T07:28:21.304Z"
+      }
+    },
+    "users": {
+      "me": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "USERS0001",
+          "message": "User retrieved successfully",
+          "result": {
+            "id": 1,
+            "email": "admin@null.community",
+            "name": "Super Admin",
+            "homepage": null,
+            "about_me": null,
+            "twitter_handle": null,
+            "facebook_profile": null,
+            "github_profile": null,
+            "linkedin_profile": null,
+            "handle": "admin",
+            "avatar": "https://secure.gravatar.com/avatar/4f43c6329598cb74883bcec4a82b2cf6",
+            "created_at": "2025-12-24T09:36:01.000Z",
+            "updated_at": "2026-01-16T07:28:21.000Z"
+          }
+        },
+        "url": "http://localhost:3001/api/users/me",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.324Z"
+      },
+      "getUsers": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "USERS0004",
+          "message": "Users retrieved successfully",
+          "result": {
+            "users": [
+              {
+                "id": 2,
+                "name": "Bangalore Lead",
+                "email": "lead.blr@null.community",
+                "avatar": null
+              },
+              {
+                "id": 3,
+                "name": "Mumbai Lead",
+                "email": "lead.mum@null.community",
+                "avatar": null
+              },
+              {
+                "id": 1,
+                "name": "Super Admin",
+                "email": "admin@null.community",
+                "avatar": null
+              },
+              {
+                "id": 14,
+                "name": "Test User API",
+                "email": "testuser_1768548473781@example.com",
+                "avatar": null
+              },
+              {
+                "id": 15,
+                "name": "Test User API",
+                "email": "testuser_1768548500780@example.com",
+                "avatar": null
+              },
+              {
+                "id": 6,
+                "name": "User Number 1",
+                "email": "user1@example.com",
+                "avatar": null
+              },
+              {
+                "id": 11,
+                "name": "User Number 10",
+                "email": "user10@example.com",
+                "avatar": null
+              },
+              {
+                "id": 7,
+                "name": "User Number 2",
+                "email": "user2@example.com",
+                "avatar": null
+              },
+              {
+                "id": 4,
+                "name": "User Number 3",
+                "email": "user3@example.com",
+                "avatar": null
+              },
+              {
+                "id": 5,
+                "name": "User Number 4",
+                "email": "user4@example.com",
+                "avatar": null
+              },
+              {
+                "id": 8,
+                "name": "User Number 5",
+                "email": "user5@example.com",
+                "avatar": null
+              },
+              {
+                "id": 9,
+                "name": "User Number 6",
+                "email": "user6@example.com",
+                "avatar": null
+              },
+              {
+                "id": 12,
+                "name": "User Number 7",
+                "email": "user7@example.com",
+                "avatar": null
+              },
+              {
+                "id": 10,
+                "name": "User Number 8",
+                "email": "user8@example.com",
+                "avatar": null
+              },
+              {
+                "id": 13,
+                "name": "User Number 9",
+                "email": "user9@example.com",
+                "avatar": null
+              }
+            ]
+          }
+        },
+        "url": "http://localhost:3001/api/users/getUsers",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.340Z"
+      },
+      "getUserById": {
+        "success": false,
+        "status": 404,
+        "data": {
+          "code": "USERS0005",
+          "message": "User not found"
+        },
+        "url": "http://localhost:3001/api/users/getUserById?id=1",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.350Z"
+      },
+      "events": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "USERS0002",
+          "message": "User events retrieved successfully",
+          "result": []
+        },
+        "url": "http://localhost:3001/api/users/events",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.371Z"
+      },
+      "sessions": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "USERS0003",
+          "message": "User sessions retrieved successfully",
+          "result": []
+        },
+        "url": "http://localhost:3001/api/users/sessions",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.386Z"
+      },
+      "updateUser": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "USERS0006",
+          "message": "User updated successfully",
+          "result": {
+            "id": 1,
+            "email": "admin@null.community",
+            "reset_password_sent_at": null,
+            "remember_created_at": null,
+            "sign_in_count": 22,
+            "current_sign_in_at": "2026-01-16T07:28:21.000Z",
+            "last_sign_in_at": "2025-12-24T11:44:01.000Z",
+            "current_sign_in_ip": "::1",
+            "last_sign_in_ip": "::ffff:127.0.0.1",
+            "confirmed_at": "2025-12-24T09:36:01.000Z",
+            "confirmation_sent_at": null,
+            "unconfirmed_email": null,
+            "name": "Updated Test User",
+            "homepage": null,
+            "about_me": "This is a test user updated via API script",
+            "twitter_handle": null,
+            "facebook_profile": null,
+            "github_profile": "https://github.com/testuser",
+            "linkedin_profile": null,
+            "handle": "admin",
+            "avatar": null,
+            "created_at": "2025-12-24T09:36:01.000Z",
+            "updated_at": "2026-01-16T07:28:21.400Z",
+            "admin": true
+          }
+        },
+        "url": "http://localhost:3001/api/users/updateUser/1",
+        "method": "PUT",
+        "timestamp": "2026-01-16T07:28:21.408Z"
+      }
+    },
+    "chapters": {
+      "getChapters": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "GETCE0001",
+          "message": "Chapters retrieved successfully",
+          "result": [
+            {
+              "id": 7,
+              "name": "Amsterdam",
+              "description": "null Amsterdam Chapter",
+              "active": true,
+              "country": "NL",
+              "city": "Amsterdam",
+              "state": null,
+              "chapter_email": null,
+              "twitter_handle": null,
+              "facebook_profile": null,
+              "github_profile": null,
+              "linkedin_profile": null,
+              "image": null
+            },
+            {
+              "id": 1,
+              "name": "Bangalore",
+              "description": "null Bangalore Chapter",
+              "active": true,
+              "country": "IN",
+              "city": "Bangalore",
+              "state": null,
+              "chapter_email": null,
+              "twitter_handle": null,
+              "facebook_profile": null,
+              "github_profile": null,
+              "linkedin_profile": null,
+              "image": null
+            },
+            {
+              "id": 3,
+              "name": "Delhi",
+              "description": "null Delhi Chapter",
+              "active": true,
+              "country": "IN",
+              "city": "Delhi",
+              "state": null,
+              "chapter_email": null,
+              "twitter_handle": null,
+              "facebook_profile": null,
+              "github_profile": null,
+              "linkedin_profile": null,
+              "image": null
+            },
+            {
+              "id": 5,
+              "name": "Hyderabad",
+              "description": "null Hyderabad Chapter",
+              "active": true,
+              "country": "IN",
+              "city": "Hyderabad",
+              "state": null,
+              "chapter_email": null,
+              "twitter_handle": null,
+              "facebook_profile": null,
+              "github_profile": null,
+              "linkedin_profile": null,
+              "image": null
+            },
+            {
+              "id": 2,
+              "name": "Mumbai",
+              "description": "null Mumbai Chapter",
+              "active": true,
+              "country": "IN",
+              "city": "Mumbai",
+              "state": null,
+              "chapter_email": null,
+              "twitter_handle": null,
+              "facebook_profile": null,
+              "github_profile": null,
+              "linkedin_profile": null,
+              "image": null
+            },
+            {
+              "id": 4,
+              "name": "Pune",
+              "description": "null Pune Chapter",
+              "active": true,
+              "country": "IN",
+              "city": "Pune",
+              "state": null,
+              "chapter_email": null,
+              "twitter_handle": null,
+              "facebook_profile": null,
+              "github_profile": null,
+              "linkedin_profile": null,
+              "image": null
+            },
+            {
+              "id": 6,
+              "name": "Singapore",
+              "description": "null Singapore Chapter",
+              "active": true,
+              "country": "SG",
+              "city": "Singapore",
+              "state": null,
+              "chapter_email": null,
+              "twitter_handle": null,
+              "facebook_profile": null,
+              "github_profile": null,
+              "linkedin_profile": null,
+              "image": null
+            }
+          ]
+        },
+        "url": "http://localhost:3001/api/chapters/getChapters",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.430Z"
+      },
+      "getChapterById": {
+        "success": false,
+        "status": 400,
+        "data": {
+          "code": "GETCE0003",
+          "message": "Valid chapter ID is required"
+        },
+        "url": "http://localhost:3001/api/chapters/getChapterById?id=7",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.436Z"
+      },
+      "createChapter": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "CHPT0001",
+          "message": "Chapter created successfully",
+          "result": {
+            "active": true,
+            "id": 9,
+            "name": "Test Chapter 1768548501436",
+            "city": "Test City",
+            "country": "Test Country",
+            "description": "Test chapter created by API script"
+          }
+        },
+        "url": "http://localhost:3001/api/chapters/createChapter",
+        "method": "POST",
+        "timestamp": "2026-01-16T07:28:21.449Z"
+      },
+      "updateChapter": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "CHPT0002",
+          "message": "Chapter updated successfully",
+          "result": {
+            "id": 9,
+            "name": "Test Chapter 1768548501436",
+            "description": "Updated chapter description via API script",
+            "birthday": null,
+            "code": null,
+            "active": true,
+            "country": "Test Country",
+            "city": "Test City",
+            "state": null,
+            "chapter_email": null,
+            "image": null,
+            "twitter_handle": null,
+            "facebook_profile": null,
+            "github_profile": null,
+            "linkedin_profile": null,
+            "slideshare_profile": null
+          }
+        },
+        "url": "http://localhost:3001/api/chapters/updateChapter/9",
+        "method": "PUT",
+        "timestamp": "2026-01-16T07:28:21.467Z"
+      },
+      "deleteChapter": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "CHPT0004",
+          "message": "Chapter deleted successfully",
+          "result": {
+            "success": true,
+            "id": "9"
+          }
+        },
+        "url": "http://localhost:3001/api/chapters/deleteChapter/9",
+        "method": "DELETE",
+        "timestamp": "2026-01-16T07:28:22.248Z"
+      }
+    },
+    "venues": {
+      "create": {
+        "success": true,
+        "status": 201,
+        "data": {
+          "code": "VENUE001",
+          "message": "Venue created successfully",
+          "result": {
+            "id": 22,
+            "name": "Test Venue 1768548501468",
+            "address": "123 Test Street",
+            "chapter_id": 9,
+            "contact_name": "Test Contact",
+            "contact_email": "venue@test.com",
+            "contact_mobile": "+1-555-0123",
+            "updated_at": "2026-01-16T07:28:21.480Z",
+            "created_at": "2026-01-16T07:28:21.480Z"
+          }
+        },
+        "url": "http://localhost:3001/api/venues/create",
+        "method": "POST",
+        "timestamp": "2026-01-16T07:28:21.489Z"
+      },
+      "getVenues": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "VENUE002",
+          "message": "Venues fetched successfully",
+          "result": [
+            {
+              "id": 1,
+              "name": "91springboard Koramangala",
+              "description": "Co-working space in Koramangala",
+              "address": "513/B, 7th Cross Rd, Koramangala 6th Block, Bangalore, Karnataka 560095",
+              "map_url": null,
+              "map_embedd_code": null,
+              "contact_name": "Manager BLR",
+              "contact_email": null,
+              "contact_mobile": null,
+              "contact_notes": null,
+              "chapter_id": 1,
+              "created_at": "2025-12-24T09:36:01.000Z",
+              "updated_at": "2025-12-24T09:36:01.000Z"
+            },
+            {
+              "id": 2,
+              "name": "Microsoft Reactor Bangalore",
+              "description": "Microsoft Reactor space",
+              "address": "Vigyan City, Bangalore",
+              "map_url": null,
+              "map_embedd_code": null,
+              "contact_name": "Reactor Lead",
+              "contact_email": null,
+              "contact_mobile": null,
+              "contact_notes": null,
+              "chapter_id": 1,
+              "created_at": "2025-12-24T09:36:01.000Z",
+              "updated_at": "2025-12-24T09:36:01.000Z"
+            },
+            {
+              "id": 3,
+              "name": "ThoughtWorks Mumbai",
+              "description": "ThoughtWorks Office",
+              "address": "Hiranandani Gardens, Powai, Mumbai",
+              "map_url": null,
+              "map_embedd_code": null,
+              "contact_name": "Admin MUM",
+              "contact_email": null,
+              "contact_mobile": null,
+              "contact_notes": null,
+              "chapter_id": 2,
+              "created_at": "2025-12-24T09:36:01.000Z",
+              "updated_at": "2025-12-24T09:36:01.000Z"
+            },
+            {
+              "id": 4,
+              "name": "Google Delhi",
+              "description": "Google Office",
+              "address": "Signature Tower, Gurgaon",
+              "map_url": null,
+              "map_embedd_code": null,
+              "contact_name": "Googler",
+              "contact_email": null,
+              "contact_mobile": null,
+              "contact_notes": null,
+              "chapter_id": 3,
+              "created_at": "2025-12-24T09:36:01.000Z",
+              "updated_at": "2025-12-24T09:36:01.000Z"
+            },
+            {
+              "id": 5,
+              "name": "Test Venue",
+              "description": "Created by Test Script",
+              "address": "123 Test St",
+              "map_url": null,
+              "map_embedd_code": null,
+              "contact_name": "Tester",
+              "contact_email": null,
+              "contact_mobile": null,
+              "contact_notes": null,
+              "chapter_id": 1,
+              "created_at": "2025-12-24T10:07:17.000Z",
+              "updated_at": "2025-12-24T10:07:17.000Z"
+            },
+            {
+              "id": 22,
+              "name": "Test Venue 1768548501468",
+              "description": null,
+              "address": "123 Test Street",
+              "map_url": null,
+              "map_embedd_code": null,
+              "contact_name": "Test Contact",
+              "contact_email": "venue@test.com",
+              "contact_mobile": "+1-555-0123",
+              "contact_notes": null,
+              "chapter_id": 9,
+              "created_at": "2026-01-16T07:28:21.000Z",
+              "updated_at": "2026-01-16T07:28:21.000Z"
+            }
+          ]
+        },
+        "url": "http://localhost:3001/api/venues/",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.501Z"
+      },
+      "getVenueById": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "VENUE003",
+          "message": "Venue fetched successfully",
+          "result": {
+            "id": 22,
+            "name": "Test Venue 1768548501468",
+            "description": null,
+            "address": "123 Test Street",
+            "map_url": null,
+            "map_embedd_code": null,
+            "contact_name": "Test Contact",
+            "contact_email": "venue@test.com",
+            "contact_mobile": "+1-555-0123",
+            "contact_notes": null,
+            "chapter_id": 9,
+            "created_at": "2026-01-16T07:28:21.000Z",
+            "updated_at": "2026-01-16T07:28:21.000Z"
+          }
+        },
+        "url": "http://localhost:3001/api/venues/22",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.507Z"
+      },
+      "update": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "VENUE004",
+          "message": "Venue updated successfully",
+          "result": {
+            "id": 22,
+            "name": "Test Venue 1768548501468",
+            "description": null,
+            "address": "123 Test Street",
+            "map_url": null,
+            "map_embedd_code": null,
+            "contact_name": "Test Contact",
+            "contact_email": "venue@test.com",
+            "contact_mobile": "+1-555-0123",
+            "contact_notes": "Updated via API script",
+            "chapter_id": 9,
+            "created_at": "2026-01-16T07:28:21.000Z",
+            "updated_at": "2026-01-16T07:28:21.520Z"
+          }
+        },
+        "url": "http://localhost:3001/api/venues/update/22",
+        "method": "PUT",
+        "timestamp": "2026-01-16T07:28:21.526Z"
+      },
+      "delete": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "VENUE005",
+          "message": "Venue deleted successfully",
+          "result": {
+            "id": 22,
+            "name": "Test Venue 1768548501468",
+            "description": null,
+            "address": "123 Test Street",
+            "map_url": null,
+            "map_embedd_code": null,
+            "contact_name": "Test Contact",
+            "contact_email": "venue@test.com",
+            "contact_mobile": "+1-555-0123",
+            "contact_notes": "Updated via API script",
+            "chapter_id": 9,
+            "created_at": "2026-01-16T07:28:21.000Z",
+            "updated_at": "2026-01-16T07:28:21.000Z"
+          }
+        },
+        "url": "http://localhost:3001/api/venues/delete/22",
+        "method": "DELETE",
+        "timestamp": "2026-01-16T07:28:22.234Z"
+      }
+    },
+    "eventTypes": {
+      "createEventType": {
+        "success": true,
+        "status": 201,
+        "data": {
+          "code": "CREAS0001",
+          "message": "CreateEventType successful",
+          "result": {
+            "invitation_required": false,
+            "id": 23,
+            "name": "Test Event Type 1768548501528",
+            "description": "Test event type created by API script",
+            "max_participant": 50,
+            "public": true,
+            "registration_required": true,
+            "updated_at": "2026-01-16T07:28:21.536Z",
+            "created_at": "2026-01-16T07:28:21.536Z"
+          }
+        },
+        "url": "http://localhost:3001/api/event-types/createEventType",
+        "method": "POST",
+        "timestamp": "2026-01-16T07:28:21.545Z"
+      },
+      "getEventTypes": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "GETES0001",
+          "message": "GetEventTypes successful",
+          "result": {
+            "eventTypes": [
+              {
+                "id": 3,
+                "name": "Conference",
+                "description": "Annual conferences",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z"
+              },
+              {
+                "id": 4,
+                "name": "Humla",
+                "description": "Humla sessions",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": true,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z"
+              },
+              {
+                "id": 1,
+                "name": "Monthly Meetup",
+                "description": "Regular monthly meetups",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z"
+              },
+              {
+                "id": 5,
+                "name": "Puliya",
+                "description": "Networking & Chit-chat",
+                "max_participant": null,
+                "public": true,
+                "registration_required": false,
+                "invitation_required": false,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z"
+              },
+              {
+                "id": 23,
+                "name": "Test Event Type 1768548501528",
+                "description": "Test event type created by API script",
+                "max_participant": 50,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2026-01-16T07:28:21.000Z",
+                "updated_at": "2026-01-16T07:28:21.000Z"
+              },
+              {
+                "id": 6,
+                "name": "Test Type 1766570837544",
+                "description": "Test Type Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T10:07:17.000Z",
+                "updated_at": "2025-12-24T10:07:17.000Z"
+              },
+              {
+                "id": 8,
+                "name": "Test Type 1766571124623",
+                "description": "Test Type Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T10:12:04.000Z",
+                "updated_at": "2025-12-24T10:12:04.000Z"
+              },
+              {
+                "id": 9,
+                "name": "Test Type 1766571226259",
+                "description": "Test Type Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T10:13:46.000Z",
+                "updated_at": "2025-12-24T10:13:46.000Z"
+              },
+              {
+                "id": 10,
+                "name": "Test Type 1766571467185",
+                "description": "Test Type Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T10:17:47.000Z",
+                "updated_at": "2025-12-24T10:17:47.000Z"
+              },
+              {
+                "id": 11,
+                "name": "Test Type 1766574114911",
+                "description": "Test Type Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T11:01:54.000Z",
+                "updated_at": "2025-12-24T11:01:54.000Z"
+              },
+              {
+                "id": 12,
+                "name": "Test Type 1766574193110",
+                "description": "Test Type Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T11:03:13.000Z",
+                "updated_at": "2025-12-24T11:03:13.000Z"
+              },
+              {
+                "id": 13,
+                "name": "Test Type 1766574232831",
+                "description": "Test Type Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T11:03:52.000Z",
+                "updated_at": "2025-12-24T11:03:52.000Z"
+              },
+              {
+                "id": 14,
+                "name": "Test Type 1766574485957",
+                "description": "Updated Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T11:08:05.000Z",
+                "updated_at": "2025-12-24T11:08:05.000Z"
+              },
+              {
+                "id": 15,
+                "name": "Test Type 1766574866172",
+                "description": "Updated Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T11:14:26.000Z",
+                "updated_at": "2025-12-24T11:14:26.000Z"
+              },
+              {
+                "id": 16,
+                "name": "Test Type 1766575027201",
+                "description": "Updated Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T11:17:07.000Z",
+                "updated_at": "2025-12-24T11:17:07.000Z"
+              },
+              {
+                "id": 17,
+                "name": "Test Type 1766575327770",
+                "description": "Updated Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T11:22:07.000Z",
+                "updated_at": "2025-12-24T11:22:07.000Z"
+              },
+              {
+                "id": 18,
+                "name": "Test Type 1766575771928",
+                "description": "Updated Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T11:29:31.000Z",
+                "updated_at": "2025-12-24T11:29:31.000Z"
+              },
+              {
+                "id": 19,
+                "name": "Test Type 1766576111360",
+                "description": "Updated Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T11:35:11.000Z",
+                "updated_at": "2025-12-24T11:35:11.000Z"
+              },
+              {
+                "id": 20,
+                "name": "Test Type 1766576426926",
+                "description": "Updated Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T11:40:26.000Z",
+                "updated_at": "2025-12-24T11:40:26.000Z"
+              },
+              {
+                "id": 21,
+                "name": "Test Type 1766576582467",
+                "description": "Updated Desc",
+                "max_participant": null,
+                "public": true,
+                "registration_required": true,
+                "invitation_required": false,
+                "created_at": "2025-12-24T11:43:02.000Z",
+                "updated_at": "2025-12-24T11:43:02.000Z"
+              }
+            ],
+            "pagination": {
+              "page": 0,
+              "per_page": 20,
+              "total": 22,
+              "total_pages": 2
+            }
+          }
+        },
+        "url": "http://localhost:3001/api/event-types/getEventTypes",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.565Z"
+      },
+      "getEventTypeById": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "GETES0001",
+          "message": "GetEventTypeById successful",
+          "result": {
+            "id": 23,
+            "name": "Test Event Type 1768548501528",
+            "description": "Test event type created by API script",
+            "max_participant": 50,
+            "public": true,
+            "registration_required": true,
+            "invitation_required": false,
+            "created_at": "2026-01-16T07:28:21.000Z",
+            "updated_at": "2026-01-16T07:28:21.000Z"
+          }
+        },
+        "url": "http://localhost:3001/api/event-types/getEventTypeById?id=23",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.571Z"
+      },
+      "updateEventType": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "UPDAS0001",
+          "message": "UpdateEventType successful",
+          "result": {
+            "id": 23,
+            "name": "Test Event Type 1768548501528",
+            "description": "Updated event type description",
+            "max_participant": 100,
+            "public": true,
+            "registration_required": true,
+            "invitation_required": false,
+            "created_at": "2026-01-16T07:28:21.000Z",
+            "updated_at": "2026-01-16T07:28:21.585Z"
+          }
+        },
+        "url": "http://localhost:3001/api/event-types/updateEventType/23",
+        "method": "PUT",
+        "timestamp": "2026-01-16T07:28:21.592Z"
+      },
+      "deleteEventType": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "DELES0001",
+          "message": "DeleteEventType successful",
+          "result": {
+            "success": true,
+            "id": "23"
+          }
+        },
+        "url": "http://localhost:3001/api/event-types/deleteEventType/23",
+        "method": "DELETE",
+        "timestamp": "2026-01-16T07:28:22.215Z"
+      }
+    },
+    "events": {
+      "createEvent": {
+        "success": true,
+        "status": 201,
+        "data": {
+          "code": "EVNT0001",
+          "message": "Event created successfully",
+          "result": {
+            "can_show_on_archive": true,
+            "ready_for_announcement": false,
+            "ready_for_notifications": false,
+            "ready_for_reminders": false,
+            "id": 30,
+            "name": "Test Event 1768548501594",
+            "description": "Test event created by API script",
+            "event_type_id": 23,
+            "chapter_id": 9,
+            "venue_id": 22,
+            "public": true,
+            "can_show_on_homepage": true,
+            "accepting_registration": true,
+            "start_time": "2026-02-15T07:28:21.594Z",
+            "end_time": "2026-02-15T10:28:21.594Z",
+            "max_registration": 50,
+            "slug": "test-chapter-1768548501436-test-event-1768548501594-30",
+            "updated_at": "2026-01-16T07:28:21.617Z",
+            "created_at": "2026-01-16T07:28:21.605Z",
+            "registration_start_time": "2026-02-08T07:28:21.594Z",
+            "registration_end_time": "2026-02-15T07:28:21.594Z",
+            "notification_state": "init"
+          }
+        },
+        "url": "http://localhost:3001/api/events/createEvent",
+        "method": "POST",
+        "timestamp": "2026-01-16T07:28:21.626Z"
+      },
+      "getEvents": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "GETES0001",
+          "message": "Events retrieved successfully",
+          "result": {
+            "events": [
+              {
+                "id": 30,
+                "name": "Test Event 1768548501594",
+                "description": "Test event created by API script",
+                "start_time": "2026-02-15T07:28:21.000Z",
+                "end_time": "2026-02-15T10:28:21.000Z",
+                "chapter": {
+                  "id": 9,
+                  "name": "Test Chapter 1768548501436",
+                  "city": "Test City",
+                  "country": "Test Country"
+                },
+                "event_type": {
+                  "id": 23,
+                  "name": "Test Event Type 1768548501528"
+                },
+                "venue": {
+                  "id": 22,
+                  "name": "Test Venue 1768548501468",
+                  "address": "123 Test Street"
+                },
+                "accepting_registration": true,
+                "registration_start_time": "2026-02-08T07:28:21.000Z",
+                "registration_end_time": "2026-02-15T07:28:21.000Z",
+                "public": true,
+                "slug": "test-chapter-1768548501436-test-event-1768548501594-30"
+              }
+            ],
+            "pagination": {
+              "page": 0,
+              "per_page": 20,
+              "total": 1,
+              "total_pages": 1
+            }
+          }
+        },
+        "url": "http://localhost:3001/api/events/getEvents",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.651Z"
+      },
+      "getEventById": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "GETES0001",
+          "message": "Event retrieved successfully",
+          "result": {
+            "id": 30,
+            "name": "Test Event 1768548501594",
+            "description": "Test event created by API script",
+            "start_time": "2026-02-15T07:28:21.000Z",
+            "end_time": "2026-02-15T10:28:21.000Z",
+            "registration_start_time": "2026-02-08T07:28:21.000Z",
+            "registration_end_time": "2026-02-15T07:28:21.000Z",
+            "registration_instructions": null,
+            "accepting_registration": true,
+            "max_registration": 50,
+            "public": true,
+            "slug": "test-chapter-1768548501436-test-event-1768548501594-30",
+            "image": null,
+            "chapter": {
+              "id": 9,
+              "name": "Test Chapter 1768548501436",
+              "description": "Updated chapter description via API script",
+              "city": "Test City",
+              "country": "Test Country"
+            },
+            "event_type": {
+              "id": 23,
+              "name": "Test Event Type 1768548501528",
+              "description": "Updated event type description"
+            },
+            "venue": {
+              "id": 22,
+              "name": "Test Venue 1768548501468",
+              "address": "123 Test Street",
+              "map_url": null,
+              "contact_name": "Test Contact"
+            },
+            "sessions": []
+          }
+        },
+        "url": "http://localhost:3001/api/events/getEventById?id=30",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.674Z"
+      },
+      "updateEvent": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "EVNT0002",
+          "message": "Event updated successfully",
+          "result": {
+            "id": 30,
+            "name": "Updated Test Event",
+            "description": "Test event created by API script",
+            "event_type_id": 23,
+            "chapter_id": 9,
+            "venue_id": 22,
+            "public": true,
+            "can_show_on_homepage": true,
+            "can_show_on_archive": true,
+            "accepting_registration": true,
+            "state": null,
+            "start_time": "2026-02-15T07:28:21.000Z",
+            "end_time": "2026-02-15T10:28:21.000Z",
+            "slug": "updated-test-event",
+            "registration_start_time": "2026-02-08T07:28:21.000Z",
+            "registration_end_time": "2026-02-15T07:28:21.000Z",
+            "registration_instructions": null,
+            "ready_for_announcement": false,
+            "ready_for_notifications": false,
+            "ready_for_reminders": false,
+            "notifications_sent_at": null,
+            "announced_at": null,
+            "notification_state": "init",
+            "max_registration": 100,
+            "image": null,
+            "calendar_event_id": null,
+            "created_at": "2026-01-16T07:28:21.000Z",
+            "updated_at": "2026-01-16T07:28:21.688Z"
+          }
+        },
+        "url": "http://localhost:3001/api/events/updateEvent/30",
+        "method": "PUT",
+        "timestamp": "2026-01-16T07:28:21.696Z"
+      },
+      "generateICS": {
+        "success": false,
+        "status": 404,
+        "data": {
+          "code": "EVENT0001",
+          "message": "Event not found"
+        },
+        "url": "http://localhost:3001/api/events/30/calendar.ics",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.699Z"
+      },
+      "deleteEvent": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "EVNT0004",
+          "message": "Event deleted successfully",
+          "result": {
+            "success": true,
+            "id": "30"
+          }
+        },
+        "url": "http://localhost:3001/api/events/deleteEvent/30",
+        "method": "DELETE",
+        "timestamp": "2026-01-16T07:28:22.196Z"
+      }
+    },
+    "eventSessions": {
+      "createEventSession": {
+        "success": true,
+        "status": 201,
+        "data": {
+          "code": "CREAS0001",
+          "message": "CreateEventSession successful",
+          "result": {
+            "need_whiteboard": false,
+            "placeholder": false,
+            "cached_votes_up": 0,
+            "cached_votes_down": 0,
+            "id": 20,
+            "event_id": 30,
+            "user_id": 1,
+            "name": "Test Session 1768548501700",
+            "description": "Test session created by API script",
+            "session_type": "Talk",
+            "need_projector": true,
+            "need_microphone": true,
+            "start_time": "2026-02-15T07:58:21.594Z",
+            "end_time": "2026-02-15T08:28:21.594Z",
+            "updated_at": "2026-01-16T07:28:21.707Z",
+            "created_at": "2026-01-16T07:28:21.707Z"
+          }
+        },
+        "url": "http://localhost:3001/api/event-sessions/createEventSession",
+        "method": "POST",
+        "timestamp": "2026-01-16T07:28:21.717Z"
+      },
+      "getEventSessions": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "GETES0001",
+          "message": "GetEventSessions successful",
+          "result": {
+            "sessions": [
+              {
+                "id": 1,
+                "event_id": 6,
+                "user_id": 2,
+                "name": "Welcome & Introduction",
+                "description": "Kickoff the meetup.",
+                "session_type": "Talk",
+                "need_projector": false,
+                "need_microphone": false,
+                "need_whiteboard": false,
+                "start_time": "2025-12-31T09:36:01.000Z",
+                "end_time": "2025-12-31T09:51:01.000Z",
+                "slug": null,
+                "presentation_url": null,
+                "video_url": null,
+                "placeholder": false,
+                "image": null,
+                "cached_votes_up": 0,
+                "cached_votes_down": 0,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "event": {
+                  "id": 6,
+                  "name": "Future of Cyber Warfare"
+                },
+                "user": {
+                  "id": 2,
+                  "name": "Bangalore Lead",
+                  "email": "lead.blr@null.community",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 2,
+                "event_id": 6,
+                "user_id": 4,
+                "name": "Stuxnet Retrospective",
+                "description": "Analyzing the worm that changed everything.",
+                "session_type": "Talk",
+                "need_projector": false,
+                "need_microphone": false,
+                "need_whiteboard": false,
+                "start_time": "2025-12-31T09:51:01.000Z",
+                "end_time": "2025-12-31T10:36:01.000Z",
+                "slug": null,
+                "presentation_url": null,
+                "video_url": null,
+                "placeholder": false,
+                "image": null,
+                "cached_votes_up": 0,
+                "cached_votes_down": 0,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "event": {
+                  "id": 6,
+                  "name": "Future of Cyber Warfare"
+                },
+                "user": {
+                  "id": 4,
+                  "name": "User Number 3",
+                  "email": "user3@example.com",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 3,
+                "event_id": 7,
+                "user_id": 3,
+                "name": "Reconnaissance Techniques",
+                "description": "How to find subdomains and hidden assets.",
+                "session_type": "Workshop",
+                "need_projector": false,
+                "need_microphone": false,
+                "need_whiteboard": false,
+                "start_time": "2026-01-07T09:36:01.000Z",
+                "end_time": "2026-01-07T11:36:01.000Z",
+                "slug": null,
+                "presentation_url": null,
+                "video_url": null,
+                "placeholder": false,
+                "image": null,
+                "cached_votes_up": 0,
+                "cached_votes_down": 0,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "event": {
+                  "id": 7,
+                  "name": "Bug Bounty Hunting 101"
+                },
+                "user": {
+                  "id": 3,
+                  "name": "Mumbai Lead",
+                  "email": "lead.mum@null.community",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 20,
+                "event_id": 30,
+                "user_id": 1,
+                "name": "Test Session 1768548501700",
+                "description": "Test session created by API script",
+                "session_type": "Talk",
+                "need_projector": true,
+                "need_microphone": true,
+                "need_whiteboard": false,
+                "start_time": "2026-02-15T07:58:21.000Z",
+                "end_time": "2026-02-15T08:28:21.000Z",
+                "slug": null,
+                "presentation_url": null,
+                "video_url": null,
+                "placeholder": false,
+                "image": null,
+                "cached_votes_up": 0,
+                "cached_votes_down": 0,
+                "created_at": "2026-01-16T07:28:21.000Z",
+                "updated_at": "2026-01-16T07:28:21.000Z",
+                "event": {
+                  "id": 30,
+                  "name": "Updated Test Event"
+                },
+                "user": {
+                  "id": 1,
+                  "name": "Updated Test User",
+                  "email": "admin@null.community",
+                  "avatar": null
+                }
+              }
+            ],
+            "pagination": {
+              "page": 0,
+              "per_page": 20,
+              "total": 4,
+              "total_pages": 1
+            }
+          }
+        },
+        "url": "http://localhost:3001/api/event-sessions/getEventSessions",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.733Z"
+      },
+      "getEventSessionById": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "GETES0001",
+          "message": "GetEventSessionById successful",
+          "result": {
+            "id": 20,
+            "event_id": 30,
+            "user_id": 1,
+            "name": "Test Session 1768548501700",
+            "description": "Test session created by API script",
+            "session_type": "Talk",
+            "need_projector": true,
+            "need_microphone": true,
+            "need_whiteboard": false,
+            "start_time": "2026-02-15T07:58:21.000Z",
+            "end_time": "2026-02-15T08:28:21.000Z",
+            "slug": null,
+            "presentation_url": null,
+            "video_url": null,
+            "placeholder": false,
+            "image": null,
+            "cached_votes_up": 0,
+            "cached_votes_down": 0,
+            "created_at": "2026-01-16T07:28:21.000Z",
+            "updated_at": "2026-01-16T07:28:21.000Z",
+            "event": {
+              "id": 30,
+              "name": "Updated Test Event"
+            },
+            "user": {
+              "id": 1,
+              "name": "Updated Test User",
+              "email": "admin@null.community",
+              "avatar": null
+            },
+            "comments": []
+          }
+        },
+        "url": "http://localhost:3001/api/event-sessions/getEventSessionById?id=20",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.750Z"
+      },
+      "updateEventSession": {
+        "success": false,
+        "status": 404,
+        "data": {
+          "code": "UPDAE0003",
+          "message": "UpdateEventSession failed"
+        },
+        "url": "http://localhost:3001/api/event-sessions/updateEventSession/20",
+        "method": "PUT",
+        "timestamp": "2026-01-16T07:28:21.763Z"
+      },
+      "deleteEventSession": {
+        "success": false,
+        "status": 404,
+        "data": {
+          "code": "DELEE0003",
+          "message": "DeleteEventSession failed"
+        },
+        "url": "http://localhost:3001/api/event-sessions/deleteEventSession/20",
+        "method": "DELETE",
+        "timestamp": "2026-01-16T07:28:22.173Z"
+      }
+    },
+    "eventSessionComments": {
+      "createEventSessionComment": {
+        "success": true,
+        "status": 201,
+        "data": {
+          "code": "CREAS0001",
+          "message": "CreateEventSessionComment successful",
+          "result": {
+            "id": 18,
+            "event_session_id": 20,
+            "user_id": 1,
+            "comment": "Great session! Very informative. Created by API script.",
+            "updated_at": "2026-01-16T07:28:21.770Z",
+            "created_at": "2026-01-16T07:28:21.770Z"
+          }
+        },
+        "url": "http://localhost:3001/api/event-session-comments/createEventSessionComment",
+        "method": "POST",
+        "timestamp": "2026-01-16T07:28:21.778Z"
+      },
+      "getEventSessionComments": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "ESCM0001",
+          "message": "Event session comments fetched successfully",
+          "result": {
+            "comments": [
+              {
+                "id": 18,
+                "event_session_id": 20,
+                "user_id": 1,
+                "comment": "Great session! Very informative. Created by API script.",
+                "created_at": "2026-01-16T07:28:21.000Z",
+                "updated_at": "2026-01-16T07:28:21.000Z",
+                "eventSession": {
+                  "id": 20,
+                  "name": "Test Session 1768548501700"
+                },
+                "user": {
+                  "id": 1,
+                  "name": "Updated Test User",
+                  "email": "admin@null.community",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 1,
+                "event_session_id": 2,
+                "user_id": 6,
+                "comment": "Super excited for this talk!",
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "eventSession": {
+                  "id": 2,
+                  "name": "Stuxnet Retrospective"
+                },
+                "user": {
+                  "id": 6,
+                  "name": "User Number 1",
+                  "email": "user1@example.com",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 2,
+                "event_session_id": 2,
+                "user_id": 1,
+                "comment": "Make sure to cover the PLCs part in detail.",
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "eventSession": {
+                  "id": 2,
+                  "name": "Stuxnet Retrospective"
+                },
+                "user": {
+                  "id": 1,
+                  "name": "Updated Test User",
+                  "email": "admin@null.community",
+                  "avatar": null
+                }
+              }
+            ],
+            "pagination": {
+              "page": 0,
+              "per_page": 20,
+              "total": 3,
+              "total_pages": 1
+            }
+          }
+        },
+        "url": "http://localhost:3001/api/event-session-comments/getEventSessionComments",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.794Z"
+      },
+      "getEventSessionCommentById": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "ESCM0002",
+          "message": "Event session comment fetched successfully",
+          "result": {
+            "id": 18,
+            "event_session_id": 20,
+            "user_id": 1,
+            "comment": "Great session! Very informative. Created by API script.",
+            "created_at": "2026-01-16T07:28:21.000Z",
+            "updated_at": "2026-01-16T07:28:21.000Z",
+            "eventSession": {
+              "id": 20,
+              "name": "Test Session 1768548501700"
+            },
+            "user": {
+              "id": 1,
+              "name": "Updated Test User",
+              "email": "admin@null.community",
+              "avatar": null
+            }
+          }
+        },
+        "url": "http://localhost:3001/api/event-session-comments/getEventSessionCommentById/18",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.831Z"
+      },
+      "updateEventSessionComment": {
+        "success": false,
+        "status": 500,
+        "data": {
+          "code": "ERR0000",
+          "message": "Internal server error"
+        },
+        "url": "http://localhost:3001/api/event-session-comments/updateEventSessionComment/18",
+        "method": "PUT",
+        "timestamp": "2026-01-16T07:28:21.839Z"
+      },
+      "deleteEventSessionComment": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "DELES0001",
+          "message": "DeleteEventSessionComment successful",
+          "result": {
+            "success": true,
+            "id": "18"
+          }
+        },
+        "url": "http://localhost:3001/api/event-session-comments/deleteEventSessionComment/18",
+        "method": "DELETE",
+        "timestamp": "2026-01-16T07:28:22.164Z"
+      }
+    },
+    "eventRegistrations": {
+      "createEventRegistration": {
+        "success": true,
+        "status": 201,
+        "data": {
+          "code": "CREAS0001",
+          "message": "CreateEventRegistration successful",
+          "result": {
+            "accepted": false,
+            "visible": true,
+            "id": 26,
+            "event_id": 30,
+            "user_id": 1,
+            "state": "Provisional",
+            "updated_at": "2026-01-16T07:28:21.854Z",
+            "created_at": "2026-01-16T07:28:21.854Z"
+          }
+        },
+        "url": "http://localhost:3001/api/event-registrations/createEventRegistration",
+        "method": "POST",
+        "timestamp": "2026-01-16T07:28:21.865Z"
+      },
+      "getEventRegistrations": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "GETES0001",
+          "message": "GetEventRegistrations successful",
+          "result": {
+            "registrations": [
+              {
+                "id": 26,
+                "event_id": 30,
+                "user_id": 1,
+                "accepted": false,
+                "visible": true,
+                "state": "Provisional",
+                "created_at": "2026-01-16T07:28:21.000Z",
+                "updated_at": "2026-01-16T07:28:21.000Z",
+                "event": {
+                  "id": 30,
+                  "name": "Updated Test Event"
+                },
+                "user": {
+                  "id": 1,
+                  "name": "Updated Test User",
+                  "email": "admin@null.community",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 1,
+                "event_id": 6,
+                "user_id": 6,
+                "accepted": true,
+                "visible": true,
+                "state": "Confirmed",
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "event": {
+                  "id": 6,
+                  "name": "Future of Cyber Warfare"
+                },
+                "user": {
+                  "id": 6,
+                  "name": "User Number 1",
+                  "email": "user1@example.com",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 2,
+                "event_id": 6,
+                "user_id": 7,
+                "accepted": true,
+                "visible": true,
+                "state": "Confirmed",
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "event": {
+                  "id": 6,
+                  "name": "Future of Cyber Warfare"
+                },
+                "user": {
+                  "id": 7,
+                  "name": "User Number 2",
+                  "email": "user2@example.com",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 3,
+                "event_id": 6,
+                "user_id": 4,
+                "accepted": true,
+                "visible": true,
+                "state": "Confirmed",
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "event": {
+                  "id": 6,
+                  "name": "Future of Cyber Warfare"
+                },
+                "user": {
+                  "id": 4,
+                  "name": "User Number 3",
+                  "email": "user3@example.com",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 4,
+                "event_id": 6,
+                "user_id": 5,
+                "accepted": true,
+                "visible": true,
+                "state": "Confirmed",
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "event": {
+                  "id": 6,
+                  "name": "Future of Cyber Warfare"
+                },
+                "user": {
+                  "id": 5,
+                  "name": "User Number 4",
+                  "email": "user4@example.com",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 5,
+                "event_id": 6,
+                "user_id": 8,
+                "accepted": true,
+                "visible": true,
+                "state": "Confirmed",
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "event": {
+                  "id": 6,
+                  "name": "Future of Cyber Warfare"
+                },
+                "user": {
+                  "id": 8,
+                  "name": "User Number 5",
+                  "email": "user5@example.com",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 6,
+                "event_id": 7,
+                "user_id": 5,
+                "accepted": true,
+                "visible": true,
+                "state": "Confirmed",
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "event": {
+                  "id": 7,
+                  "name": "Bug Bounty Hunting 101"
+                },
+                "user": {
+                  "id": 5,
+                  "name": "User Number 4",
+                  "email": "user4@example.com",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 7,
+                "event_id": 7,
+                "user_id": 8,
+                "accepted": true,
+                "visible": true,
+                "state": "Confirmed",
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "event": {
+                  "id": 7,
+                  "name": "Bug Bounty Hunting 101"
+                },
+                "user": {
+                  "id": 8,
+                  "name": "User Number 5",
+                  "email": "user5@example.com",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 8,
+                "event_id": 7,
+                "user_id": 9,
+                "accepted": true,
+                "visible": true,
+                "state": "Confirmed",
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "event": {
+                  "id": 7,
+                  "name": "Bug Bounty Hunting 101"
+                },
+                "user": {
+                  "id": 9,
+                  "name": "User Number 6",
+                  "email": "user6@example.com",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 9,
+                "event_id": 7,
+                "user_id": 12,
+                "accepted": true,
+                "visible": true,
+                "state": "Confirmed",
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "event": {
+                  "id": 7,
+                  "name": "Bug Bounty Hunting 101"
+                },
+                "user": {
+                  "id": 12,
+                  "name": "User Number 7",
+                  "email": "user7@example.com",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 10,
+                "event_id": 7,
+                "user_id": 10,
+                "accepted": true,
+                "visible": true,
+                "state": "Confirmed",
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "event": {
+                  "id": 7,
+                  "name": "Bug Bounty Hunting 101"
+                },
+                "user": {
+                  "id": 10,
+                  "name": "User Number 8",
+                  "email": "user8@example.com",
+                  "avatar": null
+                }
+              }
+            ],
+            "pagination": {
+              "page": 0,
+              "per_page": 20,
+              "total": 11,
+              "total_pages": 1
+            }
+          }
+        },
+        "url": "http://localhost:3001/api/event-registrations/getEventRegistrations",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.884Z"
+      },
+      "getEventRegistrationById": {
+        "success": false,
+        "status": 500,
+        "data": {
+          "code": "ERR0000",
+          "message": "Internal server error"
+        },
+        "url": "http://localhost:3001/api/event-registrations/getEventRegistrationById?id=26",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.897Z"
+      },
+      "updateEventRegistration": {
+        "success": false,
+        "status": 500,
+        "data": {
+          "code": "ERR0000",
+          "message": "Internal server error"
+        },
+        "url": "http://localhost:3001/api/event-registrations/updateEventRegistration/26",
+        "method": "PUT",
+        "timestamp": "2026-01-16T07:28:21.904Z"
+      },
+      "deleteEventRegistration": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "DELES0001",
+          "message": "DeleteEventRegistration successful",
+          "result": {
+            "success": true,
+            "id": "26"
+          }
+        },
+        "url": "http://localhost:3001/api/event-registrations/deleteEventRegistration/26",
+        "method": "DELETE",
+        "timestamp": "2026-01-16T07:28:22.145Z"
+      }
+    },
+    "chapterLeads": {
+      "createChapterLead": {
+        "success": true,
+        "status": 201,
+        "data": {
+          "code": "CREAS0001",
+          "message": "CreateChapterLead successful",
+          "result": {
+            "id": 20,
+            "chapter_id": 9,
+            "user_id": 1,
+            "active": true,
+            "updated_at": "2026-01-16T07:28:21.915Z",
+            "created_at": "2026-01-16T07:28:21.915Z"
+          }
+        },
+        "url": "http://localhost:3001/api/chapter-leads/createChapterLead",
+        "method": "POST",
+        "timestamp": "2026-01-16T07:28:21.922Z"
+      },
+      "getChapterLeads": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "GETCS0001",
+          "message": "GetChapterLeads successful",
+          "result": {
+            "chapterLeads": [
+              {
+                "id": 20,
+                "chapter_id": 9,
+                "user_id": 1,
+                "active": true,
+                "created_at": "2026-01-16T07:28:21.000Z",
+                "updated_at": "2026-01-16T07:28:21.000Z",
+                "chapter": {
+                  "id": 9,
+                  "name": "Test Chapter 1768548501436",
+                  "city": "Test City"
+                },
+                "user": {
+                  "id": 1,
+                  "name": "Updated Test User",
+                  "email": "admin@null.community",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 3,
+                "chapter_id": 1,
+                "user_id": 6,
+                "active": true,
+                "created_at": "2025-12-24T10:07:17.000Z",
+                "updated_at": "2025-12-24T10:07:17.000Z",
+                "chapter": {
+                  "id": 1,
+                  "name": "Bangalore",
+                  "city": "Bangalore"
+                },
+                "user": {
+                  "id": 6,
+                  "name": "User Number 1",
+                  "email": "user1@example.com",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 1,
+                "chapter_id": 1,
+                "user_id": 2,
+                "active": true,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "chapter": {
+                  "id": 1,
+                  "name": "Bangalore",
+                  "city": "Bangalore"
+                },
+                "user": {
+                  "id": 2,
+                  "name": "Bangalore Lead",
+                  "email": "lead.blr@null.community",
+                  "avatar": null
+                }
+              },
+              {
+                "id": 2,
+                "chapter_id": 2,
+                "user_id": 3,
+                "active": true,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "chapter": {
+                  "id": 2,
+                  "name": "Mumbai",
+                  "city": "Mumbai"
+                },
+                "user": {
+                  "id": 3,
+                  "name": "Mumbai Lead",
+                  "email": "lead.mum@null.community",
+                  "avatar": null
+                }
+              }
+            ],
+            "pagination": {
+              "page": 0,
+              "per_page": 20,
+              "total": 4,
+              "total_pages": 1
+            }
+          }
+        },
+        "url": "http://localhost:3001/api/chapter-leads/getChapterLeads",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.936Z"
+      },
+      "getChapterLeadById": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "GETCS0001",
+          "message": "GetChapterLeadById successful",
+          "result": {
+            "id": 20,
+            "chapter_id": 9,
+            "user_id": 1,
+            "active": true,
+            "created_at": "2026-01-16T07:28:21.000Z",
+            "updated_at": "2026-01-16T07:28:21.000Z",
+            "chapter": {
+              "id": 9,
+              "name": "Test Chapter 1768548501436",
+              "city": "Test City"
+            },
+            "user": {
+              "id": 1,
+              "name": "Updated Test User",
+              "email": "admin@null.community",
+              "avatar": null
+            }
+          }
+        },
+        "url": "http://localhost:3001/api/chapter-leads/getChapterLeadById?id=20",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:21.945Z"
+      },
+      "updateChapterLead": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "UPDAS0001",
+          "message": "UpdateChapterLead successful",
+          "result": {
+            "id": 20,
+            "chapter_id": 9,
+            "user_id": 1,
+            "active": false,
+            "created_at": "2026-01-16T07:28:21.000Z",
+            "updated_at": "2026-01-16T07:28:21.957Z"
+          }
+        },
+        "url": "http://localhost:3001/api/chapter-leads/updateChapterLead/20",
+        "method": "PUT",
+        "timestamp": "2026-01-16T07:28:21.966Z"
+      },
+      "deleteChapterLead": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "DELES0001",
+          "message": "DeleteChapterLead successful",
+          "result": {
+            "success": true,
+            "id": "20"
+          }
+        },
+        "url": "http://localhost:3001/api/chapter-leads/deleteChapterLead/20",
+        "method": "DELETE",
+        "timestamp": "2026-01-16T07:28:22.128Z"
+      }
+    },
+    "pages": {
+      "createPage": {
+        "success": true,
+        "status": 201,
+        "data": {
+          "code": "CREAS0001",
+          "message": "CreatePage successful",
+          "result": {
+            "id": 20,
+            "title": "Test Page 1768548501967",
+            "content": "<h1>Test Page</h1><p>This is a test page created by API script.</p>",
+            "published": true,
+            "slug": "test-page-1768548501967",
+            "updated_at": "2026-01-16T07:28:21.973Z",
+            "created_at": "2026-01-16T07:28:21.973Z"
+          }
+        },
+        "url": "http://localhost:3001/api/pages/createPage",
+        "method": "POST",
+        "timestamp": "2026-01-16T07:28:21.983Z"
+      },
+      "getPages": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "GETPS0001",
+          "message": "GetPages successful",
+          "result": {
+            "pages": [
+              {
+                "id": 1,
+                "title": "About null",
+                "content": "# About null\n\nnull is an open security community...",
+                "slug": "about",
+                "published": true,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z"
+              },
+              {
+                "id": 2,
+                "title": "Conduct",
+                "content": "# Code of Conduct\n\nBe excellent to each other...",
+                "slug": "coc",
+                "published": true,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z"
+              },
+              {
+                "id": 3,
+                "title": "Test Page",
+                "content": "# Hello",
+                "slug": "test-page-1766570837613",
+                "published": true,
+                "created_at": "2025-12-24T10:07:17.000Z",
+                "updated_at": "2025-12-24T10:07:17.000Z"
+              },
+              {
+                "id": 5,
+                "title": "Test Page",
+                "content": "# Hello",
+                "slug": "test-page-1766571124777",
+                "published": true,
+                "created_at": "2025-12-24T10:12:04.000Z",
+                "updated_at": "2025-12-24T10:12:04.000Z"
+              },
+              {
+                "id": 6,
+                "title": "Test Page",
+                "content": "# Hello",
+                "slug": "test-page-1766571226426",
+                "published": true,
+                "created_at": "2025-12-24T10:13:46.000Z",
+                "updated_at": "2025-12-24T10:13:46.000Z"
+              },
+              {
+                "id": 7,
+                "title": "Test Page",
+                "content": "# Hello",
+                "slug": "test-page-1766571467374",
+                "published": true,
+                "created_at": "2025-12-24T10:17:47.000Z",
+                "updated_at": "2025-12-24T10:17:47.000Z"
+              },
+              {
+                "id": 8,
+                "title": "Test Page",
+                "content": "# Hello",
+                "slug": "test-page-1766574115093",
+                "published": true,
+                "created_at": "2025-12-24T11:01:55.000Z",
+                "updated_at": "2025-12-24T11:01:55.000Z"
+              },
+              {
+                "id": 9,
+                "title": "Test Page",
+                "content": "# Hello",
+                "slug": "test-page-1766574193324",
+                "published": true,
+                "created_at": "2025-12-24T11:03:13.000Z",
+                "updated_at": "2025-12-24T11:03:13.000Z"
+              },
+              {
+                "id": 10,
+                "title": "Test Page",
+                "content": "# Hello",
+                "slug": "test-page-1766574232973",
+                "published": true,
+                "created_at": "2025-12-24T11:03:52.000Z",
+                "updated_at": "2025-12-24T11:03:52.000Z"
+              },
+              {
+                "id": 11,
+                "title": "Test Page",
+                "content": "# Hello",
+                "slug": "test-page-1766574486181",
+                "published": true,
+                "created_at": "2025-12-24T11:08:06.000Z",
+                "updated_at": "2025-12-24T11:08:06.000Z"
+              },
+              {
+                "id": 12,
+                "title": "Test Page",
+                "content": "# Hello",
+                "slug": "test-page-1766574866660",
+                "published": true,
+                "created_at": "2025-12-24T11:14:26.000Z",
+                "updated_at": "2025-12-24T11:14:26.000Z"
+              },
+              {
+                "id": 13,
+                "title": "Test Page",
+                "content": "# Hello",
+                "slug": "test-page-1766575027470",
+                "published": true,
+                "created_at": "2025-12-24T11:17:07.000Z",
+                "updated_at": "2025-12-24T11:17:07.000Z"
+              },
+              {
+                "id": 14,
+                "title": "Test Page",
+                "content": "# Hello",
+                "slug": "test-page-1766575327941",
+                "published": true,
+                "created_at": "2025-12-24T11:22:07.000Z",
+                "updated_at": "2025-12-24T11:22:07.000Z"
+              },
+              {
+                "id": 20,
+                "title": "Test Page 1768548501967",
+                "content": "<h1>Test Page</h1><p>This is a test page created by API script.</p>",
+                "slug": "test-page-1768548501967",
+                "published": true,
+                "created_at": "2026-01-16T07:28:21.000Z",
+                "updated_at": "2026-01-16T07:28:21.000Z"
+              }
+            ],
+            "pagination": {
+              "page": 0,
+              "per_page": 20,
+              "total": 14,
+              "total_pages": 1
+            }
+          }
+        },
+        "url": "http://localhost:3001/api/pages/getPages",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:22.000Z"
+      },
+      "getPageById": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "GETPS0001",
+          "message": "GetPageById successful",
+          "result": {
+            "id": 20,
+            "title": "Test Page 1768548501967",
+            "content": "<h1>Test Page</h1><p>This is a test page created by API script.</p>",
+            "slug": "test-page-1768548501967",
+            "published": true,
+            "created_at": "2026-01-16T07:28:21.000Z",
+            "updated_at": "2026-01-16T07:28:21.000Z"
+          }
+        },
+        "url": "http://localhost:3001/api/pages/getPageById?id=20",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:22.006Z"
+      },
+      "updatePage": {
+        "success": false,
+        "status": 500,
+        "data": {
+          "code": "ERR0000",
+          "message": "Internal server error"
+        },
+        "url": "http://localhost:3001/api/pages/updatePage/20",
+        "method": "PUT",
+        "timestamp": "2026-01-16T07:28:22.017Z"
+      },
+      "deletePage": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "DELES0001",
+          "message": "DeletePage successful",
+          "result": {
+            "success": true,
+            "id": "20"
+          }
+        },
+        "url": "http://localhost:3001/api/pages/deletePage/20",
+        "method": "DELETE",
+        "timestamp": "2026-01-16T07:28:22.106Z"
+      }
+    },
+    "pagePermissions": {
+      "createPagePermission": {
+        "success": true,
+        "status": 201,
+        "data": {
+          "code": "CREAS0001",
+          "message": "CreatePagePermission successful",
+          "result": {
+            "id": "generated-id",
+            "page_id": 20,
+            "user_id": 1,
+            "permission_type": "write",
+            "timestamp": "2026-01-16T07:28:22.026Z"
+          }
+        },
+        "url": "http://localhost:3001/api/page-permissions/createPagePermission",
+        "method": "POST",
+        "timestamp": "2026-01-16T07:28:22.029Z"
+      },
+      "updatePagePermission": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "UPDAS0001",
+          "message": "UpdatePagePermission successful",
+          "result": {
+            "id": "generated-id",
+            "permission_type": "read",
+            "timestamp": "2026-01-16T07:28:22.035Z"
+          }
+        },
+        "url": "http://localhost:3001/api/page-permissions/updatePagePermission/generated-id",
+        "method": "PUT",
+        "timestamp": "2026-01-16T07:28:22.037Z"
+      },
+      "deletePagePermission": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "DELES0001",
+          "message": "DeletePagePermission successful",
+          "result": {
+            "id": "generated-id",
+            "timestamp": "2026-01-16T07:28:22.084Z"
+          }
+        },
+        "url": "http://localhost:3001/api/page-permissions/deletePagePermission/generated-id",
+        "method": "DELETE",
+        "timestamp": "2026-01-16T07:28:22.090Z"
+      }
+    },
+    "stats": {
+      "dashboard": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "STATS0001",
+          "message": "Stats retrieved successfully",
+          "result": {
+            "counts": {
+              "users": 15,
+              "chapters": 8,
+              "events": 11,
+              "pages": 14
+            },
+            "recentEvents": [
+              {
+                "id": 30,
+                "name": "Updated Test Event",
+                "description": "Test event created by API script",
+                "event_type_id": 23,
+                "chapter_id": 9,
+                "venue_id": 22,
+                "public": true,
+                "can_show_on_homepage": true,
+                "can_show_on_archive": true,
+                "accepting_registration": true,
+                "state": null,
+                "start_time": "2026-02-15T07:28:21.000Z",
+                "end_time": "2026-02-15T10:28:21.000Z",
+                "slug": "updated-test-event",
+                "registration_start_time": "2026-02-08T07:28:21.000Z",
+                "registration_end_time": "2026-02-15T07:28:21.000Z",
+                "registration_instructions": null,
+                "ready_for_announcement": false,
+                "ready_for_notifications": false,
+                "ready_for_reminders": false,
+                "notifications_sent_at": null,
+                "announced_at": null,
+                "notification_state": "init",
+                "max_registration": 100,
+                "image": null,
+                "calendar_event_id": null,
+                "created_at": "2026-01-16T07:28:21.000Z",
+                "updated_at": "2026-01-16T07:28:21.000Z",
+                "chapter": {
+                  "id": 9,
+                  "name": "Test Chapter 1768548501436",
+                  "description": "Updated chapter description via API script",
+                  "birthday": null,
+                  "code": null,
+                  "active": true,
+                  "country": "Test Country",
+                  "city": "Test City",
+                  "state": null,
+                  "chapter_email": null,
+                  "image": null,
+                  "twitter_handle": null,
+                  "facebook_profile": null,
+                  "github_profile": null,
+                  "linkedin_profile": null,
+                  "slideshare_profile": null,
+                  "created_at": "2026-01-16T07:28:21.000Z",
+                  "updated_at": "2026-01-16T07:28:21.000Z"
+                }
+              },
+              {
+                "id": 10,
+                "name": "Automated Test Event",
+                "description": "Created by API test script",
+                "event_type_id": 1,
+                "chapter_id": 1,
+                "venue_id": 1,
+                "public": true,
+                "can_show_on_homepage": false,
+                "can_show_on_archive": true,
+                "accepting_registration": true,
+                "state": null,
+                "start_time": "2025-12-25T09:38:15.000Z",
+                "end_time": "2025-12-25T10:38:15.000Z",
+                "slug": "bangalore-automated-test-event-10",
+                "registration_start_time": "2025-12-18T09:38:15.000Z",
+                "registration_end_time": "2025-12-25T09:38:15.000Z",
+                "registration_instructions": null,
+                "ready_for_announcement": false,
+                "ready_for_notifications": false,
+                "ready_for_reminders": false,
+                "notifications_sent_at": null,
+                "announced_at": null,
+                "notification_state": "init",
+                "max_registration": 0,
+                "image": null,
+                "calendar_event_id": null,
+                "created_at": "2025-12-24T09:38:15.000Z",
+                "updated_at": "2025-12-24T09:38:15.000Z",
+                "chapter": {
+                  "id": 1,
+                  "name": "Bangalore",
+                  "description": "null Bangalore Chapter",
+                  "birthday": null,
+                  "code": "BLR",
+                  "active": true,
+                  "country": "IN",
+                  "city": "Bangalore",
+                  "state": null,
+                  "chapter_email": null,
+                  "image": null,
+                  "twitter_handle": null,
+                  "facebook_profile": null,
+                  "github_profile": null,
+                  "linkedin_profile": null,
+                  "slideshare_profile": null,
+                  "created_at": "2025-12-24T09:36:01.000Z",
+                  "updated_at": "2025-12-24T09:36:01.000Z"
+                }
+              },
+              {
+                "id": 9,
+                "name": "Automated Test Event",
+                "description": "Created by API test script",
+                "event_type_id": 1,
+                "chapter_id": 1,
+                "venue_id": 1,
+                "public": true,
+                "can_show_on_homepage": false,
+                "can_show_on_archive": true,
+                "accepting_registration": true,
+                "state": null,
+                "start_time": "2025-12-25T09:36:33.000Z",
+                "end_time": "2025-12-25T10:36:33.000Z",
+                "slug": "bangalore-automated-test-event-9",
+                "registration_start_time": "2025-12-18T09:36:33.000Z",
+                "registration_end_time": "2025-12-25T09:36:33.000Z",
+                "registration_instructions": null,
+                "ready_for_announcement": false,
+                "ready_for_notifications": false,
+                "ready_for_reminders": false,
+                "notifications_sent_at": null,
+                "announced_at": null,
+                "notification_state": "init",
+                "max_registration": 0,
+                "image": null,
+                "calendar_event_id": null,
+                "created_at": "2025-12-24T09:36:33.000Z",
+                "updated_at": "2025-12-24T09:36:33.000Z",
+                "chapter": {
+                  "id": 1,
+                  "name": "Bangalore",
+                  "description": "null Bangalore Chapter",
+                  "birthday": null,
+                  "code": "BLR",
+                  "active": true,
+                  "country": "IN",
+                  "city": "Bangalore",
+                  "state": null,
+                  "chapter_email": null,
+                  "image": null,
+                  "twitter_handle": null,
+                  "facebook_profile": null,
+                  "github_profile": null,
+                  "linkedin_profile": null,
+                  "slideshare_profile": null,
+                  "created_at": "2025-12-24T09:36:01.000Z",
+                  "updated_at": "2025-12-24T09:36:01.000Z"
+                }
+              },
+              {
+                "id": 1,
+                "name": "Past Meetup #1",
+                "description": "This was a great meetup that happened 1 months ago.",
+                "event_type_id": 3,
+                "chapter_id": 5,
+                "venue_id": 1,
+                "public": true,
+                "can_show_on_homepage": false,
+                "can_show_on_archive": true,
+                "accepting_registration": false,
+                "state": null,
+                "start_time": "2025-11-24T09:36:01.000Z",
+                "end_time": "2025-11-24T13:36:01.000Z",
+                "slug": null,
+                "registration_start_time": null,
+                "registration_end_time": null,
+                "registration_instructions": null,
+                "ready_for_announcement": false,
+                "ready_for_notifications": false,
+                "ready_for_reminders": false,
+                "notifications_sent_at": null,
+                "announced_at": null,
+                "notification_state": null,
+                "max_registration": 0,
+                "image": null,
+                "calendar_event_id": null,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "chapter": {
+                  "id": 5,
+                  "name": "Hyderabad",
+                  "description": "null Hyderabad Chapter",
+                  "birthday": null,
+                  "code": "HYD",
+                  "active": true,
+                  "country": "IN",
+                  "city": "Hyderabad",
+                  "state": null,
+                  "chapter_email": null,
+                  "image": null,
+                  "twitter_handle": null,
+                  "facebook_profile": null,
+                  "github_profile": null,
+                  "linkedin_profile": null,
+                  "slideshare_profile": null,
+                  "created_at": "2025-12-24T09:36:01.000Z",
+                  "updated_at": "2025-12-24T09:36:01.000Z"
+                }
+              },
+              {
+                "id": 2,
+                "name": "Past Meetup #2",
+                "description": "This was a great meetup that happened 2 months ago.",
+                "event_type_id": 2,
+                "chapter_id": 3,
+                "venue_id": 2,
+                "public": true,
+                "can_show_on_homepage": false,
+                "can_show_on_archive": true,
+                "accepting_registration": false,
+                "state": null,
+                "start_time": "2025-10-25T09:36:01.000Z",
+                "end_time": "2025-10-25T13:36:01.000Z",
+                "slug": null,
+                "registration_start_time": null,
+                "registration_end_time": null,
+                "registration_instructions": null,
+                "ready_for_announcement": false,
+                "ready_for_notifications": false,
+                "ready_for_reminders": false,
+                "notifications_sent_at": null,
+                "announced_at": null,
+                "notification_state": null,
+                "max_registration": 0,
+                "image": null,
+                "calendar_event_id": null,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "chapter": {
+                  "id": 3,
+                  "name": "Delhi",
+                  "description": "null Delhi Chapter",
+                  "birthday": null,
+                  "code": "DEL",
+                  "active": true,
+                  "country": "IN",
+                  "city": "Delhi",
+                  "state": null,
+                  "chapter_email": null,
+                  "image": null,
+                  "twitter_handle": null,
+                  "facebook_profile": null,
+                  "github_profile": null,
+                  "linkedin_profile": null,
+                  "slideshare_profile": null,
+                  "created_at": "2025-12-24T09:36:01.000Z",
+                  "updated_at": "2025-12-24T09:36:01.000Z"
+                }
+              }
+            ],
+            "recentUsers": [
+              {
+                "id": 15,
+                "email": "testuser_1768548500780@example.com",
+                "reset_password_sent_at": null,
+                "remember_created_at": null,
+                "sign_in_count": 0,
+                "current_sign_in_at": null,
+                "last_sign_in_at": null,
+                "current_sign_in_ip": null,
+                "last_sign_in_ip": null,
+                "confirmed_at": null,
+                "confirmation_sent_at": "2026-01-16T07:28:20.000Z",
+                "unconfirmed_email": null,
+                "name": "Test User API",
+                "homepage": null,
+                "about_me": null,
+                "twitter_handle": null,
+                "facebook_profile": null,
+                "github_profile": null,
+                "linkedin_profile": null,
+                "handle": null,
+                "avatar": null,
+                "created_at": "2026-01-16T07:28:20.000Z",
+                "updated_at": "2026-01-16T07:28:20.000Z",
+                "admin": false
+              },
+              {
+                "id": 14,
+                "email": "testuser_1768548473781@example.com",
+                "reset_password_sent_at": null,
+                "remember_created_at": null,
+                "sign_in_count": 0,
+                "current_sign_in_at": null,
+                "last_sign_in_at": null,
+                "current_sign_in_ip": null,
+                "last_sign_in_ip": null,
+                "confirmed_at": null,
+                "confirmation_sent_at": "2026-01-16T07:27:54.000Z",
+                "unconfirmed_email": null,
+                "name": "Test User API",
+                "homepage": null,
+                "about_me": null,
+                "twitter_handle": null,
+                "facebook_profile": null,
+                "github_profile": null,
+                "linkedin_profile": null,
+                "handle": null,
+                "avatar": null,
+                "created_at": "2026-01-16T07:27:54.000Z",
+                "updated_at": "2026-01-16T07:27:54.000Z",
+                "admin": false
+              },
+              {
+                "id": 1,
+                "email": "admin@null.community",
+                "reset_password_sent_at": null,
+                "remember_created_at": null,
+                "sign_in_count": 22,
+                "current_sign_in_at": "2026-01-16T07:28:21.000Z",
+                "last_sign_in_at": "2025-12-24T11:44:01.000Z",
+                "current_sign_in_ip": "::1",
+                "last_sign_in_ip": "::ffff:127.0.0.1",
+                "confirmed_at": "2025-12-24T09:36:01.000Z",
+                "confirmation_sent_at": null,
+                "unconfirmed_email": null,
+                "name": "Updated Test User",
+                "homepage": null,
+                "about_me": "This is a test user updated via API script",
+                "twitter_handle": null,
+                "facebook_profile": null,
+                "github_profile": "https://github.com/testuser",
+                "linkedin_profile": null,
+                "handle": "admin",
+                "avatar": null,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2026-01-16T07:28:21.000Z",
+                "admin": true
+              },
+              {
+                "id": 2,
+                "email": "lead.blr@null.community",
+                "reset_password_sent_at": null,
+                "remember_created_at": null,
+                "sign_in_count": 21,
+                "current_sign_in_at": "2025-12-24T11:44:02.000Z",
+                "last_sign_in_at": "2025-12-24T11:43:02.000Z",
+                "current_sign_in_ip": "::ffff:127.0.0.1",
+                "last_sign_in_ip": "::ffff:127.0.0.1",
+                "confirmed_at": "2025-12-24T09:36:01.000Z",
+                "confirmation_sent_at": null,
+                "unconfirmed_email": null,
+                "name": "Bangalore Lead",
+                "homepage": null,
+                "about_me": null,
+                "twitter_handle": null,
+                "facebook_profile": null,
+                "github_profile": null,
+                "linkedin_profile": null,
+                "handle": "blr_lead",
+                "avatar": null,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T11:44:02.000Z",
+                "admin": false
+              },
+              {
+                "id": 3,
+                "email": "lead.mum@null.community",
+                "reset_password_sent_at": null,
+                "remember_created_at": null,
+                "sign_in_count": 0,
+                "current_sign_in_at": null,
+                "last_sign_in_at": null,
+                "current_sign_in_ip": null,
+                "last_sign_in_ip": null,
+                "confirmed_at": "2025-12-24T09:36:01.000Z",
+                "confirmation_sent_at": null,
+                "unconfirmed_email": null,
+                "name": "Mumbai Lead",
+                "homepage": null,
+                "about_me": null,
+                "twitter_handle": null,
+                "facebook_profile": null,
+                "github_profile": null,
+                "linkedin_profile": null,
+                "handle": "mum_lead",
+                "avatar": null,
+                "created_at": "2025-12-24T09:36:01.000Z",
+                "updated_at": "2025-12-24T09:36:01.000Z",
+                "admin": false
+              }
+            ]
+          }
+        },
+        "url": "http://localhost:3001/api/stats/dashboard",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:22.069Z"
+      }
+    },
+    "userAchievements": {
+      "getUserAchievements": {
+        "success": true,
+        "status": 200,
+        "data": {
+          "code": "ACH001",
+          "message": "Achievements fetched successfully",
+          "result": [
+            {
+              "id": 2,
+              "user_id": 1,
+              "achievement_type": "Community",
+              "title": "Community Builder",
+              "description": "Founded a chapter.",
+              "awarded_at": "2025-12-24T09:36:01.000Z",
+              "created_at": "2025-12-24T09:36:01.000Z",
+              "updated_at": "2025-12-24T09:36:01.000Z"
+            }
+          ]
+        },
+        "url": "http://localhost:3001/api/user-achievements/1",
+        "method": "GET",
+        "timestamp": "2026-01-16T07:28:22.076Z"
+      }
+    }
+  },
+  "summary": {
+    "total": 59,
+    "success": 50,
+    "failed": 9,
+    "skipped": 0
+  },
+  "createdIds": {
+    "user": null,
+    "chapter": 9,
+    "chapterLead": 20,
+    "venue": 22,
+    "eventType": 23,
+    "event": 30,
+    "eventSession": 20,
+    "eventSessionComment": 18,
+    "eventRegistration": 26,
+    "page": 20,
+    "pagePermission": "generated-id"
+  }
+}

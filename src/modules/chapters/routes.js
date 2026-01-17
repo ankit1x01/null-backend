@@ -13,4 +13,8 @@ router.post('/createChapter', controller.createChapter);
 router.put('/updateChapter/:id', controller.updateChapter);
 router.delete('/deleteChapter/:id', controller.deleteChapter);
 
+// Additional routes to match Rails API
+router.get('/:id/leaders', controller.getChapterLeaders);
+router.get('/:id/upcoming-events', controller.getUpcomingEvents);
+
 module.exports = router;

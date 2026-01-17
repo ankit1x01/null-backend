@@ -55,6 +55,15 @@ module.exports = (sequelize) => {
       foreignKey: 'event_type_id',
       as: 'events'
     });
+    EventType.hasMany(models.SessionProposal, {
+      foreignKey: 'event_type_id',
+      as: 'sessionProposals'
+    });
+  };
+
+  // Rails: def invitation_required?
+  EventType.prototype.isInvitationRequired = function() {
+    return !!this.invitation_required;
   };
 
   return EventType;
