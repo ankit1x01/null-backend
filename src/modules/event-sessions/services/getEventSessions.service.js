@@ -20,11 +20,11 @@ const { Op } = sequelize.Sequelize;
  */
 const getEventSessions = async ({ requestId, page = 0, per_page = 20, event_id }) => {
   console.log(`[${requestId}] GetEventSessions attempt`);
-  
+
   try {
     const limit = Math.min(per_page, 100);
     const offset = page * limit;
-    
+
     const where = {};
     if (event_id) {
       where.event_id = event_id;
@@ -48,9 +48,9 @@ const getEventSessions = async ({ requestId, page = 0, per_page = 20, event_id }
       offset,
       order: [['start_time', 'ASC']]
     });
-    
+
     console.log(`[${requestId}] GetEventSessions successful: Found ${count} sessions`);
-    
+
     return {
       sessions: rows,
       pagination: {
@@ -62,7 +62,7 @@ const getEventSessions = async ({ requestId, page = 0, per_page = 20, event_id }
     };
   } catch (error) {
     console.error(`[${requestId}] GetEventSessions failed:`, error.message);
-    throw new Error(JSON.stringify(constants.getEventSessions.errorMessages.GETE0003));
+    throw new Error(JSON.stringify(constants.getEventSessions.errorMessages.GETEE0003));
   }
 };
 

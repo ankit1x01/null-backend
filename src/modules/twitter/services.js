@@ -142,25 +142,41 @@ class TwitterService {
 
   /**
    * Send tweet via Twitter API
-   * Placeholder - implement actual Twitter API v2 call
+   * Uses Twitter API v2 to post tweets
    */
   async sendTweet(integration, text) {
-    // TODO: Implement actual Twitter API call using integration credentials
-    // This is a placeholder that simulates the tweet
-    console.log(`[Twitter] Would send tweet: ${text}`);
-    
-    // In production, use twitter-api-v2 library:
-    // const { TwitterApi } = require('twitter-api-v2');
-    // const client = new TwitterApi({
-    //   appKey: integration.api_key,
-    //   appSecret: integration.api_secret,
-    //   accessToken: integration.access_token,
-    //   accessSecret: integration.access_token_secret,
-    // });
-    // const { data } = await client.v2.tweet(text);
-    // return data.id;
+    try {
+      // Use twitter-api-v2 library for Twitter API v2
+      const { TwitterApi } = require('twitter-api-v2');
 
-    return `mock_tweet_${Date.now()}`;
+      // Initialize Twitter client with OAuth 1.0a credentials
+      const client = new TwitterApi({
+        appKey: integration.api_key,
+        appSecret: integration.api_secret,
+        accessToken: integration.access_token,
+        accessSecret: integration.access_token_secret,
+      });
+
+      // Post tweet using v2 API
+      const { data } = await client.v2.tweet(text);
+
+      console.log(`[Twitter] Tweet sent successfully: ${data.id}`);
+      return data.id;
+
+    } catch (error) {
+      console.error(`[Twitter] Failed to send tweet:`, error.message);
+
+      // Handle specific Twitter API errors
+      if (error.code === 429) {
+        throw new Error('Twitter rate limit exceeded. Please try again later.');
+      } else if (error.code === 403 || error.code === 401) {
+        throw new Error('Twitter authentication failed. Check credentials.');
+      } else if (error.code === 187) {
+        throw new Error('Status is a duplicate.');
+      }
+
+      throw new Error(`Twitter API error: ${error.message}`);
+    }
   }
 
   /**

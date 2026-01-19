@@ -12,7 +12,18 @@ const constants = require('../constants');
  * @throws {Error} - If validation fails
  */
 const getChapterById = (req) => {
-  return { ...req.query, ...req.body };
+  const { id, chapterId } = { ...req.query, ...req.body };
+  const finalId = id || chapterId;
+
+  if (!finalId) {
+    throw new Error(JSON.stringify(constants.getChapterById.errorMessages.GETCE0001)); // Or create a missing param error
+  }
+
+  if (isNaN(Number(finalId))) {
+    throw new Error(JSON.stringify(constants.getChapterById.errorMessages.GETCE0002)); // Invalid format
+  }
+
+  return { id: Number(finalId) };
 };
 
 module.exports = getChapterById;

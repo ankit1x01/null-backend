@@ -2,7 +2,6 @@
  * UpdatePagePermission Validator
  * Validates updatePagePermission request data
  */
-const sharedValidators = require('../../../shared/validators');
 const constants = require('../constants');
 
 /**
@@ -12,19 +11,19 @@ const constants = require('../constants');
  * @throws {Error} - If validation fails
  */
 const updatePagePermission = (req) => {
-  const { /* TODO: Add expected fields */ } = req.body;
-  
-  // TODO: Add validation logic based on your requirements
-  // Example validations:
-  
-  // if (sharedValidators.isRequired(requiredField)) {
-  //   throw new Error(JSON.stringify(constants.updatePagePermission.errorMessages.UPDAE0001));
-  // }
-  
-  // if (!sharedValidators.isValidEmail(email)) {
-  //   throw new Error(JSON.stringify(constants.updatePagePermission.errorMessages.UPDAE0002));
-  // }
-  
+  const { permission_type } = req.body;
+
+  // Permission type must be provided for update
+  if (!permission_type) {
+    throw new Error(JSON.stringify(constants.updatePagePermission.errorMessages.UPDAE0001));
+  }
+
+  // Validate permission_type enum
+  const validTypes = ['ReadWrite', 'ReadOnly'];
+  if (!validTypes.includes(permission_type)) {
+    throw new Error(JSON.stringify(constants.updatePagePermission.errorMessages.UPDAE0002));
+  }
+
   return req.body;
 };
 

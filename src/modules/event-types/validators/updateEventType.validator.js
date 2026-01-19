@@ -2,7 +2,6 @@
  * UpdateEventType Validator
  * Validates updateEventType request data
  */
-const sharedValidators = require('../../../shared/validators');
 const constants = require('../constants');
 
 /**
@@ -12,18 +11,48 @@ const constants = require('../constants');
  * @throws {Error} - If validation fails
  */
 const updateEventType = (req) => {
-  const { /* TODO: Add expected fields */ } = req.body;
+  const {
+    name,
+    description,
+    max_participant,
+    public: isPublic,
+    registration_required,
+    invitation_required
+  } = req.body;
 
-  // TODO: Add validation logic based on your requirements
-  // Example validations:
+  // At least one field must be provided for update
+  const hasFields = name || description || max_participant !== undefined ||
+                    isPublic !== undefined || registration_required !== undefined ||
+                    invitation_required !== undefined;
 
-  // if (sharedValidators.isRequired(requiredField)) {
-  //   throw new Error(JSON.stringify(constants.updateEventType.errorMessages.UPDAE0001));
-  // }
+  if (!hasFields) {
+    throw new Error(JSON.stringify(constants.updateEventType.errorMessages.UPDAE0001));
+  }
 
-  // if (!sharedValidators.isValidEmail(email)) {
-  //   throw new Error(JSON.stringify(constants.updateEventType.errorMessages.UPDAE0002));
-  // }
+  // Validate name if provided
+  if (name !== undefined && (typeof name !== 'string' || name.trim() === '')) {
+    throw new Error(JSON.stringify(constants.updateEventType.errorMessages.UPDAE0002));
+  }
+
+  // Validate max_participant if provided
+  if (max_participant !== undefined) {
+    if (!Number.isInteger(Number(max_participant)) || Number(max_participant) <= 0) {
+      throw new Error(JSON.stringify(constants.updateEventType.errorMessages.UPDAE0002));
+    }
+  }
+
+  // Validate boolean fields if provided
+  if (isPublic !== undefined && typeof isPublic !== 'boolean') {
+    throw new Error(JSON.stringify(constants.updateEventType.errorMessages.UPDAE0002));
+  }
+
+  if (registration_required !== undefined && typeof registration_required !== 'boolean') {
+    throw new Error(JSON.stringify(constants.updateEventType.errorMessages.UPDAE0002));
+  }
+
+  if (invitation_required !== undefined && typeof invitation_required !== 'boolean') {
+    throw new Error(JSON.stringify(constants.updateEventType.errorMessages.UPDAE0002));
+  }
 
   return {
     ...req.body,

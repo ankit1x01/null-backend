@@ -2,7 +2,6 @@
  * GetUserSessions Validator
  * Validates getUserSessions request data
  */
-const sharedValidators = require('../../../shared/validators');
 const constants = require('../constants');
 
 /**
@@ -12,20 +11,21 @@ const constants = require('../constants');
  * @throws {Error} - If validation fails
  */
 const getUserSessions = (req) => {
-  const { /* TODO: Add expected fields */ } = req.body;
-  
-  // TODO: Add validation logic based on your requirements
-  // Example validations:
-  
-  // if (sharedValidators.isRequired(requiredField)) {
-  //   throw new Error(JSON.stringify(constants.getUserSessions.errorMessages.GETUE0001));
-  // }
-  
-  // if (!sharedValidators.isValidEmail(email)) {
-  //   throw new Error(JSON.stringify(constants.getUserSessions.errorMessages.GETUE0002));
-  // }
-  
-  return req.body;
+  const user_id = req.params.id || req.user?.id;
+
+  // Validate user_id is provided
+  if (!user_id) {
+    throw new Error(JSON.stringify(constants.getUserSessions.errorMessages.GETUE0001));
+  }
+
+  // Validate user_id is a valid integer
+  if (!Number.isInteger(Number(user_id))) {
+    throw new Error(JSON.stringify(constants.getUserSessions.errorMessages.GETUE0002));
+  }
+
+  return {
+    user_id: Number(user_id)
+  };
 };
 
 module.exports = getUserSessions;

@@ -14,16 +14,9 @@ const constants = require('../constants');
 const deletePage = (req) => {
   // const { } = req.body;
 
-  // TODO: Add validation logic based on your requirements
-  // Example validations:
-
-  // if (sharedValidators.isRequired(requiredField)) {
-  //   throw new Error(JSON.stringify(constants.deletePage.errorMessages.DELEE0001));
-  // }
-
-  // if (!sharedValidators.isValidEmail(email)) {
-  //   throw new Error(JSON.stringify(constants.deletePage.errorMessages.DELEE0002));
-  // }
+  if (sharedValidators.isRequired(req.params.id)) {
+    throw new Error(JSON.stringify(constants.deletePage.errorMessages.DELEE0001));
+  }
 
   return {
     id: req.params.id

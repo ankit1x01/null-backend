@@ -2,7 +2,6 @@
  * DeleteEventSession Validator
  * Validates deleteEventSession request data
  */
-const sharedValidators = require('../../../shared/validators');
 const constants = require('../constants');
 
 /**
@@ -12,20 +11,21 @@ const constants = require('../constants');
  * @throws {Error} - If validation fails
  */
 const deleteEventSession = (req) => {
-  const { /* TODO: Add expected fields */ } = req.body;
-  
-  // TODO: Add validation logic based on your requirements
-  // Example validations:
-  
-  // if (sharedValidators.isRequired(requiredField)) {
-  //   throw new Error(JSON.stringify(constants.deleteEventSession.errorMessages.DELEE0001));
-  // }
-  
-  // if (!sharedValidators.isValidEmail(email)) {
-  //   throw new Error(JSON.stringify(constants.deleteEventSession.errorMessages.DELEE0002));
-  // }
-  
-  return req.body;
+  const id = req.params.id;
+
+  // Validate ID is provided
+  if (!id) {
+    throw new Error(JSON.stringify(constants.deleteEventSession.errorMessages.DELEE0001));
+  }
+
+  // Validate ID is a valid integer
+  if (!Number.isInteger(Number(id))) {
+    throw new Error(JSON.stringify(constants.deleteEventSession.errorMessages.DELEE0002));
+  }
+
+  return {
+    id: Number(id)
+  };
 };
 
 module.exports = deleteEventSession;

@@ -2,7 +2,6 @@
  * CreatePagePermission Validator
  * Validates createPagePermission request data
  */
-const sharedValidators = require('../../../shared/validators');
 const constants = require('../constants');
 
 /**
@@ -12,19 +11,36 @@ const constants = require('../constants');
  * @throws {Error} - If validation fails
  */
 const createPagePermission = (req) => {
-  const { /* TODO: Add expected fields */ } = req.body;
-  
-  // TODO: Add validation logic based on your requirements
-  // Example validations:
-  
-  // if (sharedValidators.isRequired(requiredField)) {
-  //   throw new Error(JSON.stringify(constants.createPagePermission.errorMessages.CREAE0001));
-  // }
-  
-  // if (!sharedValidators.isValidEmail(email)) {
-  //   throw new Error(JSON.stringify(constants.createPagePermission.errorMessages.CREAE0002));
-  // }
-  
+  const { page_id, user_id, permission_type } = req.body;
+
+  // Validate required fields
+  if (!page_id) {
+    throw new Error(JSON.stringify(constants.createPagePermission.errorMessages.CREAE0001));
+  }
+
+  if (!user_id) {
+    throw new Error(JSON.stringify(constants.createPagePermission.errorMessages.CREAE0001));
+  }
+
+  if (!permission_type) {
+    throw new Error(JSON.stringify(constants.createPagePermission.errorMessages.CREAE0001));
+  }
+
+  // Validate field types
+  if (!Number.isInteger(Number(page_id))) {
+    throw new Error(JSON.stringify(constants.createPagePermission.errorMessages.CREAE0002));
+  }
+
+  if (!Number.isInteger(Number(user_id))) {
+    throw new Error(JSON.stringify(constants.createPagePermission.errorMessages.CREAE0002));
+  }
+
+  // Validate permission_type enum
+  const validTypes = ['ReadWrite', 'ReadOnly'];
+  if (!validTypes.includes(permission_type)) {
+    throw new Error(JSON.stringify(constants.createPagePermission.errorMessages.CREAE0002));
+  }
+
   return req.body;
 };
 

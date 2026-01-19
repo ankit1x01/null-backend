@@ -7,7 +7,7 @@
 const express = require('express');
 const router = express.Router();
 const { jwt, upload } = require('../../shared/middlewares');
-const { User, Event, EventSession, Chapter } = require('../../shared/models');
+const { User, Event, EventSession, Chapter, ChapterLead } = require('../../shared/models');
 
 // ============================================
 // User Avatar Upload
@@ -165,7 +165,22 @@ router.post(
         });
       }
 
-      // TODO: Check if user is chapter lead for this event's chapter
+      // Check if user is chapter lead for this event's chapter or admin
+      const isLead = await ChapterLead.findOne({
+        where: {
+          user_id: req.user.id,
+          chapter_id: event.chapter_id,
+          active: true
+        }
+      });
+
+      if (!isLead && !req.user.admin) {
+        return res.status(403).json({
+          code: 'UPLOAD_AUTH_005',
+          message: 'Only chapter leads can upload event images',
+          result: null
+        });
+      }
 
       // Delete old image if exists
       if (event.image && !event.image.startsWith('http')) {
@@ -392,7 +407,22 @@ router.post(
         });
       }
 
-      // TODO: Check if user is chapter lead
+      // Check if user is chapter lead or admin
+      const isLead = await ChapterLead.findOne({
+        where: {
+          user_id: req.user.id,
+          chapter_id: id,
+          active: true
+        }
+      });
+
+      if (!isLead && !req.user.admin) {
+        return res.status(403).json({
+          code: 'UPLOAD_AUTH_006',
+          message: 'Only chapter leads can upload chapter images',
+          result: null
+        });
+      }
 
       // Delete old image if exists
       if (chapter.image && !chapter.image.startsWith('http')) {

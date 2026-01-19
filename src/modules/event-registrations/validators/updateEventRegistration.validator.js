@@ -2,7 +2,6 @@
  * UpdateEventRegistration Validator
  * Validates updateEventRegistration request data
  */
-const sharedValidators = require('../../../shared/validators');
 const constants = require('../constants');
 
 /**
@@ -12,19 +11,28 @@ const constants = require('../constants');
  * @throws {Error} - If validation fails
  */
 const updateEventRegistration = (req) => {
-  const { /* TODO: Add expected fields */ } = req.body;
-  
-  // TODO: Add validation logic based on your requirements
-  // Example validations:
-  
-  // if (sharedValidators.isRequired(requiredField)) {
-  //   throw new Error(JSON.stringify(constants.updateEventRegistration.errorMessages.UPDAE0001));
-  // }
-  
-  // if (!sharedValidators.isValidEmail(email)) {
-  //   throw new Error(JSON.stringify(constants.updateEventRegistration.errorMessages.UPDAE0002));
-  // }
-  
+  const { accepted, visible, state } = req.body;
+
+  // At least one field must be provided for update
+  if (accepted === undefined && visible === undefined && state === undefined) {
+    throw new Error(JSON.stringify(constants.updateEventRegistration.errorMessages.UPDAE0001));
+  }
+
+  // Validate optional boolean fields
+  if (accepted !== undefined && typeof accepted !== 'boolean') {
+    throw new Error(JSON.stringify(constants.updateEventRegistration.errorMessages.UPDAE0002));
+  }
+
+  if (visible !== undefined && typeof visible !== 'boolean') {
+    throw new Error(JSON.stringify(constants.updateEventRegistration.errorMessages.UPDAE0002));
+  }
+
+  // Validate state enum if provided
+  const validStates = ['Provisional', 'Confirmed', 'Not Attending', 'Absent'];
+  if (state !== undefined && !validStates.includes(state)) {
+    throw new Error(JSON.stringify(constants.updateEventRegistration.errorMessages.UPDAE0002));
+  }
+
   return req.body;
 };
 

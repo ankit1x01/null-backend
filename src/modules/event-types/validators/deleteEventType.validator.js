@@ -2,7 +2,6 @@
  * DeleteEventType Validator
  * Validates deleteEventType request data
  */
-const sharedValidators = require('../../../shared/validators');
 const constants = require('../constants');
 
 /**
@@ -12,21 +11,20 @@ const constants = require('../constants');
  * @throws {Error} - If validation fails
  */
 const deleteEventType = (req) => {
-  const { /* TODO: Add expected fields */ } = req.body;
+  const id = req.params.id;
 
-  // TODO: Add validation logic based on your requirements
-  // Example validations:
+  // Validate ID is provided
+  if (!id) {
+    throw new Error(JSON.stringify(constants.deleteEventType.errorMessages.DELEE0001));
+  }
 
-  // if (sharedValidators.isRequired(requiredField)) {
-  //   throw new Error(JSON.stringify(constants.deleteEventType.errorMessages.DELEE0001));
-  // }
-
-  // if (!sharedValidators.isValidEmail(email)) {
-  //   throw new Error(JSON.stringify(constants.deleteEventType.errorMessages.DELEE0002));
-  // }
+  // Validate ID is a valid integer
+  if (!Number.isInteger(Number(id))) {
+    throw new Error(JSON.stringify(constants.deleteEventType.errorMessages.DELEE0002));
+  }
 
   return {
-    id: req.params.id
+    id: Number(id)
   };
 };
 

@@ -2,7 +2,6 @@
  * UpdateEventSessionComment Validator
  * Validates updateEventSessionComment request data
  */
-const sharedValidators = require('../../../shared/validators');
 const constants = require('../constants');
 
 /**
@@ -12,19 +11,21 @@ const constants = require('../constants');
  * @throws {Error} - If validation fails
  */
 const updateEventSessionComment = (req) => {
-  const { /* TODO: Add expected fields */ } = req.body;
-  
-  // TODO: Add validation logic based on your requirements
-  // Example validations:
-  
-  // if (sharedValidators.isRequired(requiredField)) {
-  //   throw new Error(JSON.stringify(constants.updateEventSessionComment.errorMessages.UPDAE0001));
-  // }
-  
-  // if (!sharedValidators.isValidEmail(email)) {
-  //   throw new Error(JSON.stringify(constants.updateEventSessionComment.errorMessages.UPDAE0002));
-  // }
-  
+  const { comment_body, comment } = req.body;
+
+  // Support both comment_body (model field) and comment (API field)
+  const commentText = comment_body || comment;
+
+  // At least comment field must be provided for update
+  if (!commentText) {
+    throw new Error(JSON.stringify(constants.updateEventSessionComment.errorMessages.UPDAE0001));
+  }
+
+  // Validate comment text
+  if (typeof commentText !== 'string' || commentText.trim() === '') {
+    throw new Error(JSON.stringify(constants.updateEventSessionComment.errorMessages.UPDAE0002));
+  }
+
   return req.body;
 };
 

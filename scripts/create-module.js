@@ -2,11 +2,14 @@
 
 const fs = require('fs');
 const path = require('path');
+const autoGenerator = require('../src/swagger/auto-generator');
 
 /**
  * Enhanced Create Module Generator Script
  * Generates a new module with feature-based structure following windsurf rules
  */
+
+
 
 // Get module name and features from command line arguments
 const moduleName = process.argv[2];
@@ -51,7 +54,7 @@ if (!/^[a-z]+(-[a-z]+)*$/.test(moduleName)) {
 let features = ['create', 'get']; // Default features
 if (featuresArg) {
   features = featuresArg.split(',').map(f => f.trim());
-  
+
   // Validate feature names (should be camelCase)
   for (const feature of features) {
     if (!/^[a-z][a-zA-Z0-9]*$/.test(feature)) {
@@ -118,7 +121,7 @@ const generateErrorCode = (feature, type, index) => {
 try {
   // Create main module directory
   createDirectory(modulePath);
-  
+
   // Create subdirectories
   createDirectory(path.join(modulePath, 'constants'));
   createDirectory(path.join(modulePath, 'services'));
@@ -135,7 +138,7 @@ try {
   features.forEach((feature, index) => {
     const featureName = feature;
     const featureTitle = capitalize(feature);
-    
+
     // Generate constants file
     const constantsContent = `/**
  * ${featureTitle} Constants
@@ -189,17 +192,17 @@ const sharedConstants = require('../../../shared/constants');
  */
 const ${feature} = async ({ requestId, ...data }) => {
   console.log(\`[\${requestId}] ${featureTitle} attempt\`);
-  
+
   try {
-    // TODO: Implement ${feature} logic here
+    // Implement ${feature} logic here
     // Example: Database operations, external API calls, etc.
-    
+
     const result = {
       id: 'generated-id',
       ...data,
       timestamp: new Date().toISOString()
     };
-    
+
     console.log(\`[\${requestId}] ${featureTitle} successful\`);
     return result;
   } catch (error) {
@@ -212,6 +215,11 @@ module.exports = ${feature};
 `;
 
     // Generate validator file
+    const isIdRequired = feature.startsWith('delete') || feature.startsWith('remove') || feature.startsWith('update') || feature.startsWith('edit') || feature.startsWith('get') || feature.startsWith('fetch');
+    const returnObject = isIdRequired
+      ? `    id: req.params.id,\n    ...req.body`
+      : `    ...req.body`;
+
     const validatorContent = `/**
  * ${featureTitle} Validator
  * Validates ${feature} request data
@@ -226,20 +234,16 @@ const constants = require('../constants');
  * @throws {Error} - If validation fails
  */
 const ${feature} = (req) => {
-  const { /* TODO: Add expected fields */ } = req.body;
-  
-  // TODO: Add validation logic based on your requirements
+  // const { } = req.body;
+
   // Example validations:
-  
   // if (sharedValidators.isRequired(requiredField)) {
   //   throw new Error(JSON.stringify(constants.${feature}.errorMessages.${generateErrorCode(feature, 'error', 1)}));
   // }
-  
-  // if (!sharedValidators.isValidEmail(email)) {
-  //   throw new Error(JSON.stringify(constants.${feature}.errorMessages.${generateErrorCode(feature, 'error', 2)}));
-  // }
-  
-  return req.body;
+
+  return {
+${returnObject}
+  };
 };
 
 module.exports = ${feature};
@@ -254,7 +258,7 @@ module.exports = ${feature};
     constantsImports.push(`const ${feature} = require('./${feature}.constants');`);
     servicesImports.push(`const ${feature} = require('./${feature}.service');`);
     validatorsImports.push(`const ${feature} = require('./${feature}.validator');`);
-    
+
     // Generate controller function
     const controllerFunction = `/**
  * ${featureTitle}
@@ -266,16 +270,16 @@ const ${feature} = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.${feature}(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || \`req-\${Date.now()}\`;
-    
+
     // Handle logic within service function
     const result = await ${camelCaseName}Services.${feature}({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.${feature}.messages.${generateErrorCode(feature, 'success', 1)},
@@ -294,11 +298,11 @@ const ${feature} = async (req, res, next) => {
 
     controllerFunctions.push(controllerFunction);
     controllerExports.push(feature);
-    
+
     // Generate route (determine HTTP method based on feature name)
     let method = 'post';
     let routePath = `/${feature}`;
-    
+
     if (feature.startsWith('get') || feature.startsWith('list') || feature.startsWith('fetch')) {
       method = 'get';
     } else if (feature.startsWith('update') || feature.startsWith('edit')) {
@@ -308,7 +312,7 @@ const ${feature} = async (req, res, next) => {
       method = 'delete';
       routePath = `/${feature}/:id`;
     }
-    
+
     routes.push(`router.${method}('${routePath}', controller.${feature});`);
   });
 
@@ -399,144 +403,10 @@ module.exports = router;
 
   // Generate Swagger documentation
   createDirectory(path.join(modulePath, 'docs'));
-  
-  // Generate swagger paths
-  const swaggerPaths = {};
-  const schemas = {};
-  
-  features.forEach(feature => {
-    const featureTitle = capitalize(feature);
-    const fullPath = `/api/${moduleName}/${feature}`;
-    
-    // Determine HTTP method
-    let method = 'post';
-    let routePath = `/${feature}`;
-    
-    if (feature.startsWith('get') || feature.startsWith('list') || feature.startsWith('fetch')) {
-      method = 'get';
-    } else if (feature.startsWith('update') || feature.startsWith('edit')) {
-      method = 'put';
-      routePath = `/${feature}/:id`;
-    } else if (feature.startsWith('delete') || feature.startsWith('remove')) {
-      method = 'delete';
-      routePath = `/${feature}/:id`;
-    }
-    
-    const requestSchemaName = `${featureTitle}Request`;
-    const responseSchemaName = `${featureTitle}Response`;
-    
-    // Create swagger path
-    if (!swaggerPaths[fullPath]) {
-      swaggerPaths[fullPath] = {};
-    }
-    
-    swaggerPaths[fullPath][method] = {
-      summary: `${featureTitle} operation`,
-      description: `Performs ${feature} operation in ${moduleName} module`,
-      tags: [pascalCaseName],
-      security: [{ bearerAuth: [] }],
-      ...(method !== 'get' && {
-        requestBody: {
-          required: true,
-          content: {
-            'application/json': {
-              schema: { $ref: `#/components/schemas/${requestSchemaName}` }
-            }
-          }
-        }
-      }),
-      responses: {
-        200: {
-          description: `${featureTitle} successful`,
-          content: {
-            'application/json': {
-              schema: { $ref: `#/components/schemas/${responseSchemaName}` }
-            }
-          }
-        },
-        400: {
-          description: 'Bad Request',
-          content: {
-            'application/json': {
-              schema: { $ref: '#/components/schemas/ErrorResponse' }
-            }
-          }
-        },
-        401: {
-          description: 'Unauthorized',
-          content: {
-            'application/json': {
-              schema: { $ref: '#/components/schemas/ErrorResponse' }
-            }
-          }
-        },
-        500: {
-          description: 'Internal Server Error',
-          content: {
-            'application/json': {
-              schema: { $ref: '#/components/schemas/ErrorResponse' }
-            }
-          }
-        }
-      }
-    };
-    
-    // Generate schemas
-    schemas[requestSchemaName] = {
-      type: 'object',
-      properties: {
-        data: {
-          type: 'object',
-          description: `Request data for ${feature} operation`
-        }
-      },
-      example: {
-        data: `Sample request data for ${feature}`
-      }
-    };
-    
-    schemas[responseSchemaName] = {
-      type: 'object',
-      properties: {
-        code: {
-          type: 'string',
-          example: generateErrorCode(feature, 'success', 1)
-        },
-        statusCode: {
-          type: 'integer',
-          example: 200
-        },
-        message: {
-          type: 'string',
-          example: `${featureTitle} successful`
-        },
-        result: {
-          type: 'object',
-          description: `Result data for ${feature} operation`
-        }
-      }
-    };
-  });
-  
-  // Add common error response schema
-  schemas.ErrorResponse = {
-    type: 'object',
-    properties: {
-      code: {
-        type: 'string',
-        example: 'ERROR0001'
-      },
-      statusCode: {
-        type: 'integer',
-        example: 400
-      },
-      message: {
-        type: 'string',
-        example: 'Error message'
-      }
-    }
-  };
-  
+
+  // Use auto-generator to create documentation
+  const { swaggerPaths, schemas } = autoGenerator.generateModuleDocs(moduleName, modulePath);
+
   // Create swagger documentation file
   createFile(
     path.join(modulePath, 'docs', `${moduleName}.swagger.js`),
@@ -548,7 +418,7 @@ module.exports = router;
 module.exports = ${JSON.stringify(swaggerPaths, null, 2)};
 `
   );
-  
+
   // Create schemas file
   createFile(
     path.join(modulePath, 'docs', 'schemas.js'),
@@ -564,7 +434,7 @@ module.exports = ${JSON.stringify(schemas, null, 2)};
   // Update main modules index.js
   const modulesIndexPath = path.join(__dirname, '..', 'src', 'modules', 'index.js');
   let modulesIndexContent = '';
-  
+
   if (fs.existsSync(modulesIndexPath)) {
     modulesIndexContent = fs.readFileSync(modulesIndexPath, 'utf8');
   }
@@ -577,7 +447,7 @@ module.exports = ${JSON.stringify(schemas, null, 2)};
     // Find the position to insert the import
     const lines = modulesIndexContent.split('\n');
     const lastImportIndex = lines.findLastIndex(line => line.includes('require('));
-    
+
     if (lastImportIndex !== -1) {
       lines.splice(lastImportIndex + 1, 0, newModuleImport);
     } else {
@@ -587,10 +457,10 @@ module.exports = ${JSON.stringify(schemas, null, 2)};
     // Find the module.exports section and add the new export
     const exportStartIndex = lines.findIndex(line => line.includes('module.exports'));
     if (exportStartIndex !== -1) {
-      const exportEndIndex = lines.findIndex((line, index) => 
+      const exportEndIndex = lines.findIndex((line, index) =>
         index > exportStartIndex && line.includes('}')
       );
-      
+
       if (exportEndIndex !== -1) {
         lines.splice(exportEndIndex, 0, newModuleExport);
       }
@@ -608,10 +478,10 @@ module.exports = ${JSON.stringify(schemas, null, 2)};
   if (fs.existsSync(mainIndexPath)) {
     let mainIndexContent = fs.readFileSync(mainIndexPath, 'utf8');
     const newRoute = `app.use('/api/${moduleName}', modules.${camelCaseName});`;
-    
+
     if (!mainIndexContent.includes(newRoute)) {
       const lines = mainIndexContent.split('\n');
-      
+
       // Find the "Setup routes" section or the last app.use route
       let insertIndex = -1;
       for (let i = 0; i < lines.length; i++) {
@@ -623,7 +493,7 @@ module.exports = ${JSON.stringify(schemas, null, 2)};
           insertIndex = i + 1;
         }
       }
-      
+
       if (insertIndex !== -1) {
         lines.splice(insertIndex, 0, newRoute);
         fs.writeFileSync(mainIndexPath, lines.join('\n'));
@@ -659,7 +529,7 @@ module.exports = ${JSON.stringify(schemas, null, 2)};
       console.log(`   ${method.padEnd(6)} /api/${moduleName}${path}`);
     }
   });
-  
+
 } catch (error) {
   console.error('❌ Error creating module:', error.message);
   console.log('');

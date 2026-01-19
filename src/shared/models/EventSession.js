@@ -40,9 +40,9 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING
     },
     // Rails: tags field for acts_as_taggable (stored as comma-separated string)
-    tags: {
-      type: DataTypes.STRING
-    },
+    // tags: {
+    //   type: DataTypes.STRING
+    // },
     need_projector: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
