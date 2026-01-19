@@ -1,7 +1,0 @@
-≡ƒöº Creating database...
-
-Γ£à Connected to MySQL server
-Γ£à Database 'null-community' created successfully
-
-Γ£à All done! You can now run: node scripts/setup-database.js
-

@@ -103,19 +103,19 @@ module.exports = {
       }
     }
   },
-  "GetUsersRequest": {
+  "GetUserRegistrationsRequest": {
     "type": "object",
     "properties": {
       "data": {
         "type": "object",
-        "description": "Request data for getUsers operation"
+        "description": "Request data for getUserRegistrations operation"
       }
     },
     "example": {
-      "data": "Sample request data for getUsers"
+      "data": "Sample request data for getUserRegistrations"
     }
   },
-  "GetUsersResponse": {
+  "GetUserRegistrationsResponse": {
     "type": "object",
     "properties": {
       "code": {
@@ -132,7 +132,7 @@ module.exports = {
       },
       "result": {
         "type": "object",
-        "description": "Result data for getUsers operation"
+        "description": "Result data for getUserRegistrations operation"
       }
     }
   },

@@ -172,10 +172,10 @@ module.exports = {
       }
     }
   },
-  "/api/users/getUsers": {
+  "/api/users/registrations": {
     "get": {
-      "summary": "GetUsers operation",
-      "description": "Performs getUsers operation in users module",
+      "summary": "GetUserRegistrations operation",
+      "description": "Performs getUserRegistrations operation in users module",
       "tags": [
         "Users"
       ],
@@ -186,11 +186,11 @@ module.exports = {
       ],
       "responses": {
         "200": {
-          "description": "GetUsers successful",
+          "description": "GetUserRegistrations successful",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUsersResponse"
+                "$ref": "#/components/schemas/GetUserRegistrationsResponse"
               }
             }
           }

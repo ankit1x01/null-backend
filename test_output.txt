@@ -1,3 +1,0 @@
-
-[36m=== Authenticating Users ===[0m
-[31mΓ¥î Login failed for admin [connect ECONNREFUSED 127.0.0.1:3001][0m
