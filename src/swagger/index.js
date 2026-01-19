@@ -103,12 +103,12 @@ const generateSwaggerSpec = () => {
   const swaggerDefinition = {
     openapi: '3.0.0',
     info: {
-      title: 'Null Community API',
+      title: 'Null Community API 🚀',
       version: '1.0.0',
-      description: 'Auto-generated API documentation for Null Community with modular architecture',
+      description: 'Official API documentation for the Null Community Platform',
       contact: {
-        name: 'API Support',
-        email: 'ankit1x01@gmail.com'
+        name: 'Null Community Team',
+        email: 'hello@null.community'
       }
     },
     servers: [
