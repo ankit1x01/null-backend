@@ -155,8 +155,7 @@ const getSwaggerMiddleware = () => {
       filter: true,
       showExtensions: true,
       showCommonExtensions: true,
-      // Force refresh to prevent caching issues
-      url: `/api-docs/swagger.json?v=${Date.now()}`
+      tryItOutEnabled: true
     }
   };
 
