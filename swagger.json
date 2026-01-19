@@ -1,12 +1,12 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Node.js Boilerplate API",
+    "title": "Null Community API",
     "version": "1.0.0",
-    "description": "Auto-generated API documentation for Node.js boilerplate with modular architecture",
+    "description": "Auto-generated API documentation for Null Community with modular architecture",
     "contact": {
       "name": "API Support",
-      "email": "support@example.com"
+      "email": "ankit1x01@gmail.com"
     }
   },
   "servers": [

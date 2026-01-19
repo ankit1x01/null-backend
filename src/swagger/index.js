@@ -14,7 +14,7 @@ const path = require('path');
 const loadModuleDocs = () => {
   const modulesPath = path.join(__dirname, '../modules');
   let paths = {};
-  let components = { 
+  let components = {
     schemas: {},
     securitySchemes: {
       bearerAuth: {
@@ -24,7 +24,7 @@ const loadModuleDocs = () => {
       }
     }
   };
-  
+
   try {
     if (!fs.existsSync(modulesPath)) {
       console.log('📚 No modules directory found');
@@ -35,7 +35,7 @@ const loadModuleDocs = () => {
 
     modules.forEach(moduleName => {
       const moduleDocsPath = path.join(modulesPath, moduleName, 'docs');
-      
+
       if (fs.existsSync(moduleDocsPath)) {
         try {
           // Load module-specific swagger paths
@@ -44,7 +44,7 @@ const loadModuleDocs = () => {
             const moduleSwagger = require(swaggerFile);
             paths = { ...paths, ...moduleSwagger };
           }
-          
+
           // Load module-specific schemas
           const schemasFile = path.join(moduleDocsPath, 'schemas.js');
           if (fs.existsSync(schemasFile)) {
@@ -56,11 +56,11 @@ const loadModuleDocs = () => {
         }
       }
     });
-    
+
   } catch (error) {
     console.error('❌ Error loading module documentation:', error.message);
   }
-  
+
   return { paths, components };
 };
 
@@ -70,11 +70,11 @@ const loadModuleDocs = () => {
  */
 const generateSwaggerSpec = () => {
   const { paths, components } = loadModuleDocs();
-  
+
   // Generate tags dynamically from existing modules
   const modulesPath = path.join(__dirname, '../modules');
   const dynamicTags = [];
-  
+
   try {
     if (fs.existsSync(modulesPath)) {
       const modules = fs.readdirSync(modulesPath);
@@ -83,12 +83,12 @@ const generateSwaggerSpec = () => {
         if (fs.existsSync(moduleDocsPath)) {
           const tagName = moduleName.charAt(0).toUpperCase() + moduleName.slice(1);
           let description = `${tagName} module operations`;
-          
+
           // Add specific descriptions for known modules
           if (moduleName === 'auth') {
             description = 'User authentication and authorization operations including login, registration, and session management';
           }
-          
+
           dynamicTags.push({
             name: tagName,
             description: description
@@ -99,21 +99,21 @@ const generateSwaggerSpec = () => {
   } catch (error) {
     console.warn('⚠️  Error generating dynamic tags:', error.message);
   }
-  
+
   const swaggerDefinition = {
     openapi: '3.0.0',
     info: {
-      title: 'Node.js Boilerplate API',
+      title: 'Null Community API',
       version: '1.0.0',
-      description: 'Auto-generated API documentation for Node.js boilerplate with modular architecture',
+      description: 'Auto-generated API documentation for Null Community with modular architecture',
       contact: {
         name: 'API Support',
-        email: 'support@example.com'
+        email: 'ankit1x01@gmail.com'
       }
     },
     servers: [
       {
-        url: process.env.NODE_ENV === 'production' 
+        url: process.env.NODE_ENV === 'production'
           ? process.env.API_BASE_URL || 'https://api.example.com'
           : `http://localhost:${process.env.PORT || 3001}`,
         description: process.env.NODE_ENV === 'production' ? 'Production server' : 'Development server'
@@ -128,7 +128,7 @@ const generateSwaggerSpec = () => {
     components,
     tags: dynamicTags
   };
-  
+
   return swaggerDefinition;
 };
 
@@ -138,17 +138,17 @@ const generateSwaggerSpec = () => {
  */
 const getSwaggerMiddleware = () => {
   const swaggerSpec = generateSwaggerSpec();
-  
+
   // Custom CSS for better UI
   const customCss = `
     .swagger-ui .topbar { display: none; }
     .swagger-ui .info .title { color: #3b82f6; }
     .swagger-ui .scheme-container { background: #f8fafc; padding: 10px; border-radius: 4px; }
   `;
-  
+
   const options = {
     customCss,
-    customSiteTitle: 'Node.js Boilerplate API Documentation',
+    customSiteTitle: 'Null Community API Documentation',
     swaggerOptions: {
       persistAuthorization: true,
       displayRequestDuration: true,
@@ -159,7 +159,7 @@ const getSwaggerMiddleware = () => {
       url: `/api-docs/swagger.json?v=${Date.now()}`
     }
   };
-  
+
   return {
     serve: swaggerUi.serve,
     setup: swaggerUi.setup(swaggerSpec, options),
@@ -173,7 +173,7 @@ const getSwaggerMiddleware = () => {
  */
 const refreshDocs = () => {
   console.log('🔄 Refreshing API documentation...');
-  
+
   // Clear require cache for module docs to get latest changes
   const modulesPath = path.join(__dirname, '../modules');
   if (fs.existsSync(modulesPath)) {
@@ -184,7 +184,7 @@ const refreshDocs = () => {
         // Clear cache for swagger files
         const swaggerFile = path.join(moduleDocsPath, `${moduleName}.swagger.js`);
         const schemasFile = path.join(moduleDocsPath, 'schemas.js');
-        
+
         if (require.cache[require.resolve(swaggerFile)]) {
           delete require.cache[require.resolve(swaggerFile)];
         }
@@ -194,7 +194,7 @@ const refreshDocs = () => {
       }
     });
   }
-  
+
   return generateSwaggerSpec();
 };
 
