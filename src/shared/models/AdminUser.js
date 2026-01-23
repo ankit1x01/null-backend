@@ -51,17 +51,7 @@ module.exports = (sequelize) => {
     last_sign_in_ip: {
       type: DataTypes.STRING
     },
-    name: {
-      type: DataTypes.STRING
-    },
-    role: {
-      type: DataTypes.ENUM('super_admin', 'admin', 'moderator'),
-      defaultValue: 'admin'
-    },
-    active: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true
-    },
+
     created_at: {
       type: DataTypes.DATE,
       allowNull: false

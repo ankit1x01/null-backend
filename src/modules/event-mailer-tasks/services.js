@@ -18,8 +18,7 @@ class EventMailerTaskService {
     return await db.EventMailerTask.findAll({
       where,
       include: [
-        { model: db.Event, as: 'event', attributes: ['id', 'name'] },
-        { model: db.User, as: 'creator', attributes: ['id', 'name', 'email'] }
+        { model: db.Event, as: 'event', attributes: ['id', 'name'] }
       ],
       order: [['created_at', 'DESC']]
     });
@@ -31,14 +30,13 @@ class EventMailerTaskService {
   async getMailerTaskById(id) {
     return await db.EventMailerTask.findByPk(id, {
       include: [
-        { 
-          model: db.Event, 
+        {
+          model: db.Event,
           as: 'event',
           include: [
             { model: db.Chapter, as: 'chapter' }
           ]
-        },
-        { model: db.User, as: 'creator', attributes: ['id', 'name', 'email'] }
+        }
       ]
     });
   }
@@ -67,7 +65,7 @@ class EventMailerTaskService {
     if (task.executed) {
       throw new Error('Cannot update an executed task');
     }
-    
+
     // Recalculate recipients if filters changed
     if (data.event_id || data.registration_state !== undefined) {
       data.recipients_count = await this.countRecipients(
@@ -111,7 +109,7 @@ class EventMailerTaskService {
     try {
       // Get recipients
       const users = await this.getRecipients(task.event_id, task.registration_state);
-      
+
       let sentCount = 0;
       let failedCount = 0;
 

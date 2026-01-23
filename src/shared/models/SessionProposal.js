@@ -20,31 +20,13 @@ module.exports = (sequelize) => {
         key: 'id'
       }
     },
-    // Rails: chapter_id (required association)
-    chapter_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'chapters',
-        key: 'id'
-      }
-    },
-    // Rails: event_type_id (required association)
-    event_type_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'event_types',
-        key: 'id'
-      }
-    },
-    // Rails field name: session_topic
-    session_topic: {
+    // Rails field name: title
+    title: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    // Rails field name: session_description
-    session_description: {
+    // Rails field name: description
+    description: {
       type: DataTypes.TEXT,
       allowNull: false
     },
@@ -74,11 +56,11 @@ module.exports = (sequelize) => {
   });
 
   // Virtual getters for backward compatibility with Node.js code using title/description
-  SessionProposal.prototype.getTitle = function() {
+  SessionProposal.prototype.getTitle = function () {
     return this.session_topic;
   };
 
-  SessionProposal.prototype.getDescription = function() {
+  SessionProposal.prototype.getDescription = function () {
     return this.session_description;
   };
 
@@ -88,14 +70,7 @@ module.exports = (sequelize) => {
       foreignKey: 'user_id',
       as: 'user'
     });
-    SessionProposal.belongsTo(models.Chapter, {
-      foreignKey: 'chapter_id',
-      as: 'chapter'
-    });
-    SessionProposal.belongsTo(models.EventType, {
-      foreignKey: 'event_type_id',
-      as: 'eventType'
-    });
+
   };
 
   return SessionProposal;

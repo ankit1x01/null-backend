@@ -50,34 +50,7 @@ module.exports = (sequelize) => {
       defaultValue: 'pending',
       comment: 'pending, processing, completed, failed'
     },
-    recipients_count: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    sent_count: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    failed_count: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    error_message: {
-      type: DataTypes.TEXT,
-      allowNull: true
-    },
-    executed_at: {
-      type: DataTypes.DATE,
-      allowNull: true
-    },
-    created_by: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'users',
-        key: 'id'
-      }
-    },
+
     created_at: {
       type: DataTypes.DATE,
       allowNull: false
@@ -98,10 +71,7 @@ module.exports = (sequelize) => {
       foreignKey: 'event_id',
       as: 'event'
     });
-    EventMailerTask.belongsTo(models.User, {
-      foreignKey: 'created_by',
-      as: 'creator'
-    });
+
   };
 
   return EventMailerTask;

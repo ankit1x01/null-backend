@@ -13,21 +13,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true
     },
-    // Rails field: name (required)
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    // Rails field: description (required)
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
-    // Rails field: navigation_name (required)
-    navigation_name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
+
     // Rails field: title (required)
     title: {
       type: DataTypes.STRING,
@@ -64,7 +50,7 @@ module.exports = (sequelize) => {
       // Rails: after_create :slugify!
       afterCreate: async (page) => {
         if (!page.slug) {
-          page.slug = slugify(`${page.name} ${page.id}`, {
+          page.slug = slugify(`${page.title} ${page.id}`, {
             lower: true,
             strict: true
           });

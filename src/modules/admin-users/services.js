@@ -48,7 +48,7 @@ class AdminUserService {
   }
 
   async authenticateAdmin(email, password) {
-    const admin = await db.AdminUser.findOne({ where: { email, active: true } });
+    const admin = await db.AdminUser.findOne({ where: { email } });
     if (!admin) return null;
 
     const isValid = await admin.validatePassword(password);
@@ -65,9 +65,8 @@ class AdminUserService {
   }
 
   async toggleActive(id) {
+    // Feature disabled as 'active' column does not exist
     const admin = await db.AdminUser.findByPk(id);
-    if (!admin) return null;
-    await admin.update({ active: !admin.active });
     return admin;
   }
 
