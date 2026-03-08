@@ -30,18 +30,25 @@ module.exports = (sequelize) => {
         key: 'id'
       }
     },
-    // Rails field name: session_topic
-    session_topic: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    // Rails field name: session_description
-    session_description: {
+    description: {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    // Additional fields for enhanced functionality
-    // (status removed since it's not in DB schema)
+    requested_by: {
+      type: DataTypes.STRING
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: { isEmail: true }
+    },
+    status: {
+      type: DataTypes.STRING,
+      defaultValue: 'pending'
+    },
     created_at: {
       type: DataTypes.DATE,
       allowNull: false
@@ -55,15 +62,6 @@ module.exports = (sequelize) => {
     timestamps: true,
     underscored: true
   });
-
-  // Virtual getters for backward compatibility
-  SessionRequest.prototype.getTitle = function () {
-    return this.session_topic;
-  };
-
-  SessionRequest.prototype.getDescription = function () {
-    return this.session_description;
-  };
 
   // Model associations
   SessionRequest.associate = (models) => {

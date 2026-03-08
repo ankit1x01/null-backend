@@ -38,11 +38,11 @@ const createEventSessionComment = (req) => {
     throw new Error(JSON.stringify(constants.createEventSessionComment.errorMessages.CREAE0002));
   }
 
-  if (typeof commentText !== 'string') {
-    throw new Error(JSON.stringify(constants.createEventSessionComment.errorMessages.CREAE0002));
-  }
-
-  return req.body;
+  return {
+    event_session_id: Number(event_session_id),
+    user_id: Number(user_id),
+    comment: commentText
+  };
 };
 
 module.exports = createEventSessionComment;

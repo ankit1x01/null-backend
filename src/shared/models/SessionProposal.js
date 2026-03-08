@@ -27,14 +27,20 @@ module.exports = (sequelize) => {
       allowNull: true,
       references: { model: 'event_types', key: 'id' }
     },
-    // Rails field: session_topic
-    session_topic: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    // Rails field: session_description
-    session_description: {
-      type: DataTypes.TEXT
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    session_type: {
+      type: DataTypes.STRING
+    },
+    status: {
+      type: DataTypes.STRING,
+      defaultValue: 'pending'
     },
     created_at: {
       type: DataTypes.DATE,
@@ -49,15 +55,6 @@ module.exports = (sequelize) => {
     timestamps: true,
     underscored: true
   });
-
-  // Virtual getters for backward compatibility with Node.js code using title/description
-  SessionProposal.prototype.getTitle = function () {
-    return this.session_topic;
-  };
-
-  SessionProposal.prototype.getDescription = function () {
-    return this.session_description;
-  };
 
   // Model associations
   SessionProposal.associate = (models) => {

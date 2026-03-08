@@ -60,22 +60,24 @@ const getSessionProposalById = async (params) => {
  * Create session proposal
  */
 const createSessionProposal = async (params) => {
-  const { session_topic, session_description, chapter_id, event_type_id, user_id } = params;
+  const { title, description, chapter_id, event_type_id, user_id, session_type } = params;
 
-  if (!session_topic) {
+  if (!title) {
     throw new Error(JSON.stringify({
       code: 'SPROP_ERR002',
       statusCode: 400,
-      message: 'session_topic is required'
+      message: 'title is required'
     }));
   }
 
   const proposal = await models.SessionProposal.create({
-    session_topic,
-    session_description,
+    title,
+    description,
     chapter_id,
     event_type_id,
-    user_id
+    user_id,
+    session_type,
+    status: 'pending'
   });
 
   return await getSessionProposalById({ id: proposal.id });

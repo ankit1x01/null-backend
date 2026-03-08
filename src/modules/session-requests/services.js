@@ -41,21 +41,24 @@ const getSessionRequestById = async (params) => {
  * Create session request
  */
 const createSessionRequest = async (params) => {
-  const { session_topic, session_description, chapter_id, user_id } = params;
+  const { title, description, chapter_id, user_id, requested_by, email } = params;
 
-  if (!session_topic || !session_description) {
+  if (!title || !description) {
     throw new Error(JSON.stringify({
       code: 'SREQ_ERR002',
       statusCode: 400,
-      message: 'session_topic and session_description are required'
+      message: 'title and description are required'
     }));
   }
 
   const request = await models.SessionRequest.create({
-    session_topic,
-    session_description,
+    title,
+    description,
     chapter_id,
-    user_id
+    user_id,
+    requested_by,
+    email,
+    status: 'pending'
   });
 
   return request;
@@ -65,7 +68,7 @@ const createSessionRequest = async (params) => {
  * Update session request
  */
 const updateSessionRequest = async (params) => {
-  const { id, session_topic, session_description, chapter_id } = params;
+  const { id, title, description, chapter_id, requested_by, email, status } = params;
 
   const request = await models.SessionRequest.findByPk(id);
 
@@ -78,9 +81,12 @@ const updateSessionRequest = async (params) => {
   }
 
   await request.update({
-    session_topic: session_topic || request.session_topic,
-    session_description: session_description || request.session_description,
-    chapter_id: chapter_id || request.chapter_id
+    title: title || request.title,
+    description: description || request.description,
+    chapter_id: chapter_id || request.chapter_id,
+    requested_by: requested_by || request.requested_by,
+    email: email || request.email,
+    status: status || request.status
   });
 
   return request;

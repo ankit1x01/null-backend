@@ -8,7 +8,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = process.argv[2] || process.env.API_BASE_URL || 'http://localhost:3001';
 let authToken = null;
 let adminToken = null;
 
@@ -273,7 +273,7 @@ async function main() {
 
     let md = `# 🐛 API Technical Issues Report\n\n`;
     md += `**Tested:** ${now}  \n`;
-    md += `**Server:** http://localhost:3001  \n`;
+    md += `**Server:** ${BASE_URL}  \n`;
     md += `**Auth:** User token ${authToken ? '✅' : '❌'} · Admin token ${adminToken ? '✅' : '❌'}\n\n`;
     md += `| Metric | Count |\n|---|---|\n`;
     md += `| ✅ Passed | ${passed} |\n`;

@@ -78,7 +78,6 @@ const login = async ({ email, password, requestId, ipAddress, userAgent }) => {
     client_name: 'web',
     ip_address: ipAddress,
     user_agent: userAgent,
-    last_used_at: new Date(),
     expire_at: expireAt
   });
 

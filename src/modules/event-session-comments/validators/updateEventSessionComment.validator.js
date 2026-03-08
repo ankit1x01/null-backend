@@ -26,7 +26,10 @@ const updateEventSessionComment = (req) => {
     throw new Error(JSON.stringify(constants.updateEventSessionComment.errorMessages.UPDAE0002));
   }
 
-  return req.body;
+  return {
+    id: Number(req.params.id),
+    comment: commentText
+  };
 };
 
 module.exports = updateEventSessionComment;

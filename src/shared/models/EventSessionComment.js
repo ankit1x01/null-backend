@@ -28,8 +28,7 @@ module.exports = (sequelize) => {
         key: 'id'
       }
     },
-    // DB column name: comment_body
-    comment_body: {
+    comment: {
       type: DataTypes.TEXT,
       allowNull: false
     },
