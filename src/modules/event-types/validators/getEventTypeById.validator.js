@@ -12,7 +12,7 @@ const constants = require('../constants');
  * @throws {Error} - If validation fails
  */
 const getEventTypeById = (req) => {
-  return { ...req.query, ...req.body };
+  return { ...req.params, ...req.query, ...req.body };
 };
 
 module.exports = getEventTypeById;

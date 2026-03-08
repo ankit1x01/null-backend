@@ -20,12 +20,6 @@ module.exports = (sequelize) => {
         key: 'id'
       }
     },
-    // Rails field: source (A_SOURCE_SELF, A_SOURCE_NULL)
-    source: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      comment: 'Source of achievement: Self, null'
-    },
     // Rails field: achievement_type (required)
     achievement_type: {
       type: DataTypes.STRING,
@@ -41,17 +35,6 @@ module.exports = (sequelize) => {
     reference: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    // Additional fields for enhanced functionality
-    title: {
-      type: DataTypes.STRING
-    },
-    description: {
-      type: DataTypes.TEXT
-    },
-    awarded_at: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
     },
     created_at: {
       type: DataTypes.DATE,

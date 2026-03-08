@@ -5,7 +5,7 @@ const getUserAchievements = async (req, res, next) => {
     const { userId } = req.params;
     const achievements = await UserAchievement.findAll({
       where: { user_id: userId },
-      order: [['awarded_at', 'DESC']]
+      order: [['created_at', 'DESC']]
     });
 
     res.status(200).json({

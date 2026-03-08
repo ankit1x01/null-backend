@@ -34,9 +34,6 @@ module.exports = (sequelize) => {
       type: DataTypes.DATE,
       allowNull: false
     },
-    last_used_at: {
-      type: DataTypes.DATE
-    },
     ip_address: {
       type: DataTypes.STRING
     },
@@ -80,7 +77,7 @@ module.exports = (sequelize) => {
   });
 
   // Instance methods
-  UserApiToken.prototype.isExpired = function() {
+  UserApiToken.prototype.isExpired = function () {
     return new Date() > this.expire_at;
   };
 

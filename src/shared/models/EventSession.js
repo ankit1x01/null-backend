@@ -79,14 +79,7 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.STRING
     },
-    cached_votes_up: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    cached_votes_down: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
+
     created_at: {
       type: DataTypes.DATE,
       allowNull: false

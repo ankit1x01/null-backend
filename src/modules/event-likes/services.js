@@ -173,7 +173,7 @@ class VoteService {
       ],
       // This literal needs to match the new table name 'votes'
       order: [[
-        db.Sequelize.literal('(SELECT COUNT(*) FROM votes WHERE votes.votable_id = "EventSession".id AND votes.votable_type = "EventSession" AND votes.vote_flag = 1)'),
+        db.Sequelize.literal('(SELECT COUNT(*) FROM votes WHERE votes.votable_id = `EventSession`.id AND votes.votable_type = \'EventSession\' AND votes.vote_flag = 1)'),
         'DESC'
       ]],
       limit

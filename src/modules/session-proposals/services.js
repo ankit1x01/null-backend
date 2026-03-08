@@ -3,16 +3,15 @@
  * Business logic for session proposals operations
  */
 const models = require('../../shared/models');
-const { Op } = require('sequelize');
 
 /**
  * Get all session proposals
  */
 const getSessionProposals = async (params) => {
-  const { status, user_id } = params;
-  
+  const { chapter_id, user_id } = params;
+
   const where = {};
-  if (status) where.status = status;
+  if (chapter_id) where.chapter_id = chapter_id;
   if (user_id) where.user_id = user_id;
 
   const proposals = await models.SessionProposal.findAll({
@@ -61,27 +60,28 @@ const getSessionProposalById = async (params) => {
  * Create session proposal
  */
 const createSessionProposal = async (params) => {
-  const { title, description, session_type, user_id } = params;
+  const { session_topic, session_description, chapter_id, event_type_id, user_id } = params;
 
-  if (!title || !description) {
+  if (!session_topic) {
     throw new Error(JSON.stringify({
       code: 'SPROP_ERR002',
       statusCode: 400,
-      message: 'Title and description are required'
+      message: 'session_topic is required'
     }));
   }
 
   const proposal = await models.SessionProposal.create({
-    title,
-    description,
-    session_type: session_type || 'talk',
-    user_id,
-    status: 'pending'
+    session_topic,
+    session_description,
+    chapter_id,
+    event_type_id,
+    user_id
   });
 
-  // Fetch with associations
   return await getSessionProposalById({ id: proposal.id });
 };
+
+
 
 /**
  * Update session proposal

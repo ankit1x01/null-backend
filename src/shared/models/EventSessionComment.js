@@ -28,8 +28,8 @@ module.exports = (sequelize) => {
         key: 'id'
       }
     },
-    // Rails field name: comment_body might have been different, but DB has 'comment'
-    comment: {
+    // DB column name: comment_body
+    comment_body: {
       type: DataTypes.TEXT,
       allowNull: false
     },

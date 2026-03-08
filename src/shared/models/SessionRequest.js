@@ -41,13 +41,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     // Additional fields for enhanced functionality
-    status: {
-      type: DataTypes.STRING,
-      defaultValue: 'open',
-      validate: {
-        isIn: [['open', 'in_progress', 'completed', 'closed']]
-      }
-    },
+    // (status removed since it's not in DB schema)
     created_at: {
       type: DataTypes.DATE,
       allowNull: false
@@ -63,11 +57,11 @@ module.exports = (sequelize) => {
   });
 
   // Virtual getters for backward compatibility
-  SessionRequest.prototype.getTitle = function() {
+  SessionRequest.prototype.getTitle = function () {
     return this.session_topic;
   };
 
-  SessionRequest.prototype.getDescription = function() {
+  SessionRequest.prototype.getDescription = function () {
     return this.session_description;
   };
 

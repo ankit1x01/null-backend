@@ -17,7 +17,7 @@ class CalendarService {
     const events = await db.Event.findAll({
       where: {
         chapter_id: chapterId,
-        status: { [Op.in]: ['published', 'completed'] },
+        state: { [Op.in]: ['published', 'completed'] },
         start_time: { [Op.gte]: new Date(Date.now() - 90 * 24 * 60 * 60 * 1000) } // Last 90 days
       },
       include: [{ model: db.Venue, as: 'venue' }],
@@ -33,7 +33,7 @@ class CalendarService {
   async generateGlobalCalendar() {
     const events = await db.Event.findAll({
       where: {
-        status: { [Op.in]: ['published', 'completed'] },
+        state: { [Op.in]: ['published', 'completed'] },
         start_time: { [Op.gte]: new Date(Date.now() - 90 * 24 * 60 * 60 * 1000) }
       },
       include: [
@@ -76,12 +76,12 @@ class CalendarService {
     const dtstart = this.formatDate(new Date(event.start_time));
     const dtend = this.formatDate(new Date(event.end_time || new Date(new Date(event.start_time).getTime() + 2 * 60 * 60 * 1000)));
 
-    const location = event.venue 
+    const location = event.venue
       ? `${event.venue.name}${event.venue.address ? ', ' + event.venue.address : ''}`
       : (event.online_link ? 'Online Event' : 'TBA');
 
     const description = this.escapeICS(
-      (event.description || '').replace(/<[^>]*>/g, '') + 
+      (event.description || '').replace(/<[^>]*>/g, '') +
       (event.online_link ? `\n\nOnline Link: ${event.online_link}` : '') +
       `\n\nMore info: ${process.env.FRONTEND_URL}/events/${event.id}`
     );
@@ -96,7 +96,7 @@ class CalendarService {
       `DESCRIPTION:${description}`,
       `LOCATION:${this.escapeICS(location)}`,
       `URL:${process.env.FRONTEND_URL}/events/${event.id}`,
-      `STATUS:${event.status === 'cancelled' ? 'CANCELLED' : 'CONFIRMED'}`
+      `STATUS:${event.state === 'cancelled' ? 'CANCELLED' : 'CONFIRMED'}`
     ];
 
     if (event.chapter) {
@@ -145,7 +145,7 @@ class CalendarService {
 
     const events = registrations.map(r => r.event).filter(e => e);
     const user = await db.User.findByPk(userId);
-    
+
     return this.generateICS({ name: `${user.name}'s Events`, slug: 'personal' }, events);
   }
 }

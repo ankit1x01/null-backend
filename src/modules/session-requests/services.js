@@ -9,11 +9,7 @@ const { Op } = require('sequelize');
  * Get all session requests
  */
 const getSessionRequests = async (params) => {
-  const { status } = params;
-  
   const where = {};
-  if (status) where.status = status;
-
   const requests = await models.SessionRequest.findAll({
     where,
     order: [['created_at', 'DESC']]
@@ -45,22 +41,21 @@ const getSessionRequestById = async (params) => {
  * Create session request
  */
 const createSessionRequest = async (params) => {
-  const { title, description, requested_by, email } = params;
+  const { session_topic, session_description, chapter_id, user_id } = params;
 
-  if (!title || !description) {
+  if (!session_topic || !session_description) {
     throw new Error(JSON.stringify({
       code: 'SREQ_ERR002',
       statusCode: 400,
-      message: 'Title and description are required'
+      message: 'session_topic and session_description are required'
     }));
   }
 
   const request = await models.SessionRequest.create({
-    title,
-    description,
-    requested_by: requested_by || 'Anonymous',
-    email: email || null,
-    status: 'open'
+    session_topic,
+    session_description,
+    chapter_id,
+    user_id
   });
 
   return request;
@@ -70,7 +65,7 @@ const createSessionRequest = async (params) => {
  * Update session request
  */
 const updateSessionRequest = async (params) => {
-  const { id, title, description, requested_by, email } = params;
+  const { id, session_topic, session_description, chapter_id } = params;
 
   const request = await models.SessionRequest.findByPk(id);
 
@@ -83,10 +78,9 @@ const updateSessionRequest = async (params) => {
   }
 
   await request.update({
-    title: title || request.title,
-    description: description || request.description,
-    requested_by: requested_by || request.requested_by,
-    email: email !== undefined ? email : request.email
+    session_topic: session_topic || request.session_topic,
+    session_description: session_description || request.session_description,
+    chapter_id: chapter_id || request.chapter_id
   });
 
   return request;

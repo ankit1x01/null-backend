@@ -12,34 +12,29 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true
     },
+    chapter_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: 'chapters', key: 'id' }
+    },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'users',
-        key: 'id'
-      }
+      references: { model: 'users', key: 'id' }
     },
-    // Rails field name: title
-    title: {
+    event_type_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: { model: 'event_types', key: 'id' }
+    },
+    // Rails field: session_topic
+    session_topic: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    // Rails field name: description
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
-    // Additional fields for enhanced functionality
-    session_type: {
-      type: DataTypes.STRING
-    },
-    status: {
-      type: DataTypes.STRING,
-      defaultValue: 'pending',
-      validate: {
-        isIn: [['pending', 'approved', 'rejected']]
-      }
+    // Rails field: session_description
+    session_description: {
+      type: DataTypes.TEXT
     },
     created_at: {
       type: DataTypes.DATE,

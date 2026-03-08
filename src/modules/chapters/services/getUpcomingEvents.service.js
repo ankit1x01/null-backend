@@ -31,7 +31,7 @@ const getUpcomingEvents = async ({ chapterId }) => {
     },
     include: [
       { model: EventType, as: 'eventType', attributes: ['id', 'name'] },
-      { model: Venue, as: 'venue', attributes: ['id', 'name', 'address', 'city'] }
+      { model: Venue, as: 'venue', attributes: ['id', 'name', 'address'] }
     ],
     order: [['start_time', 'ASC']],
     limit: 10
