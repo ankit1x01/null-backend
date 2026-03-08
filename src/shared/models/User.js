@@ -100,16 +100,20 @@ module.exports = (sequelize) => {
       type: DataTypes.DATE,
       allowNull: false
     },
-    admin: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
+    // Devise fields that ARE in the database
+    failed_attempts: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    unlock_token: {
+      type: DataTypes.STRING
+    },
+    locked_at: {
+      type: DataTypes.DATE
+    },
+    slideshare_profile: {
+      type: DataTypes.STRING
     }
-    // Note: The following fields are defined in Devise but not in the database:
-    // - failed_attempts
-    // - unlock_token  
-    // - locked_at
-    // - slideshare_profile
-    // Add them via migration if needed
   }, {
     tableName: 'users',
     timestamps: true,
@@ -141,6 +145,17 @@ module.exports = (sequelize) => {
   // Instance methods
   User.prototype.validatePassword = async function (password) {
     return await bcrypt.compare(password, this.encrypted_password);
+  };
+
+  User.prototype.isAdmin = async function () {
+    // Check AdminUser table for this email
+    if (!this.email) return false;
+    const { AdminUser } = require('./index');
+    if (AdminUser) {
+      const admin = await AdminUser.findOne({ where: { email: this.email } });
+      return !!admin;
+    }
+    return false;
   };
 
   User.prototype.getGravatarUrl = function () {

@@ -1,93 +1,91 @@
 /**
- * Event Likes Services
- * Business logic for session voting/reactions
+ * Vote Services (formerly Event Likes)
+ * Business logic for session voting using the 'votes' table
  */
 const db = require('../../shared/models');
 const { Op } = require('sequelize');
 
-class EventLikeService {
+class VoteService {
   /**
-   * Get all likes for an event session
+   * Get all likes (votes) for an event session
    */
   async getLikesBySession(sessionId) {
-    return await db.EventLike.findAll({
-      where: { event_session_id: sessionId },
+    return await db.Vote.findAll({
+      where: {
+        votable_id: sessionId,
+        votable_type: 'EventSession',
+        vote_flag: true
+      },
       include: [
-        { model: db.User, as: 'user', attributes: ['id', 'name', 'email', 'avatar_url'] }
+        { model: db.User, as: 'user', attributes: ['id', 'name', 'email', 'avatar'] }
       ],
       order: [['created_at', 'DESC']]
     });
   }
 
   /**
-   * Get like counts by type for a session
+   * Get like counts for a session
+   * Note: Original had multi-type (love, helpful, etc). We now only support 'like'.
    */
   async getSessionLikeCounts(sessionId) {
-    const counts = await db.EventLike.findAll({
-      where: { event_session_id: sessionId },
-      attributes: [
-        'like_type',
-        [db.Sequelize.fn('COUNT', db.Sequelize.col('id')), 'count']
-      ],
-      group: ['like_type'],
-      raw: true
+    const count = await db.Vote.count({
+      where: {
+        votable_id: sessionId,
+        votable_type: 'EventSession',
+        vote_flag: true
+      }
     });
 
-    const result = {
-      like: 0,
+    return {
+      like: count,
       love: 0,
       insightful: 0,
       helpful: 0,
-      total: 0
+      total: count
     };
-
-    counts.forEach(c => {
-      result[c.like_type] = parseInt(c.count);
-      result.total += parseInt(c.count);
-    });
-
-    return result;
   }
 
   /**
    * Get user's like for a session
    */
   async getUserLike(sessionId, userId) {
-    return await db.EventLike.findOne({
+    return await db.Vote.findOne({
       where: {
-        event_session_id: sessionId,
-        user_id: userId
+        votable_id: sessionId,
+        votable_type: 'EventSession',
+        voter_id: userId,
+        // voter_type: 'User', // Optional depending on data
+        vote_flag: true
       }
     });
   }
 
   /**
    * Toggle like (add or remove)
+   * We ignore 'likeType' param as we only support generic likes now.
    */
   async toggleLike(sessionId, userId, likeType = 'like') {
-    const existingLike = await db.EventLike.findOne({
+    const existingLike = await db.Vote.findOne({
       where: {
-        event_session_id: sessionId,
-        user_id: userId
+        votable_id: sessionId,
+        votable_type: 'EventSession',
+        voter_id: userId
       }
     });
 
     if (existingLike) {
-      if (existingLike.like_type === likeType) {
-        // Same type - remove the like
-        await existingLike.destroy();
-        return { action: 'removed', like: null };
-      } else {
-        // Different type - update the like
-        await existingLike.update({ like_type: likeType });
-        return { action: 'updated', like: existingLike };
-      }
+      // If it exists, remove it (toggle off)
+      await existingLike.destroy();
+      return { action: 'removed', like: null };
     } else {
       // Create new like
-      const like = await db.EventLike.create({
-        event_session_id: sessionId,
-        user_id: userId,
-        like_type: likeType
+      const like = await db.Vote.create({
+        votable_id: sessionId,
+        votable_type: 'EventSession',
+        voter_id: userId,
+        voter_type: 'User',
+        vote_flag: true,
+        vote_scope: null
       });
       return { action: 'created', like };
     }
@@ -100,15 +98,15 @@ class EventLikeService {
     // Check if already liked
     const existing = await this.getUserLike(sessionId, userId);
     if (existing) {
-      // Update the like type
-      await existing.update({ like_type: likeType });
       return existing;
     }
 
-    return await db.EventLike.create({
-      event_session_id: sessionId,
-      user_id: userId,
-      like_type: likeType
+    return await db.Vote.create({
+      votable_id: sessionId,
+      votable_type: 'EventSession',
+      voter_id: userId,
+      voter_type: 'User',
+      vote_flag: true
     });
   }
 
@@ -116,10 +114,11 @@ class EventLikeService {
    * Remove like from a session
    */
   async removeLike(sessionId, userId) {
-    const like = await db.EventLike.findOne({
+    const like = await db.Vote.findOne({
       where: {
-        event_session_id: sessionId,
-        user_id: userId
+        votable_id: sessionId,
+        votable_type: 'EventSession',
+        voter_id: userId
       }
     });
 
@@ -130,20 +129,35 @@ class EventLikeService {
 
   /**
    * Get all likes by a user
+   * Requires careful joining since Vote is polymorphic
    */
   async getLikesByUser(userId) {
-    return await db.EventLike.findAll({
-      where: { user_id: userId },
-      include: [
-        { 
-          model: db.EventSession, 
-          as: 'eventSession',
-          include: [
-            { model: db.Event, as: 'event', attributes: ['id', 'name'] }
-          ]
-        }
-      ],
+    // This is tricky with Sequelize polymorphic.
+    // We'll fetch votes then manually fetch sessions or do a manual join if needed.
+    // For now, let's try standard association if set up, or just basic fetch.
+    const votes = await db.Vote.findAll({
+      where: {
+        voter_id: userId,
+        votable_type: 'EventSession',
+        vote_flag: true
+      },
       order: [['created_at', 'DESC']]
+    });
+
+    // Populate event sessions manually if needed, or rely on client to fetch.
+    // For MVP alignment:
+    const sessionIds = votes.map(v => v.votable_id);
+    const sessions = await db.EventSession.findAll({
+      where: { id: { [Op.in]: sessionIds } },
+      include: [{ model: db.Event, as: 'event', attributes: ['id', 'name'] }]
+    });
+
+    // Map sessions back to votes structure
+    return votes.map(vote => {
+      const session = sessions.find(s => s.id === vote.votable_id);
+      const voteJSON = vote.toJSON();
+      voteJSON.eventSession = session;
+      return voteJSON;
     });
   }
 
@@ -151,19 +165,29 @@ class EventLikeService {
    * Get top liked sessions for an event
    */
   async getTopLikedSessions(eventId, limit = 10) {
+    // raw query might be safer for performance on large sets, but Sequelize is fine here
     const sessions = await db.EventSession.findAll({
       where: { event_id: eventId },
       include: [
-        { model: db.User, as: 'user', attributes: ['id', 'name', 'avatar_url'] },
-        { model: db.EventLike, as: 'eventLikes' }
+        { model: db.User, as: 'user', attributes: ['id', 'name', 'avatar'] }
       ],
-      order: [[db.Sequelize.literal('(SELECT COUNT(*) FROM event_likes WHERE event_likes.event_session_id = "EventSession".id)'), 'DESC']],
+      // This literal needs to match the new table name 'votes'
+      order: [[
+        db.Sequelize.literal('(SELECT COUNT(*) FROM votes WHERE votes.votable_id = "EventSession".id AND votes.votable_type = "EventSession" AND votes.vote_flag = 1)'),
+        'DESC'
+      ]],
       limit
     });
 
-    return sessions.map(session => ({
-      ...session.toJSON(),
-      likeCount: session.eventLikes?.length || 0
+    // Manually attach counts
+    return Promise.all(sessions.map(async session => {
+      const count = await db.Vote.count({
+        where: { votable_id: session.id, votable_type: 'EventSession', vote_flag: true }
+      });
+      return {
+        ...session.toJSON(),
+        likeCount: count
+      };
     }));
   }
 
@@ -171,28 +195,30 @@ class EventLikeService {
    * Get reactions summary for multiple sessions
    */
   async getSessionsReactions(sessionIds) {
-    const likes = await db.EventLike.findAll({
+    const votes = await db.Vote.findAll({
       where: {
-        event_session_id: { [Op.in]: sessionIds }
+        votable_id: { [Op.in]: sessionIds },
+        votable_type: 'EventSession',
+        vote_flag: true
       },
       attributes: [
-        'event_session_id',
-        'like_type',
+        'votable_id',
         [db.Sequelize.fn('COUNT', db.Sequelize.col('id')), 'count']
       ],
-      group: ['event_session_id', 'like_type'],
+      group: ['votable_id'],
       raw: true
     });
 
-    // Group by session
+    // Initialize
     const result = {};
     sessionIds.forEach(id => {
       result[id] = { like: 0, love: 0, insightful: 0, helpful: 0, total: 0 };
     });
 
-    likes.forEach(l => {
-      result[l.event_session_id][l.like_type] = parseInt(l.count);
-      result[l.event_session_id].total += parseInt(l.count);
+    votes.forEach(v => {
+      const count = parseInt(v.count);
+      result[v.votable_id].like = count;
+      result[v.votable_id].total = count;
     });
 
     return result;
@@ -202,17 +228,19 @@ class EventLikeService {
    * Check if user has liked sessions
    */
   async getUserLikesForSessions(sessionIds, userId) {
-    const likes = await db.EventLike.findAll({
+    const votes = await db.Vote.findAll({
       where: {
-        event_session_id: { [Op.in]: sessionIds },
-        user_id: userId
+        votable_id: { [Op.in]: sessionIds },
+        votable_type: 'EventSession',
+        voter_id: userId,
+        vote_flag: true
       },
       raw: true
     });
 
     const result = {};
-    likes.forEach(l => {
-      result[l.event_session_id] = l.like_type;
+    votes.forEach(v => {
+      result[v.votable_id] = 'like'; // Always 'like'
     });
 
     return result;
@@ -233,37 +261,23 @@ class EventLikeService {
       return { totalLikes: 0, uniqueUsers: 0, byType: {} };
     }
 
-    const [totalLikes, uniqueUsers, byType] = await Promise.all([
-      db.EventLike.count({
-        where: { event_session_id: { [Op.in]: sessionIds } }
+    const [totalLikes, uniqueUsers] = await Promise.all([
+      db.Vote.count({
+        where: { votable_id: { [Op.in]: sessionIds }, votable_type: 'EventSession', vote_flag: true }
       }),
-      db.EventLike.count({
-        where: { event_session_id: { [Op.in]: sessionIds } },
+      db.Vote.count({
+        where: { votable_id: { [Op.in]: sessionIds }, votable_type: 'EventSession', vote_flag: true },
         distinct: true,
-        col: 'user_id'
-      }),
-      db.EventLike.findAll({
-        where: { event_session_id: { [Op.in]: sessionIds } },
-        attributes: [
-          'like_type',
-          [db.Sequelize.fn('COUNT', db.Sequelize.col('id')), 'count']
-        ],
-        group: ['like_type'],
-        raw: true
+        col: 'voter_id'
       })
     ]);
-
-    const typeStats = {};
-    byType.forEach(t => {
-      typeStats[t.like_type] = parseInt(t.count);
-    });
 
     return {
       totalLikes,
       uniqueUsers,
-      byType: typeStats
+      byType: { like: totalLikes }
     };
   }
 }
 
-module.exports = new EventLikeService();
+module.exports = new VoteService();

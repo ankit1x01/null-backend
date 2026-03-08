@@ -17,16 +17,16 @@ const getChapters = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.getChapters(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await chaptersServices.getChapters({
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.getChapters.messages.GETCE0001,
@@ -53,16 +53,17 @@ const getChapterById = async (req, res, next) => {
   try {
     // Validate request
     const validatedRequest = validators.getChapterById(req);
-    
+
     // Add request ID for tracking
     req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    
+
     // Handle logic within service function
     const result = await chaptersServices.getChapterById({
+      id: validatedRequest.id,
       ...validatedRequest,
       requestId: req.requestId
     });
-    
+
     // Return standardized response using the response middleware
     next({
       ...constants.getChapterById.messages.GETCE0001,

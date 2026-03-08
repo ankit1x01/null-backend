@@ -1,55 +1,35 @@
 /**
  * Mass Email Routes
+ * DISABLED: Feature not supported in current database schema
  */
 
 const express = require('express');
 const router = express.Router();
-const controller = require('./controller');
-const { verifyToken: authenticate, isAdmin: authorize } = require('../../shared/middlewares/auth.middleware');
+const { verifyToken: authenticate } = require('../../shared/middlewares/auth.middleware');
 
 // All routes require authentication
 router.use(authenticate);
 
-// Get email templates
-router.get('/templates', controller.getTemplates);
+const notImplemented = (req, res) => {
+    res.status(503).json({
+        error: 'Feature not available',
+        message: 'Mass Email Campaigns are not supported in the current environment.'
+    });
+};
 
-// Get all campaigns
-router.get('/campaigns', controller.getCampaigns);
-
-// Get campaign by ID
-router.get('/campaigns/:id', controller.getCampaignById);
-
-// Get campaign stats
-router.get('/campaigns/:id/stats', controller.getCampaignStats);
-
-// Create campaign
-router.post('/campaigns', controller.createCampaign);
-
-// Update campaign
-router.put('/campaigns/:id', controller.updateCampaign);
-
-// Delete campaign
-router.delete('/campaigns/:id', controller.deleteCampaign);
-
-// Get event recipients
-router.get('/recipients/event/:eventId', controller.getEventRecipients);
-
-// Get chapter recipients
-router.get('/recipients/chapter/:chapterId', controller.getChapterRecipients);
-
-// Add recipients to campaign
-router.post('/campaigns/:id/recipients', controller.addRecipients);
-
-// Remove recipient from campaign
-router.delete('/campaigns/:id/recipients/:recipientId', controller.removeRecipient);
-
-// Send campaign
-router.post('/campaigns/:id/send', controller.sendCampaign);
-
-// Schedule campaign
-router.post('/campaigns/:id/schedule', controller.scheduleCampaign);
-
-// Cancel scheduled campaign
-router.post('/campaigns/:id/cancel-schedule', controller.cancelScheduledCampaign);
+router.get('/templates', notImplemented);
+router.get('/campaigns', notImplemented);
+router.get('/campaigns/:id', notImplemented);
+router.get('/campaigns/:id/stats', notImplemented);
+router.post('/campaigns', notImplemented);
+router.put('/campaigns/:id', notImplemented);
+router.delete('/campaigns/:id', notImplemented);
+router.get('/recipients/event/:eventId', notImplemented);
+router.get('/recipients/chapter/:chapterId', notImplemented);
+router.post('/campaigns/:id/recipients', notImplemented);
+router.delete('/campaigns/:id/recipients/:recipientId', notImplemented);
+router.post('/campaigns/:id/send', notImplemented);
+router.post('/campaigns/:id/schedule', notImplemented);
+router.post('/campaigns/:id/cancel-schedule', notImplemented);
 
 module.exports = router;

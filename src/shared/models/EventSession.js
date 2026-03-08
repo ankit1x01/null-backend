@@ -115,9 +115,17 @@ module.exports = (sequelize) => {
       foreignKey: 'event_session_id',
       as: 'comments'
     });
-    EventSession.hasMany(models.EventLike, {
-      foreignKey: 'event_session_id',
-      as: 'likes'
+    // EventSession.hasMany(models.EventLike, {
+    //   foreignKey: 'event_session_id',
+    //   as: 'likes'
+    // });
+    EventSession.hasMany(models.Vote, {
+      foreignKey: 'votable_id',
+      constraints: false,
+      scope: {
+        votable_type: 'EventSession'
+      },
+      as: 'votes'
     });
   };
 

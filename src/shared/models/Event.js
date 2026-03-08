@@ -215,7 +215,7 @@ module.exports = (sequelize) => {
   });
 
   // Instance methods
-  Event.prototype.registrationAllowed = async function() {
+  Event.prototype.registrationAllowed = async function () {
     if (this.max_registration > 0) {
       const registrationCount = await this.countEventRegistrations();
       return this.max_registration > registrationCount;
@@ -223,7 +223,7 @@ module.exports = (sequelize) => {
     return true;
   };
 
-  Event.prototype.registrationActive = function() {
+  Event.prototype.registrationActive = function () {
     if (!this.accepting_registration) return false;
 
     if (this.registration_start_time && this.registration_end_time) {
@@ -259,10 +259,10 @@ module.exports = (sequelize) => {
       foreignKey: 'event_id',
       as: 'mailerTasks'
     });
-    Event.hasMany(models.EventNotification, {
-      foreignKey: 'event_id',
-      as: 'notifications'
-    });
+    // Event.hasMany(models.EventNotification, {
+    //   foreignKey: 'event_id',
+    //   as: 'notifications'
+    // });
     Event.hasMany(models.EventAnnouncementMailerTask, {
       foreignKey: 'event_id',
       as: 'announcementMailerTasks'

@@ -27,17 +27,18 @@ const modelFiles = [
   'Stat',
   'UserAchievement',
   'EventMailerTask',
-  'EventNotification',
+  // 'EventNotification', // Missing table
   'Job',
-  'EventLike',
+  'Vote', // Replaces EventLike
+  // 'EventLike', // Deleted
   'AdminUser',
   'UserAuthProfile',
-  'TwitterIntegration',
-  'TweetLog',
-  'MassEmailCampaign',
-  'MassEmailRecipient',
-  'SlackIntegration',
-  'SlackNotificationLog',
+  // 'TwitterIntegration', // Missing table
+  // 'TweetLog', // Missing table
+  // 'MassEmailCampaign', // Missing table
+  // 'MassEmailRecipient', // Missing table
+  // 'SlackIntegration', // Missing table
+  // 'SlackNotificationLog', // Missing table
   // New models added to match Rails
   'EventAnnouncementMailerTask',
   'EventAutomaticNotificationTask'

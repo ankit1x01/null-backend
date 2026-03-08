@@ -27,6 +27,11 @@ const getChapterByIdConstants = {
       statusCode: 404,
       message: "GetChapterById failed",
     },
+    GETCE0004: {
+      code: "GETCE0004",
+      statusCode: 404,
+      message: "Chapter not found",
+    },
   },
 };
 

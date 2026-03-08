@@ -5,6 +5,7 @@
 const constants = require('../constants');
 const sharedConstants = require('../../../shared/constants');
 const { Chapter, ChapterLead, User, Event } = require('../../../shared/models');
+const { sequelize } = require('../../../shared/database');
 
 /**
  * GetChapterById operation
@@ -14,8 +15,9 @@ const { Chapter, ChapterLead, User, Event } = require('../../../shared/models');
  * @returns {Promise<Object>} - Result data
  * @throws {Error} - If operation fails
  */
-const getChapterById = async ({ requestId, id }) => {
-  console.log(`[${requestId}] GetChapterById attempt for chapter ${id}`);
+const getChapterById = async (params) => {
+  const { requestId } = params;
+  const id = params.id || params.chapterId;
 
   try {
     const chapter = await Chapter.findByPk(id, {
@@ -45,20 +47,26 @@ const getChapterById = async ({ requestId, id }) => {
     });
 
     if (!chapter) {
-      throw new Error(JSON.stringify(constants.getChapterById.errorMessages.GETCE0001));
+      console.warn(`[${requestId}] Chapter ${id} not found in DB ${dbName}`);
+      throw new Error(JSON.stringify(constants.getChapterById.errorMessages.GETCE0004));
     }
 
     console.log(`[${requestId}] GetChapterById successful: Found chapter ${chapter.name}`);
     return chapter;
   } catch (error) {
-    console.error(`[${requestId}] GetChapterById failed:`, error.message);
+    console.error(`[${requestId}] GetChapterById failed:`, error);
 
     // Re-throw if it's already a formatted error
-    if (error.message.startsWith('{')) {
+    if (error.message && error.message.startsWith('{')) {
       throw error;
     }
 
-    throw new Error(JSON.stringify(constants.getChapterById.errorMessages.GETCE0003));
+    // Include the original error message for debugging if it's not a formatted error
+    const errorResponse = {
+      ...constants.getChapterById.errorMessages.GETCE0003,
+      message: `GetChapterById failed: ${error.message || 'Unknown error'}`
+    };
+    throw new Error(JSON.stringify(errorResponse));
   }
 };
 
