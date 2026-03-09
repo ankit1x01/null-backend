@@ -101,19 +101,19 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     // Devise fields that ARE in the database
-    failed_attempts: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    unlock_token: {
-      type: DataTypes.STRING
-    },
-    locked_at: {
-      type: DataTypes.DATE
-    },
-    slideshare_profile: {
-      type: DataTypes.STRING
-    }
+    // failed_attempts: {
+    //   type: DataTypes.INTEGER,
+    //   defaultValue: 0
+    // },
+    // unlock_token: {
+    //   type: DataTypes.STRING
+    // },
+    // locked_at: {
+    //   type: DataTypes.DATE
+    // },
+    // slideshare_profile: {
+    //   type: DataTypes.STRING
+    // }
   }, {
     tableName: 'users',
     timestamps: true,
