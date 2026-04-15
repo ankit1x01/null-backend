@@ -24,13 +24,13 @@ const loginConstants = {
     },
     USRE0003: {
       code: "USRE0003",
-      statusCode: 400,
-      message: "Invalid password",
+      statusCode: 401,
+      message: "Invalid email or password",
     },
     USRE0004: {
       code: "USRE0004",
-      statusCode: 400,
-      message: "User not found",
+      statusCode: 401,
+      message: "Invalid email or password",
     },
     USRE0008: {
       code: "USRE0008",

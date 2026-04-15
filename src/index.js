@@ -38,6 +38,9 @@ app.use(express.urlencoded({ extended: true }));
 const UPLOAD_DIR = process.env.UPLOAD_DIR || './uploads';
 app.use('/uploads', express.static(path.resolve(UPLOAD_DIR)));
 
+// Serve static test pages (development only)
+app.use('/public', express.static(path.resolve('./public')));
+
 // Setup Swagger documentation (before decrypt middleware to avoid issues)
 console.log('🚀 Setting up Swagger documentation at /api-docs');
 const swaggerMiddleware = getSwaggerMiddleware();
@@ -90,6 +93,11 @@ app.use('/api/uploads', modules.uploads);
 
 // Legacy Slackbot API route for backwards compatibility
 app.use('/api/slackbot', modules.slack);
+
+// Catch-all 404 handler for unmatched routes — must return JSON, not HTML
+app.use((req, res, next) => {
+  next(new Error(JSON.stringify({ code: 'ERR0404', statusCode: 404, message: 'Route not found' })));
+});
 
 // Global response middleware - must be after all routes
 app.use(response);

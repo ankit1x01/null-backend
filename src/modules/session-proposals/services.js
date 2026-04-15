@@ -60,24 +60,22 @@ const getSessionProposalById = async (params) => {
  * Create session proposal
  */
 const createSessionProposal = async (params) => {
-  const { title, description, chapter_id, event_type_id, user_id, session_type } = params;
+  const { session_topic, session_description, chapter_id, event_type_id, user_id } = params;
 
-  if (!title) {
+  if (!session_topic) {
     throw new Error(JSON.stringify({
       code: 'SPROP_ERR002',
       statusCode: 400,
-      message: 'title is required'
+      message: 'session_topic is required'
     }));
   }
 
   const proposal = await models.SessionProposal.create({
-    title,
-    description,
+    session_topic,
+    session_description,
     chapter_id,
     event_type_id,
     user_id,
-    session_type,
-    status: 'pending'
   });
 
   return await getSessionProposalById({ id: proposal.id });
@@ -89,7 +87,7 @@ const createSessionProposal = async (params) => {
  * Update session proposal
  */
 const updateSessionProposal = async (params) => {
-  const { id, title, description, session_type, user_id } = params;
+  const { id, session_topic, session_description, user_id } = params;
 
   const proposal = await models.SessionProposal.findByPk(id);
 
@@ -101,7 +99,7 @@ const updateSessionProposal = async (params) => {
     }));
   }
 
-  // Check if user owns this proposal (unless admin)
+  // Check if user owns this proposal
   if (proposal.user_id !== user_id) {
     throw new Error(JSON.stringify({
       code: 'SPROP_ERR003',
@@ -110,19 +108,9 @@ const updateSessionProposal = async (params) => {
     }));
   }
 
-  // Only allow editing if status is pending
-  if (proposal.status !== 'pending') {
-    throw new Error(JSON.stringify({
-      code: 'SPROP_ERR004',
-      statusCode: 400,
-      message: 'Cannot edit proposal after it has been reviewed'
-    }));
-  }
-
   await proposal.update({
-    title: title || proposal.title,
-    description: description || proposal.description,
-    session_type: session_type || proposal.session_type
+    session_topic: session_topic || proposal.session_topic,
+    session_description: session_description || proposal.session_description,
   });
 
   return await getSessionProposalById({ id });
@@ -149,41 +137,10 @@ const deleteSessionProposal = async (params) => {
   return { id, deleted: true };
 };
 
-/**
- * Update session proposal status (Admin only)
- */
-const updateStatus = async (params) => {
-  const { id, status } = params;
-
-  const validStatuses = ['pending', 'approved', 'rejected'];
-  if (!validStatuses.includes(status)) {
-    throw new Error(JSON.stringify({
-      code: 'SPROP_ERR005',
-      statusCode: 400,
-      message: `Invalid status. Must be one of: ${validStatuses.join(', ')}`
-    }));
-  }
-
-  const proposal = await models.SessionProposal.findByPk(id);
-
-  if (!proposal) {
-    throw new Error(JSON.stringify({
-      code: 'SPROP_ERR001',
-      statusCode: 404,
-      message: 'Session proposal not found'
-    }));
-  }
-
-  await proposal.update({ status });
-
-  return await getSessionProposalById({ id });
-};
-
 module.exports = {
   getSessionProposals,
   getSessionProposalById,
   createSessionProposal,
   updateSessionProposal,
   deleteSessionProposal,
-  updateStatus
 };

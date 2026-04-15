@@ -133,37 +133,10 @@ const deleteSessionProposal = async (req, res, next) => {
   }
 };
 
-/**
- * Update session proposal status (Admin only)
- */
-const updateStatus = async (req, res, next) => {
-  try {
-    req.requestId = req.headers['x-request-id'] || `req-${Date.now()}`;
-    const result = await sessionProposalsServices.updateStatus({
-      id: req.params.id,
-      status: req.body.status,
-      requestId: req.requestId
-    });
-    next({
-      code: 'SPROP0006',
-      statusCode: 200,
-      message: 'Session proposal status updated successfully',
-      result
-    });
-  } catch (error) {
-    if (error instanceof Error && error.message.startsWith('{')) {
-      next(error);
-    } else {
-      next(new Error(JSON.stringify(sharedConstants.serverError)));
-    }
-  }
-};
-
 module.exports = {
   getSessionProposals,
   getSessionProposalById,
   createSessionProposal,
   updateSessionProposal,
   deleteSessionProposal,
-  updateStatus
 };

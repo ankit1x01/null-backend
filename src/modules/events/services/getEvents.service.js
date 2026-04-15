@@ -20,7 +20,11 @@ const getEvents = async ({ page = 0, per_page = 20, all = false }) => {
   // Build where clause
   const where = { public: true };
   if (!all) {
-    where.end_time = { [Op.gt]: new Date() };
+    // Default: show events from the last 12 months through future
+    // This ensures recent past events are visible when no upcoming events exist
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+    where.start_time = { [Op.gt]: oneYearAgo };
   }
 
   const { count, rows } = await Event.findAndCountAll({

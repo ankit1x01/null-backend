@@ -16,7 +16,4 @@ router.post('/createSessionProposal', jwt.verifyToken, controller.createSessionP
 router.put('/updateSessionProposal/:id', jwt.verifyToken, controller.updateSessionProposal);
 router.delete('/deleteSessionProposal/:id', jwt.verifyToken, jwt.isAdmin, controller.deleteSessionProposal);
 
-// Admin routes
-router.put('/updateStatus/:id', jwt.verifyToken, jwt.isAdmin, controller.updateStatus);
-
 module.exports = router;

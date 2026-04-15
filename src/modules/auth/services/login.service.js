@@ -59,12 +59,13 @@ const login = async ({ email, password, requestId, ipAddress, userAgent }) => {
   });
 
   // Generate JWT token
+  const isAdmin = await user.isAdmin();
   const token = jwt.sign(
     {
       id: user.id,
       email: user.email,
       name: user.name,
-      role: user.admin ? 'admin' : 'member'
+      role: isAdmin ? 'admin' : 'member'
     },
     process.env.JWT_SECRET || sharedConstants.auth.jwt.DEFAULT_SECRET,
     { expiresIn: process.env.JWT_EXPIRY || sharedConstants.auth.jwt.EXPIRY, algorithm: 'HS256' }

@@ -23,7 +23,8 @@ const getChapters = (req) => {
  * @throws {Error} - If validation fails
  */
 const getChapterById = (req) => {
-  const chapterId = parseInt(req.query.chapterId);
+  const raw = req.query.chapterId || req.query.id || req.params.id;
+  const chapterId = parseInt(raw);
 
   if (!chapterId || isNaN(chapterId)) {
     throw new Error(JSON.stringify({
@@ -34,7 +35,8 @@ const getChapterById = (req) => {
   }
 
   return {
-    chapterId
+    chapterId,
+    id: chapterId,
   };
 };
 

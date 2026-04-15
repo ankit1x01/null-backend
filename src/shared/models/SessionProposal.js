@@ -27,20 +27,11 @@ module.exports = (sequelize) => {
       allowNull: true,
       references: { model: 'event_types', key: 'id' }
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
-    session_type: {
+    session_topic: {
       type: DataTypes.STRING
     },
-    status: {
-      type: DataTypes.STRING,
-      defaultValue: 'pending'
+    session_description: {
+      type: DataTypes.TEXT
     },
     created_at: {
       type: DataTypes.DATE,

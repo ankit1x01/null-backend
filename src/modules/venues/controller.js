@@ -28,12 +28,13 @@ const getVenues = async (req, res, next) => {
 const getVenueById = async (req, res, next) => {
   try {
     const result = await services.getVenueById(req.params.id);
-    res.status(200).json({
-      ...constants.getVenueById,
-      result
-    });
+    next({ ...constants.getVenueById, result });
   } catch (error) {
-    next(error);
+    if (error instanceof Error && error.message.startsWith('{')) {
+      next(error);
+    } else {
+      next(new Error(JSON.stringify({ code: 'VENUE500', statusCode: 500, message: 'Failed to fetch venue' })));
+    }
   }
 };
 

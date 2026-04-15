@@ -9,7 +9,15 @@ const getVenues = async () => {
 };
 
 const getVenueById = async (id) => {
-  return await Venue.findByPk(id);
+  const venue = await Venue.findByPk(id);
+  if (!venue) {
+    throw new Error(JSON.stringify({
+      code: 'VENUE404',
+      statusCode: 404,
+      message: 'Venue not found'
+    }));
+  }
+  return venue;
 };
 
 const updateVenue = async (id, venueData) => {
