@@ -1,0 +1,73 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "description": "GitHub — read/write issues, PRs, repo metadata. Use for /fix-issue and /review workflows.",
+      "trust": "read-write",
+      "capabilities": [
+        "list_issues", "get_issue", "create_issue",
+        "list_pull_requests", "get_pull_request", "create_pull_request",
+        "list_commits", "get_file_contents", "search_repositories"
+      ]
+    },
+
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "POSTGRES_CONNECTION_STRING": "${DATABASE_URL}"
+      },
+      "description": "PostgreSQL — READ-ONLY schema inspection and query debugging. Never for writes.",
+      "trust": "read-only",
+      "capabilities": ["query", "list_tables", "describe_table"],
+      "restrictions": {
+        "readOnly": true,
+        "allowedSchemas": ["public"]
+      }
+    },
+
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "./src", "./docs", "./.claude"],
+      "description": "Enhanced filesystem access scoped to src/, docs/, and .claude/.",
+      "trust": "read-write",
+      "capabilities": ["read_file", "write_file", "list_directory", "search_files"]
+    },
+
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+      },
+      "description": "Web search — for documentation lookup, CVE research, library references, and error debugging.",
+      "trust": "read-only",
+      "capabilities": ["web_search"]
+    },
+
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "description": "Structured multi-step reasoning. Use for complex architecture decisions, debugging hard problems, and planning large refactors before writing code.",
+      "trust": "read-only",
+      "capabilities": ["think"]
+    },
+
+    "sentry": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-sentry"],
+      "env": {
+        "SENTRY_AUTH_TOKEN": "${SENTRY_AUTH_TOKEN}",
+        "SENTRY_ORG": "${SENTRY_ORG}",
+        "SENTRY_PROJECT": "${SENTRY_PROJECT}"
+      },
+      "description": "Sentry — fetch production errors, stack traces, and issue counts directly into debugging sessions. Use with /fix-issue for production bugs.",
+      "trust": "read-only",
+      "capabilities": ["list_issues", "get_issue", "get_events"]
+    }
+  }
+}

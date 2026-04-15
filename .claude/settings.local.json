@@ -1,0 +1,15 @@
+{
+  "// note": "This file is gitignored. Use it for local developer overrides.",
+
+  "permissions": {
+    "allow": [
+      "Bash(npm run db:seed)",
+      "Bash(psql *)"
+    ]
+  },
+
+  "env": {
+    "DATABASE_URL": "postgresql://localhost:5432/myproject_dev",
+    "NEXTAUTH_URL": "http://localhost:3000"
+  }
+}
